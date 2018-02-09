@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,5 +23,7 @@ namespace Smdpp
             "115200",
             "256000",
         };
+
+        public static List<Image> CameraImages = new List<Image>();
     }
 }

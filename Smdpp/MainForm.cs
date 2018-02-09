@@ -21,8 +21,6 @@ namespace Smdpp
         private void MainForm_Load(object sender, EventArgs e)
         {
             EventSink.DevToolsRequested += EventSink_DevToolsRequested;
-
-            new CameraTestForm().Show();
         }
 
         private void EventSink_DevToolsRequested()
@@ -32,21 +30,24 @@ namespace Smdpp
 
         private void CreateBrowser()
         {
-            Cef.Initialize();
+            var settings = new CefSettings();
+            settings.CefCommandLineArgs.Add("--enable-media-stream", "--enable-media-stream"); settings.CefCommandLineArgs.Add("--enable-usermedia-screen-capturing", "--enable-usermedia-screen-capturing"); settings.CefCommandLineArgs.Add("enable-usermedia-screen-capturing", "enable-usermedia-screen-capturing"); settings.CefCommandLineArgs.Add("enable-media-stream", "enable-media-stream");
+
+            Cef.Initialize(settings);
 
             string filePath = Path.Combine(Application.StartupPath, "View", "index.html");
 
             var browser = new ChromiumWebBrowser(filePath)
             {
                 Dock = DockStyle.Fill,
-                MenuHandler = new CefSharpContextMenuHandler()
+                MenuHandler = new CefSharpContextMenuHandler(),
             };
 
             browser.BrowserSettings = new BrowserSettings()
             {
                 FileAccessFromFileUrls = CefState.Enabled,
                 UniversalAccessFromFileUrls = CefState.Enabled,
-                DefaultEncoding = "UTF8"
+                DefaultEncoding = "UTF8",
             };
 
             this.Browser = browser;
