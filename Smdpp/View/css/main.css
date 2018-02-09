@@ -1,0 +1,146 @@
+html { margin: 0px; padding: 0px; display: block; width: 100%; position: relative; top: 0px; left: 0px; right: 0px; bottom: 0px; }
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Tahoma";
+	font-size: 11px;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	user-select: none;
+	outline: 0;
+	display: block;
+	overflow-y: hidden;
+}
+
+.wrapper {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 100%;
+	bottom: 0px;
+	background-color: yellow;
+
+}
+
+img { border: 0; padding: 0; margin: 0; text-decoration: none; }
+input { font-family: "Tahoma" }
+div { display: block; }
+
+#nav {
+	list-style: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: #f1f1f1;
+}
+
+#nav li { float: left; display: block; height: 26px; line-height: 26px; text-align: center; padding: 0px 30px; }
+#nav li:hover { background-color: #dedede; cursor: pointer; }
+
+#app-zone {
+	position: relative;
+	top: 25px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	
+	width: 100%;
+	height: calc(100% - 25px);
+
+}
+
+#connection {
+	position: absolute; 
+	left: 5;
+	top: 5px;
+	width: 200px;	
+	height: 150px; 
+}
+
+#camera {
+	position: absolute;
+	left: 5px; top: 160px;
+	
+	width: 200px;
+	height: 200px;
+}
+
+#jog-panel {
+	position: absolute;
+	right: 5px; top: 5px;
+	
+	width: 200px;
+	height: 200px;
+}
+
+.header {
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666;
+	
+	background-color: #dedede;
+	border: 1px solid #dedede;
+	line-height: 25px;
+	height: 25px;
+	
+	border-radius: 3px 3px 0px 0px;
+	box-sizing: border-box;
+}
+
+.con {
+	width: 100%;
+	height: calc(100% - 25px);
+	
+	position: relative;
+	background-color: #f1f1f1;
+	border: 1px solid #dedede;
+	box-sizing: border-box;
+}
+
+select {
+	margin: 0;
+	padding: 0;
+	height: 21px;
+	line-height: 21px;
+	margin: 2px 0px;
+	outline: 0;
+}
+
+button { cursor: pointer; }
+
+.row { clear: both; width: 100%; overflow: hidden; }
+.cell { overflow: hidden; line-height: 25px; height: 25px; }
+.left { width: 35%; float: left; text-align: right; }
+.right { width: calc(65% - 5px); margin-left: 5px; float: right; text-align: left; }
+
+#connection .con select {
+	width: 75px;
+}
+
+.space-vertical {
+	width: 100%;
+	height: 25px;
+	clear: both;
+	overflow: hidden;
+}
+
+img#wrench {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	right: 5px;
+	bottom: 5px;
+	cursor: pointer;
+}

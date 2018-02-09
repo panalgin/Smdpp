@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<title>Smdpp - Index</title>
+		<link href="css/main.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<ul id="nav">
+				<li>Dosya</li>
+				<li>Ayarlar</li>
+				<li>Yardım</li>
+			</ul>
+			<div id="app-zone">
+				<div id="connection">
+					<div class="header">Bağlantı</div>
+					<div class="con">
+						<div class="row">
+							<div class="cell left">
+								<label>Com Port:</label>
+							</div>
+							<div class="cell right">
+								<select id="com-ports-select">
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="cell left">
+								<label>Baud Rate:</label>
+							</div>
+							<div class="cell right">
+								<select id="baud-rates-select">
+								</select>
+							</div>
+						</div>
+						<div class="space-vertical"></div>
+						<div class="row">
+							<div class="cell right">
+								<button type="button">Bağlan</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="camera">
+					<div class="header">Kamera</div>
+					<div class="con"></div>
+				</div>
+				<div id="tabbed-mdi">
+				</div>
+				<div id="jog-panel">
+					<div class="header">Kontrol</div>
+					<div class="con"></div>
+				</div>
+			</div>
+			<img id="wrench" src="img/wrench-icon.png" />
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function(e) {
+				var comPorts = windowsApp.getPortNames();
+
+				for(var i = 0; i < comPorts.length; i++) {
+					var item = comPorts[i];
+					var optionField = $("<option value='" + item + "'>" + item + "</option>");
+					$("select#com-ports-select").append(optionField);
+				}
+
+				var baudRates = windowsApp.getBaudRates();
+
+				for(var i = 0; i < baudRates.length; i++) {
+					var item = baudRates[i];
+					var optionField = $("<option value='" + item + "'>" + item + "</option>");
+
+					if (item === "256000")
+						optionField.attr("selected", "selected");
+					
+					$("select#baud-rates-select").append(optionField);
+				}
+
+				$("body").on("click", "img#wrench", function(e) {
+					windowsApp.showDevTools();
+				});
+			});
+		</script>
+	</body>
+</html>
