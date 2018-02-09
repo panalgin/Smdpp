@@ -88,8 +88,20 @@
  
 			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
  
+			//https://simpl.info/getusermedia/sources/js/main.js
+
+
 			if (navigator.getUserMedia) {       
-				navigator.getUserMedia({video: true}, handleVideo, videoError);
+				var constraints = {
+									audio: false,
+									video: {
+									  optional: [{
+										sourceId: "8476b60d612c58caf749dc4d31ad62766ca23dbda9d7c485065b1e1825470153"
+									  }]
+									}
+								  };
+
+				navigator.getUserMedia(constraints, handleVideo, videoError);
 			}
  
 			function handleVideo(stream) {
