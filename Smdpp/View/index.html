@@ -59,6 +59,8 @@
 		</div>
 
 		<script type="text/javascript">
+			'use strict';
+
 			$(document).ready(function(e) {
 				var comPorts = windowsApp.getPortNames();
 
@@ -94,7 +96,10 @@
 				else
 					videoElement2.srcObject = stream;
   
-			  return navigator.mediaDevices.enumerateDevices();
+				var devices = navigator.mediaDevices.enumerateDevices();
+				//console.log(devices);
+
+			  return devices;
 			}
 
 			function start() {
@@ -106,17 +111,46 @@
   
 				//cam2: 9dfd77aa6a915e1a8112bde7e4884ed02588360058e5010b0284d3e493d31f42
 				//cam1: 3f4bd793b5df13e89658391dfeeb0ec2c57aaa2a170b1922fac5e392daa42797
-				var idTable = ["3f4bd793b5df13e89658391dfeeb0ec2c57aaa2a170b1922fac5e392daa42797", "9dfd77aa6a915e1a8112bde7e4884ed02588360058e5010b0284d3e493d31f42"];
+				var idTable = [];
 
-				for(var i = 0; i < 2; i++) {
-					var videoSource = idTable[i];
-					var constraints = {
-						video: 	{ deviceId: videoSource ? {exact: videoSource} : undefined }
-					};
+				var promise = navigator.mediaDevices.enumerateDevices();
+				//console.log(promise);
+
+				promise.then(function(devices) {
+					console.log(devices);
+
+					for(var i = 0; i < devices.length; i++) {
+						var device = devices[i];
+
+						console.log(device);
+
+						if (device.kind == 'videoinput')
+							idTable.push(device.deviceId);
+					}
+				}).then(function() {
+					console.log(idTable);
+					for(var i = 0; i < 2; i++) {
+						var videoSource = idTable[i];
+
+						var constraints = {
+							video: 	{ deviceId: videoSource }
+						};
   
-					navigator.mediaDevices.getUserMedia(constraints).
-						then(gotStream).catch(handleError);
-				}
+						navigator.mediaDevices.getUserMedia(constraints).
+							then(gotStream).catch(handleError);
+					}
+				});
+
+
+				/*for(var i = 0; i < promise; i++) {
+					var device = promise[i];
+
+					if (device.kind == 'videoinput')
+						idTable.push(device.deviceId);
+				}*/
+
+				//console.log(idTable);
+
 			}
 
 			start();

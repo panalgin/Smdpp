@@ -40,9 +40,9 @@ namespace Smdpp
 
             Cef.Initialize(settings);
 
-            //string filePath = Path.Combine(Application.StartupPath, "View", "index.html");
+            string filePath = Path.Combine(Application.StartupPath, "View", "index.html");
 
-            var browser = new ChromiumWebBrowser("https://www.karaelektronik.com/Smdpp/index.html")
+            var browser = new ChromiumWebBrowser(filePath)
             {
                 Dock = DockStyle.Fill,
                 MenuHandler = new CefSharpContextMenuHandler(),
