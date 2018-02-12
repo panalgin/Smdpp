@@ -72,7 +72,7 @@ div { display: block; }
 	left: 5px; top: 160px;
 	
 	width: 200px;
-	height: 200px;
+	height: 325px;
 }
 
 #jog-panel {
@@ -143,4 +143,9 @@ img#wrench {
 	right: 5px;
 	bottom: 5px;
 	cursor: pointer;
+}
+
+video {
+	width: 200px;
+	object-fit: fill;
 }
