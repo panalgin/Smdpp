@@ -82,6 +82,19 @@
 							$("div#" + tabId).addClass("active");
 						}
 
+						function getAvailableId() {
+							var index = 0;
+
+							$("div#tabbed-mdi div.headers div.tab-header").each(function() {
+								var currentId = parseInt($(this).attr("id").replace("header-", ""));
+
+								if (currentId > index)
+									index = currentId;
+							});
+
+							return index + 1;
+						}
+
 						$(document).ready(function() {
 							$("body").on("click", "div#tabbed-mdi .headers .tab-header i", function(e) {
 								e.preventDefault();
@@ -163,7 +176,6 @@
 					videoElement2.srcObject = stream;
   
 				var devices = navigator.mediaDevices.enumerateDevices();
-				//console.log(devices);
 
 			  return devices;
 			}
@@ -180,21 +192,16 @@
 				var idTable = [];
 
 				var promise = navigator.mediaDevices.enumerateDevices();
-				//console.log(promise);
 
 				promise.then(function(devices) {
-					console.log(devices);
 
 					for(var i = 0; i < devices.length; i++) {
 						var device = devices[i];
-
-						console.log(device);
 
 						if (device.kind == 'videoinput')
 							idTable.push(device.deviceId);
 					}
 				}).then(function() {
-					console.log(idTable);
 					for(var i = 0; i < 2; i++) {
 						var videoSource = idTable[i];
 
@@ -206,17 +213,6 @@
 							then(gotStream).catch(handleError);
 					}
 				});
-
-
-				/*for(var i = 0; i < promise; i++) {
-					var device = promise[i];
-
-					if (device.kind == 'videoinput')
-						idTable.push(device.deviceId);
-				}*/
-
-				//console.log(idTable);
-
 			}
 
 			start();
