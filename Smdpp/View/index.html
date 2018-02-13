@@ -49,6 +49,42 @@
 					</div>
 				</div>
 				<div id="tabbed-mdi">
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$("body").on("click", "div#tabbed-mdi .headers .tab-header i", function(e) {
+								e.preventDefault();
+								e.stopPropagation();
+
+								var tabId = $(this).parent().attr("id").replace("header", "tab");
+
+								console.log($(this));
+
+								$("div#" + tabId).remove();
+								$(this).parent().remove();
+							});
+
+							$("body").on("click", "div#tabbed-mdi .headers .tab-header", function(e) {
+								if (!$(this).hasClass("active")) {
+									$("div#tabbed-mdi .headers .active").removeClass("active");
+									$(this).addClass("active");
+								}
+							});
+						});
+					</script>
+					<div class="headers">
+						<div class="tab-header active" id="header-1">Çalışma #1 <i></i></div>
+						<div class="tab-header" id="header-2">Çalışma #2 <i></i></div>
+						<div class="tab-header" id="header-3">Ayarlar <i></i></div>
+					</div>
+					<div id="tab-1" class="tab active">
+						Çalışma dosyası burada olacak.
+					</div>
+					<div id="tab-2" class="tab">
+						Motor ayarlaarı ile alakalı içerik sayfası
+					</div>
+					<div id="tab-3" class="tab">
+						Kılıf
+					</div>
 				</div>
 				<div id="jog-panel">
 					<div class="header">Kontrol</div>

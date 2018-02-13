@@ -13,6 +13,7 @@ body {
 	outline: 0;
 	display: block;
 	overflow-y: hidden;
+	cursor: default;
 }
 
 .wrapper {
@@ -23,8 +24,7 @@ body {
 	width: 100%;
 	height: 100%;
 	bottom: 0px;
-	background-color: yellow;
-
+	background-color: #fff;
 }
 
 img { border: 0; padding: 0; margin: 0; text-decoration: none; }
@@ -73,6 +73,69 @@ div { display: block; }
 	
 	width: 200px;
 	height: 325px;
+}
+
+#tabbed-mdi {
+	position: absolute;
+	left: 210px;
+	right: 210px; 
+	top: 5px;
+	bottom: 5px;
+}
+
+#tabbed-mdi .tab { display: none; 
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 25px;
+	background-color: #f1f1f1;
+	box-sizing: border-box;
+	border: 1px solid #dedede;
+	border-top: 2px solid #dedede;
+	padding: 5px;
+}
+#tabbed-mdi .active { display: block; }
+
+#tabbed-mdi .headers { 
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 25px;
+}
+#tabbed-mdi .tab-header {
+	float: left;
+	height: 25px;
+	padding: 0px 0px 0px 20px;
+	line-height: 25px;
+	cursor: default;
+}
+
+#tabbed-mdi .tab-header i {
+	width: 18px;
+	height: 18px; 
+	float: right;
+	margin-top: 3.5px;
+	margin-right: 5px;
+	margin-left: 5px;
+	vertical-align: top;
+	opacity: 0.0;
+
+	background-image: url("../img/close.png");
+	background-repeat: no-repeat;
+}
+
+#tabbed-mdi .tab-header:hover {
+	background-color: #dedede;
+}
+
+#tabbed-mdi .headers .active { background-color: #dedede; }
+#tabbed-mdi .headers .active i { opacity: 1.0; }
+#tabbed-mdi .tab-header:hover i { opacity: 1.0; }
+
+#tabbed-mdi i:hover {
+	background-image: url("../img/close-hover.png");
 }
 
 #jog-panel {
@@ -146,6 +209,6 @@ img#wrench {
 }
 
 video {
-	width: 200px;
+	width: 198px;
 	object-fit: fill;
 }
