@@ -50,23 +50,53 @@
 				</div>
 				<div id="tabbed-mdi">
 					<script type="text/javascript">
+						function closeTab(headerId) {
+							var tabId = headerId.replace("header", "tab");
+
+							selectClosestPage(headerId);
+
+							$("div#" + tabId).remove();
+							$("div#" + headerId).remove();
+						}
+
+						function selectClosestPage(headerId) {
+							var closest  = $("div.headers div#" + headerId).next(); 
+
+							if (!closest.hasClass("tab-header"))
+								closest = $("div.headers div#" + headerId).prev();
+
+							if (closest.hasClass("tab-header")) {
+								var headerId = closest.attr("id");
+
+								selectPage(headerId);
+							}
+						}
+
+						function selectPage(headerId) {
+							$("div.headers div").removeClass("active");
+							$("div.tab").removeClass("active");
+
+							$("div.headers div#" + headerId).addClass("active");
+
+							var tabId = headerId.replace("header", "tab");
+							$("div#" + tabId).addClass("active");
+						}
+
 						$(document).ready(function() {
 							$("body").on("click", "div#tabbed-mdi .headers .tab-header i", function(e) {
 								e.preventDefault();
 								e.stopPropagation();
 
-								var tabId = $(this).parent().attr("id").replace("header", "tab");
+								var headerId = $(this).parent().attr("id");
 
-								console.log($(this));
-
-								$("div#" + tabId).remove();
-								$(this).parent().remove();
+								closeTab(headerId);
 							});
 
 							$("body").on("click", "div#tabbed-mdi .headers .tab-header", function(e) {
 								if (!$(this).hasClass("active")) {
-									$("div#tabbed-mdi .headers .active").removeClass("active");
-									$(this).addClass("active");
+									var headerId = $(this).attr("id");
+
+									selectPage(headerId);
 								}
 							});
 						});
