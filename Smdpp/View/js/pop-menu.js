@@ -27,6 +27,31 @@
 	
 		e.stopPropagation(); 
 	});
+
+	$("body").on("click", "ul.pop-menu li", function(e) {
+		e.stopPropagation();
+
+		var linkId = $(this).attr("id");
+
+		switch(linkId) {
+			case "exitMenuBtn1":
+			case "exitMenuBtn2":
+			case "exitMenuBtn3": {
+				
+				alert ("jhühü");
+
+				break;
+			}
+
+			case "openGerberBtn": {
+				windowsApp.openGerber();
+
+				break;
+			}
+
+			default: break;
+		}
+	});
 });
 
 function isAnyPopOpen() {

@@ -29,5 +29,10 @@ namespace Smdpp
         {
             EventSink.InvokeDevToolsRequested();
         }
+
+        public void OpenGerber()
+        {
+            EventSink.InvokeOpenGerberRequested();
+        }
     }
 }

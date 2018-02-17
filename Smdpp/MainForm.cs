@@ -21,6 +21,12 @@ namespace Smdpp
         private void MainForm_Load(object sender, EventArgs e)
         {
             EventSink.DevToolsRequested += EventSink_DevToolsRequested;
+            EventSink.OpenGerberReqeusted += EventSink_OpenGerberReqeusted;
+        }
+
+        private void EventSink_OpenGerberReqeusted()
+        {
+            MessageBox.Show("Hahaha");
         }
 
         private void EventSink_DevToolsRequested()
