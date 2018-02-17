@@ -47,6 +47,10 @@ div { display: block; }
 #nav li { float: left; display: block; height: 26px; line-height: 26px; text-align: center; padding: 0px 30px; }
 #nav li:hover { background-color: #dedede; cursor: pointer; }
 
+#nav li:active, #nav .active {
+	background-color: #d1d1d1 !important;
+}
+
 #app-zone {
 	position: relative;
 	top: 25px;
@@ -56,7 +60,6 @@ div { display: block; }
 	
 	width: 100%;
 	height: calc(100% - 25px);
-
 }
 
 #connection {
@@ -211,4 +214,18 @@ img#wrench {
 video {
 	width: 198px;
 	object-fit: fill;
+}
+
+.pop-menu {
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	min-width: 200px;
+	min-height: 100px;
+	z-index: 9999;
+	background-color: d1d1d1;
+	box-sizing: border-box;
+	border: 1px solid #dedede;
+	display: none;
 }

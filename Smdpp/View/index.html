@@ -7,9 +7,9 @@
 	<body>
 		<div class="wrapper">
 			<ul id="nav">
-				<li>Dosya</li>
-				<li>Ayarlar</li>
-				<li>Yardım</li>
+				<li id="file-menu">Dosya</li>
+				<li id="settings-menu">Ayarlar</li>
+				<li id="help-menu">Yardım</li>
 			</ul>
 			<div id="app-zone">
 				<div id="connection">
@@ -71,7 +71,19 @@
 			</div>
 			<img id="wrench" src="img/wrench-icon.png" />
 		</div>
+
+		<ul id="file-pop" class="pop-menu">
+			<li id="exitMenuBtn">Çıkış</li>
+		</ul>
+		<ul id="settings-pop" class="pop-menu">
+			<li id="exitMenuBtn">Çıkış</li>
+		</ul>
+		<ul id="help-pop" class="pop-menu">
+			<li id="exitMenuBtn">Çıkış</li>
+		</ul>
+
 		<script type="text/javascript" src="js/tabbed-mdi.js"></script>
 		<script type="text/javascript" src="js/camera.js"></script>
+		<script type="text/javascript" src="js/pop-menu.js"></script>
 	</body>
 </html>
