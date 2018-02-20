@@ -56,9 +56,6 @@
 
 function isAnyPopOpen() {
 	var pop = $("ul.pop-menu").filter(":visible");
-
-	console.log(pop);
-
 	return pop.length > 0;
 }
 

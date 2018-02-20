@@ -26,7 +26,16 @@ namespace Smdpp
 
         private void EventSink_OpenGerberReqeusted()
         {
-            MessageBox.Show("Hahaha");
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                var dialog = SetupGerberDialog();
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var data = dialog.FileName;
+                    //MessageBox.Show("Hahaha");
+                }
+            });
         }
 
         private void EventSink_DevToolsRequested()
@@ -70,6 +79,18 @@ namespace Smdpp
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Cef.Shutdown();
+        }
+
+        private OpenFileDialog SetupGerberDialog()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.CheckFileExists = true;
+            dialog.Filter = "Gerber Files|*.txt";
+            dialog.FileName = "";
+            dialog.Multiselect = false;
+            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
+            return dialog;
         }
     }
 }
