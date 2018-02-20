@@ -38,8 +38,15 @@ namespace Smdpp
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var data = dialog.FileName;
-                    //MessageBox.Show("Hahaha");
+                    var filePath = dialog.FileName;
+                    var data = "";
+
+                    using(StreamReader reader = new StreamReader(filePath, true))
+                    {
+                        data = reader.ReadToEnd();
+                    }
+
+                    LibraryManager.ParseAresLibrary(data);
                 }
             });
         }
@@ -81,7 +88,7 @@ namespace Smdpp
             this.Browser = browser;
             this.Controls.Add(Browser);
 
-            this.Browser.RegisterAsyncJsObject("windowsApp", new JavascriptController());
+            this.Browser.RegisterJsObject("windowsApp", new JavascriptController());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -90,7 +97,6 @@ namespace Smdpp
             {
                 Cef.Shutdown();
             });
-
         }
 
         private OpenFileDialog SetupGerberDialog()
