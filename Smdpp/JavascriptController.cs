@@ -34,5 +34,10 @@ namespace Smdpp
         {
             EventSink.InvokeOpenGerberRequested();
         }
+
+        public void Close()
+        {
+            EventSink.InvokeCloseRequested();
+        }
     }
 }

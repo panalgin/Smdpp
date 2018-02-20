@@ -38,7 +38,7 @@
 			case "exitMenuBtn2":
 			case "exitMenuBtn3": {
 				
-				alert ("jhühü");
+				windowsApp.close();
 
 				break;
 			}
@@ -51,6 +51,8 @@
 
 			default: break;
 		}
+
+		closeAllPops();
 	});
 });
 

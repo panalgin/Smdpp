@@ -222,10 +222,20 @@ video {
 	padding: 0px;
 	list-style: none;
 	min-width: 200px;
-	min-height: 100px;
 	z-index: 9999;
 	background-color: d1d1d1;
 	box-sizing: border-box;
 	border: 1px solid #dedede;
 	display: none;
+}
+
+.pop-menu li {
+	line-height: 25px;
+	text-indent: 10px;
+	height: 25px;
+	display: block;
+}
+
+.pop-menu li:hover {
+	background-color: #c9c9c9;
 }

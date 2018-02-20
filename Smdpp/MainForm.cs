@@ -22,6 +22,12 @@ namespace Smdpp
         {
             EventSink.DevToolsRequested += EventSink_DevToolsRequested;
             EventSink.OpenGerberReqeusted += EventSink_OpenGerberReqeusted;
+            EventSink.CloseRequested += EventSink_CloseRequested;
+        }
+
+        private void EventSink_CloseRequested()
+        {
+            Application.Exit();
         }
 
         private void EventSink_OpenGerberReqeusted()
@@ -54,6 +60,8 @@ namespace Smdpp
             settings.CefCommandLineArgs.Add("enable-media-stream", "1");
 
             Cef.Initialize(settings);
+            CefSharpSettings.ShutdownOnExit = true;
+            CefSharpSettings.LegacyJavascriptBindingEnabled = true;
 
             string filePath = Path.Combine(Application.StartupPath, "View", "index.html");
 
@@ -67,18 +75,22 @@ namespace Smdpp
             {
                 FileAccessFromFileUrls = CefState.Enabled,
                 UniversalAccessFromFileUrls = CefState.Enabled,
-                DefaultEncoding = "UTF8"
+                DefaultEncoding = "UTF8",
             };
 
             this.Browser = browser;
             this.Controls.Add(Browser);
 
-            this.Browser.RegisterJsObject("windowsApp", new JavascriptController());
+            this.Browser.RegisterAsyncJsObject("windowsApp", new JavascriptController());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Cef.Shutdown();
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                Cef.Shutdown();
+            });
+
         }
 
         private OpenFileDialog SetupGerberDialog()
