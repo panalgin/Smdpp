@@ -11,6 +11,10 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="Offset" Type="int" />
+          <Property Name="Checksum" Type="int" />
+          <Property Name="Size" Type="int" />
         </EntityType>
         <EntityContainer Name="SmdppModelStoreContainer">
           <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
@@ -28,6 +32,10 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="Offset" Type="Int32" />
+          <Property Name="Checksum" Type="Int32" />
+          <Property Name="Size" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -38,6 +46,10 @@
           <EntitySetMapping Name="Packages">
             <EntityTypeMapping TypeName="SmdppModel.Package">
               <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+                <ScalarProperty Name="Offset" ColumnName="Offset" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

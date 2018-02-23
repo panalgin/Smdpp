@@ -16,5 +16,9 @@ namespace Smdpp
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public Nullable<System.DateTime> LastModified { get; set; }
+        public Nullable<int> Offset { get; set; }
+        public Nullable<int> Checksum { get; set; }
+        public Nullable<int> Size { get; set; }
     }
 }

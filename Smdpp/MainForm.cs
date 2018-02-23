@@ -39,14 +39,8 @@ namespace Smdpp
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     var filePath = dialog.FileName;
-                    var data = "";
 
-                    using(StreamReader reader = new StreamReader(filePath, true))
-                    {
-                        data = reader.ReadToEnd();
-                    }
-
-                    LibraryManager.ParseAresLibrary(data);
+                    LibraryManager.ParseAresLibrary(filePath);
                 }
             });
         }
