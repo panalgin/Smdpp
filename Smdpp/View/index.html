@@ -3,6 +3,7 @@
 		<title>Smdpp - Index</title>
 		<link href="css/main.css" rel="stylesheet" />
 		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/svg.js"></script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -55,7 +56,17 @@
 						<div class="tab-header" id="header-3">Ayarlar <i></i></div>
 					</div>
 					<div id="tab-1" class="tab active">
-						Çalışma dosyası burada olacak.
+						<script type="text/javascript">
+							$(document).ready(function(e) {
+								var editor = null;
+
+								$.when($.get("inc/controls/svg-editor.tpl", function(data) {
+									editor = $(data);
+								})).then(function(resp1) {
+									$("div#tab-1").append(editor);
+								});		
+							}); 
+						</script>
 					</div>
 					<div id="tab-2" class="tab">
 						Motor ayarlaarı ile alakalı içerik sayfası
@@ -73,7 +84,8 @@
 		</div>
 
 		<ul id="file-pop" class="pop-menu">
-			<li id="openGerberBtn">Aç</li>
+			<li id="open">Aç</li>
+			<li id="openGerberBtn">Import Gerber</li>
 			<li id="exitMenuBtn1">Çıkış</li>
 		</ul>
 		<ul id="settings-pop" class="pop-menu">

@@ -87,6 +87,7 @@
     <Compile Include="EventSink.cs" />
     <Compile Include="JavascriptController.cs" />
     <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
+    <Compile Include="Logic\GerberReader.cs" />
     <Compile Include="Logic\LibraryManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

@@ -40,7 +40,9 @@ namespace Smdpp
                 {
                     var filePath = dialog.FileName;
 
-                    LibraryManager.ParseAresLibrary(filePath);
+                    //LibraryManager.ParseAresLibrary(filePath);
+
+                    GerberReader reader = new GerberReader(filePath);
                 }
             });
         }
