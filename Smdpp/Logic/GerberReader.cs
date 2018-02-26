@@ -32,12 +32,45 @@ namespace Smdpp.Logic
             var endOf = data.IndexOf("\r\n\r\n");
             data = data.Substring(0, endOf);
 
-            var tools = ParsePlotterToolset(data); //rectangles, circles etc
+            ParsePlotterToolset(data); //rectangles, circles etc
         }
 
         void ParsePlotterToolset(string data)
         {
+            var lines = data.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
+            lines.All(delegate (string line)
+            {
+                Dictionary<string, string> propertyList = new Dictionary<string, string>();
+
+                string unformattedValue = "";
+
+                line.ToCharArray().All(delegate (char c)
+                {
+                    if (c == ' ' || c == '\t')
+                    {
+                        if (!unformattedValue.EndsWith(","))
+                            unformattedValue += ",";
+
+                        return true;
+                    }
+                    else
+                        unformattedValue += c;
+
+                    return true;
+                });
+
+                ParseTool(unformattedValue);
+
+                return true;
+            });
+        }
+
+        void ParseTool(string data)
+        {
+            string[] splittedData = data.Split(',');
+
+            PlotterToolInfo tool = new PlotterToolInfo(splittedData);
         }
     }
 }
