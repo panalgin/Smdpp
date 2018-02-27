@@ -8,12 +8,9 @@ namespace Smdpp.Logic
 {
     public class SquarePlotterTool : BasePlotterTool
     {
-        public SquarePlotterTool(string data)
+        public SquarePlotterTool(string data) : base(data)
         {
-            this.Data = data;
 
-            this.ParseToolType();
-            this.ParsePadType();
         }
 
         public override void ParseProperties() {

@@ -11,12 +11,9 @@ namespace Smdpp.Logic
         public decimal Width { get; set; }
         public decimal Height { get; set; }
 
-        public RectanglePlotterTool(string data)
+        public RectanglePlotterTool(string data) : base(data)
         {
-            this.Data = data;
 
-            this.ParseToolType();
-            this.ParsePadType();
         }
 
         public override void ParseProperties() {

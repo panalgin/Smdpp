@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,9 @@ namespace Smdpp.Logic
 {
     public class CirclePlotterTool : BasePlotterTool
     {
-        public CirclePlotterTool(string data)
+        public CirclePlotterTool(string data) : base(data)
         {
-            this.Data = data;
-
-            this.ParseToolType();
-            this.ParsePadType();
+            Debug.Write(this.Name);
         }
 
         public override void ParseProperties() {

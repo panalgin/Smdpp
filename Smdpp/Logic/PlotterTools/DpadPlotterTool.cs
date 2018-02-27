@@ -8,12 +8,8 @@ namespace Smdpp.Logic
 {
     public class DpadPlotterTool : BasePlotterTool
     {
-        public DpadPlotterTool(string data)
+        public DpadPlotterTool(string data) : base(data)
         {
-            this.Data = data;
-
-            this.ParseToolType();
-            this.ParsePadType();
         }
 
         public override void ParseProperties() {
