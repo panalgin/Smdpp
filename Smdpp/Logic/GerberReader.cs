@@ -70,7 +70,7 @@ namespace Smdpp.Logic
         {
             string[] splittedData = data.Split(',');
 
-            PlotterToolInfo tool = new PlotterToolInfo(splittedData);
+            var result = ToolFactory.GetTool(data);
         }
     }
 }

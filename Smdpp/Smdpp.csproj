@@ -89,7 +89,12 @@
     <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
     <Compile Include="Logic\GerberReader.cs" />
     <Compile Include="Logic\LibraryManager.cs" />
-    <Compile Include="Logic\PlotterToolInfo.cs" />
+    <Compile Include="Logic\PlotterTools\BasePlotterTool.cs" />
+    <Compile Include="Logic\PlotterTools\DpadPlotterTool.cs" />
+    <Compile Include="Logic\PlotterTools\SquarePlotterTool.cs" />
+    <Compile Include="Logic\PlotterTools\CirclePlotterTool.cs" />
+    <Compile Include="Logic\ToolFactory.cs" />
+    <Compile Include="Logic\PlotterTools\RectanglePlotterTool.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
