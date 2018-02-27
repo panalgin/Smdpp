@@ -39,6 +39,8 @@ namespace Smdpp.Logic
         {
             var lines = data.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
+            List<BasePlotterTool> tools = new List<BasePlotterTool>();
+
             lines.All(delegate (string line)
             {
                 Dictionary<string, string> propertyList = new Dictionary<string, string>();
@@ -60,17 +62,24 @@ namespace Smdpp.Logic
                     return true;
                 });
 
-                ParseTool(unformattedValue);
+                var tool = ParseTool(unformattedValue);
+
+                if (tool != null)
+                    tools.Add(tool);
 
                 return true;
             });
+
+            int count = tools.Count;
         }
 
-        void ParseTool(string data)
+        BasePlotterTool ParseTool(string data)
         {
             string[] splittedData = data.Split(',');
 
             var result = ToolFactory.GetTool(data);
+
+            return result;
         }
     }
 }
