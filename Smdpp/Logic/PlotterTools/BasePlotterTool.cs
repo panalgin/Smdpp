@@ -40,6 +40,7 @@ namespace Smdpp.Logic
             this.ParseName();
             this.ParseToolType();
             this.ParsePadType();
+            this.ParseProperties();
         }
 
         protected void ParseName()
