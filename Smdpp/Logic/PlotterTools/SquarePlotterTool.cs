@@ -8,6 +8,8 @@ namespace Smdpp.Logic
 {
     public class SquarePlotterTool : BasePlotterTool
     {
+        public decimal Side { get; set; }
+
         public SquarePlotterTool(string data) : base(data)
         {
 
@@ -16,8 +18,15 @@ namespace Smdpp.Logic
         public override void ParseProperties() {
             string[] parsedData = this.Data.Split(',');
 
+            string sideText = parsedData[2].Replace("S=", "");
+            decimal side = 0.0m;
 
+            if (sideText.EndsWith("th"))
+                side = Utility.ConvertThouToMm(sideText.Replace("th", ""));
+            else
+                side = decimal.Parse(sideText.Replace("mm", ""));
 
+            this.Side = side;
         }
     }
 }

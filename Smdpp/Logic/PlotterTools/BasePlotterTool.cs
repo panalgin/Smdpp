@@ -19,7 +19,7 @@ namespace Smdpp.Logic
         Rectangle,
         Circle,
         Square,
-        DPad,
+        PPad,
     }
 
     public class BasePlotterTool
@@ -58,7 +58,6 @@ namespace Smdpp.Logic
             {
                 case "RECT": this.ToolType = PlotterToolType.Rectangle; break;
                 case "CIRCLE": this.ToolType = PlotterToolType.Circle; break;
-                case "DPAD": this.ToolType = PlotterToolType.DPad; break;
                 case "SQUARE": this.ToolType = PlotterToolType.Square; break;
             }
         }

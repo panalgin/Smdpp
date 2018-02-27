@@ -19,8 +19,24 @@ namespace Smdpp.Logic
         public override void ParseProperties() {
             string[] parsedData = this.Data.Split(',');
 
+            string widthText = parsedData[2].Replace("W=", "");
+            string heigthText = parsedData[3].Replace("H=", "");
 
+            decimal width = 0.0m;
+            decimal heigth = 0.0m;
 
+            if (widthText.EndsWith("th"))
+                width = Utility.ConvertThouToMm(widthText.Replace("th", ""));
+            else
+                width = decimal.Parse(widthText.Replace("mm", ""));
+
+            if (heigthText.EndsWith("th"))
+                heigth = Utility.ConvertThouToMm(heigthText.Replace("th", ""));
+            else
+                heigth = decimal.Parse(heigthText.Replace("mm", ""));
+
+            this.Height = heigth;
+            this.Width = width;
         }
     }
 }
