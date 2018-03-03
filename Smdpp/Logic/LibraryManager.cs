@@ -75,8 +75,6 @@ namespace Smdpp.Logic
                     context.Packages.AddRange(detectedPackages);
                     context.SaveChanges();
                 }
-
-               
             }
         }
 

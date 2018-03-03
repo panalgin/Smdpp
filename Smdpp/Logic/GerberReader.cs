@@ -20,10 +20,34 @@ namespace Smdpp.Logic
             }
 
             if (!string.IsNullOrEmpty(data))
-                Parse(data);
+            {
+                var toolSet = Parse(data);
+                var topCopperObjects = ParseTopCopper(definitionsPath);
+
+
+            }
         }
 
-        public void Parse(string data)
+        bool ParseTopCopper(string definitionsPath)
+        {
+            string data = "";
+            string topCopperFilePath = definitionsPath.Replace("READ-ME", "Top Copper");
+
+            if (!File.Exists(topCopperFilePath))
+                topCopperFilePath = topCopperFilePath.Replace(".TXT", ".GBR");
+
+            using (StreamReader reader = new StreamReader(topCopperFilePath, Encoding.UTF8, true))
+            {
+                data = reader.ReadToEnd();
+            }
+
+            int endIndex = data.IndexOf("%\r\nG54") > 0 ? data.IndexOf("%\r\nG54") : data.IndexOf("%\r\nD");
+            data = data.Substring(endIndex + 3);
+
+            return true;
+        }
+
+        public List<BasePlotterTool> Parse(string data)
         {
             var startsAt = data.IndexOf("Photoplotter Setup");
             data = data.Substring(startsAt + "Photoplotter Setup".Length);
@@ -32,10 +56,10 @@ namespace Smdpp.Logic
             var endOf = data.IndexOf("\r\n\r\n");
             data = data.Substring(0, endOf);
 
-            ParsePlotterToolset(data); //rectangles, circles etc
+            return ParsePlotterToolset(data); //rectangles, circles etc
         }
 
-        void ParsePlotterToolset(string data)
+        List<BasePlotterTool> ParsePlotterToolset(string data)
         {
             var lines = data.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
@@ -70,7 +94,7 @@ namespace Smdpp.Logic
                 return true;
             });
 
-            int count = tools.Count;
+            return tools;
         }
 
         BasePlotterTool ParseTool(string data)
