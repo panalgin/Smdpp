@@ -28,12 +28,12 @@ namespace Smdpp.Logic
             if (widthText.EndsWith("th"))
                 width = Utility.ConvertThouToMm(widthText.Replace("th", ""));
             else
-                width = decimal.Parse(widthText.Replace("mm", ""));
+                width = decimal.Parse(widthText.Replace("mm", "").Replace(".", ","));
 
             if (heigthText.EndsWith("th"))
                 heigth = Utility.ConvertThouToMm(heigthText.Replace("th", ""));
             else
-                heigth = decimal.Parse(heigthText.Replace("mm", ""));
+                heigth = decimal.Parse(heigthText.Replace("mm", "").Replace(".", ","));
 
             this.Height = heigth;
             this.Width = width;

@@ -23,7 +23,7 @@ namespace Smdpp.Logic
             decimal diameter = 0.0m;
 
             if (result.EndsWith("mm"))
-                diameter = decimal.Parse(result.Replace("mm", ""));
+                diameter = decimal.Parse(result.Replace("mm", "").Replace(".", ","));
             else if (result.EndsWith("th"))
                 diameter = Utility.ConvertThouToMm(result);
 

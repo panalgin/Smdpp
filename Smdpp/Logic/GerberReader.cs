@@ -22,13 +22,11 @@ namespace Smdpp.Logic
             if (!string.IsNullOrEmpty(data))
             {
                 var toolSet = Parse(data);
-                var topCopperObjects = ParseTopCopper(definitionsPath);
-
-
+                var topCopperObjects = ParseTopCopper(definitionsPath, toolSet);
             }
         }
 
-        bool ParseTopCopper(string definitionsPath)
+        bool ParseTopCopper(string definitionsPath, List<BasePlotterTool> toolSet)
         {
             string data = "";
             string topCopperFilePath = definitionsPath.Replace("READ-ME", "Top Copper");
@@ -44,7 +42,52 @@ namespace Smdpp.Logic
             int endIndex = data.IndexOf("%\r\nG54") > 0 ? data.IndexOf("%\r\nG54") : data.IndexOf("%\r\nD");
             data = data.Substring(endIndex + 3);
 
+            List<PlotEntry> entries = new List<PlotEntry>();
+
+            var lines = data.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            BasePlotterTool lastTool = null;
+
+            lines.All(delegate (string line)
+            {
+                if (line.StartsWith("G") || line.StartsWith("D"))
+                    lastTool = GetToolFromToolset(line, toolSet);
+                else
+                {
+                    var entry = GetPlotEntry(line);
+                }
+
+                return true;
+            });
+
             return true;
+        }
+
+        PlotEntry GetPlotEntry(string line)
+        {
+            PlotEntry entry = null;
+
+            string[] values = line.Split('Y');
+
+            if (values.Length == 2)
+            {
+                string xValue = values[0];
+                string yValue = values[1].Split('D')[0];
+                string decimalPlaces = values[1].Split('D')[1];
+            }
+
+            return null;
+        }
+
+        BasePlotterTool GetToolFromToolset(string line, List<BasePlotterTool> toolSet)
+        {
+            line.Replace("*", "");
+             
+            if (line.Contains("G54"))
+                line = line.Replace("G54", "");
+
+            var tool = toolSet.FirstOrDefault(q => q.Name == line);
+
+            return tool;
         }
 
         public List<BasePlotterTool> Parse(string data)

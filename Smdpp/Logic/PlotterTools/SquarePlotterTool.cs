@@ -24,7 +24,7 @@ namespace Smdpp.Logic
             if (sideText.EndsWith("th"))
                 side = Utility.ConvertThouToMm(sideText.Replace("th", ""));
             else
-                side = decimal.Parse(sideText.Replace("mm", ""));
+                side = decimal.Parse(sideText.Replace("mm", "").Replace(".", ","));
 
             this.Side = side;
         }
