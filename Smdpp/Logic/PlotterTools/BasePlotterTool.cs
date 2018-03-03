@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Smdpp.Logic
 {
@@ -24,13 +25,26 @@ namespace Smdpp.Logic
 
     public class BasePlotterTool
     {
+        private string guid = Guid.NewGuid().ToString();
+
+        [JsonIgnore]
         protected string Data { get; set; }
+
+        [JsonProperty(PropertyName = "id")]
+        public string ID { get { return guid; } }
+
+        [JsonProperty(PropertyName = "name")]
         public string Name { get; internal set; }
+
+        [JsonProperty(PropertyName = "toolType")]
         public PlotterToolType ToolType { get; internal set; }
+
+        [JsonIgnore]
         public PadType PadType { get; set; }
 
         public BasePlotterTool()
         {
+
         }
 
         public BasePlotterTool(string data)
@@ -54,7 +68,7 @@ namespace Smdpp.Logic
 
             string typeIdentifier = parameters[1];
 
-            switch(typeIdentifier)
+            switch (typeIdentifier)
             {
                 case "RECT": this.ToolType = PlotterToolType.Rectangle; break;
                 case "CIRCLE": this.ToolType = PlotterToolType.Circle; break;

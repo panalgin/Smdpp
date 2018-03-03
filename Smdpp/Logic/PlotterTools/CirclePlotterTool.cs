@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Smdpp.Logic
 {
     public class CirclePlotterTool : BasePlotterTool
     {
+        [JsonProperty(PropertyName = "diameter")]
         public decimal Diameter { get; set; }
 
         public CirclePlotterTool(string data) : base(data)

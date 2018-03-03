@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
+using Newtonsoft.Json;
 using Smdpp.Logic;
 
 namespace Smdpp
@@ -29,7 +30,7 @@ namespace Smdpp
 
         private void EventSink_GerberParsed(GerberTask task)
         {
-            
+            string data = JsonConvert.SerializeObject(task, Formatting.Indented);
         }
 
         private void EventSink_CloseRequested()

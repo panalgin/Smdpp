@@ -61,7 +61,7 @@ namespace Smdpp.Logic
 
                     if (entry != null && lastTool != null)
                     {
-                        entry.ToolType = lastTool.GetType();
+                        entry.ToolID = lastTool.ID;
 
                         entries.Add(entry);
                     }

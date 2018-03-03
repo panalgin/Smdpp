@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,10 @@ namespace Smdpp.Logic
 {
     public class RectanglePlotterTool : BasePlotterTool
     {
+        [JsonProperty(PropertyName = "width")]
         public decimal Width { get; set; }
+
+        [JsonProperty(PropertyName = "height")]
         public decimal Height { get; set; }
 
         public RectanglePlotterTool(string data) : base(data)
