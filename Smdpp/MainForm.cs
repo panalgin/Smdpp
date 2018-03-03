@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using CefSharp;
@@ -23,6 +24,12 @@ namespace Smdpp
             EventSink.DevToolsRequested += EventSink_DevToolsRequested;
             EventSink.OpenGerberReqeusted += EventSink_OpenGerberReqeusted;
             EventSink.CloseRequested += EventSink_CloseRequested;
+            EventSink.GerberParsed += EventSink_GerberParsed;
+        }
+
+        private void EventSink_GerberParsed(GerberTask task)
+        {
+            
         }
 
         private void EventSink_CloseRequested()

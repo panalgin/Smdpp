@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,10 +24,13 @@ namespace Smdpp.Logic
             {
                 var toolSet = Parse(data);
                 var topCopperObjects = ParseTopCopper(definitionsPath, toolSet);
+                var gerberTask = new GerberTask() { Tools = toolSet, Entries = topCopperObjects };
+
+                EventSink.InvokeGerberParsed(gerberTask);
             }
         }
 
-        bool ParseTopCopper(string definitionsPath, List<BasePlotterTool> toolSet)
+        List<PlotEntry> ParseTopCopper(string definitionsPath, List<BasePlotterTool> toolSet)
         {
             string data = "";
             string topCopperFilePath = definitionsPath.Replace("READ-ME", "Top Copper");
@@ -54,12 +58,20 @@ namespace Smdpp.Logic
                 else
                 {
                     var entry = GetPlotEntry(line);
+
+                    if (entry != null && lastTool != null)
+                    {
+                        entry.ToolType = lastTool.GetType();
+
+                        entries.Add(entry);
+                    }
+                    
                 }
 
                 return true;
             });
 
-            return true;
+            return entries;
         }
 
         PlotEntry GetPlotEntry(string line)
@@ -70,17 +82,27 @@ namespace Smdpp.Logic
 
             if (values.Length == 2)
             {
-                string xValue = values[0];
+                string xValue = values[0].Replace("X", "");
                 string yValue = values[1].Split('D')[0];
-                string decimalPlaces = values[1].Split('D')[1];
+                string dValue = values[1].Split('D')[1].Replace("*", "");
+
+                int dCommand = Int32.Parse(dValue, NumberStyles.Any);
+
+                if (dCommand == 3) //Flash
+                {
+                    decimal xPos = decimal.Parse(xValue);
+                    decimal yPos = decimal.Parse(yValue);
+
+                    entry = new PlotEntry() { X = xPos, Y = yPos };
+                }
             }
 
-            return null;
+            return entry;
         }
 
         BasePlotterTool GetToolFromToolset(string line, List<BasePlotterTool> toolSet)
         {
-            line.Replace("*", "");
+            line = line.Replace("*", "");
              
             if (line.Contains("G54"))
                 line = line.Replace("G54", "");
@@ -129,10 +151,13 @@ namespace Smdpp.Logic
                     return true;
                 });
 
-                var tool = ParseTool(unformattedValue);
+                if (unformattedValue.Contains("FLASH"))
+                {
+                    var tool = ParseTool(unformattedValue);
 
-                if (tool != null)
-                    tools.Add(tool);
+                    if (tool != null)
+                        tools.Add(tool);
+                }
 
                 return true;
             });

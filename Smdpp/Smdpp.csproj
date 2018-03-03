@@ -88,6 +88,7 @@
     <Compile Include="JavascriptController.cs" />
     <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
     <Compile Include="Logic\GerberReader.cs" />
+    <Compile Include="Logic\GerberTask.cs" />
     <Compile Include="Logic\LibraryManager.cs" />
     <Compile Include="Logic\PlotEntry.cs" />
     <Compile Include="Logic\PlotterTools\BasePlotterTool.cs" />
@@ -207,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
