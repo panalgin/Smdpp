@@ -21,6 +21,8 @@ namespace Smdpp.Logic
                 case "RECT": { resultInstance = new RectanglePlotterTool(data); break; }
                 case "SQUARE": { resultInstance = new SquarePlotterTool(data); break; }
                 case "CIRCLE": { resultInstance = new CirclePlotterTool(data); break; }
+                case "SMT": { resultInstance = new RectanglePlotterTool(data); break; }
+
                 default: break;
             }
 

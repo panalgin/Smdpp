@@ -73,6 +73,7 @@ namespace Smdpp.Logic
                 case "RECT": this.ToolType = PlotterToolType.Rectangle; break;
                 case "CIRCLE": this.ToolType = PlotterToolType.Circle; break;
                 case "SQUARE": this.ToolType = PlotterToolType.Square; break;
+                case "SMT": this.ToolType = PlotterToolType.Rectangle; break;
             }
         }
 

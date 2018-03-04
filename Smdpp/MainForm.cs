@@ -30,6 +30,7 @@ namespace Smdpp
 
         private void EventSink_GerberParsed(GerberTask task)
         {
+
             string data = JsonConvert.SerializeObject(task, Formatting.Indented);
             ScriptRunner.Run(ScriptRunner.ScriptAction.GerberTaskResolved, Utility.HtmlEncode(data));
         }

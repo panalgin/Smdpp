@@ -24,7 +24,41 @@ namespace Smdpp.Logic
             {
                 var toolSet = Parse(data);
                 var topCopperObjects = ParseTopCopper(definitionsPath, toolSet);
+
+                decimal lowestX = decimal.MaxValue;
+                decimal lowestY = decimal.MaxValue;
+
+                topCopperObjects.All(delegate (PlotEntry entry)
+                {
+                    if (entry.X < lowestX)
+                        lowestX = entry.X;
+
+                    if (entry.Y < lowestY)
+                        lowestY = entry.Y;
+
+                    return true;
+                });
+
+                topCopperObjects.All(delegate(PlotEntry entry) {
+                    if (lowestX < 0)
+                        entry.X += Math.Abs(lowestX);
+                    else
+                        entry.X -= Math.Abs(lowestX);
+
+                    if (lowestY < 0)
+                        entry.Y += Math.Abs(lowestY);
+                    else
+                        entry.Y -= Math.Abs(lowestY);
+
+
+                    entry.X = Utility.ConvertThouToMm(entry.X.ToString()) / 10.0m; // ARes gives 0.1mm accuracy thou numbers
+                    entry.Y = Utility.ConvertThouToMm(entry.Y.ToString()) / 10.0m;
+
+                    return true;
+                });
+
                 var gerberTask = new GerberTask() { Tools = toolSet, Entries = topCopperObjects };
+                
 
                 EventSink.InvokeGerberParsed(gerberTask);
             }
