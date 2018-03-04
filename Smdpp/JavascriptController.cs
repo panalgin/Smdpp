@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Smdpp.Logic;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
