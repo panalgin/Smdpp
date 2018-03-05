@@ -27,9 +27,14 @@ namespace Smdpp.Logic
 
                 decimal lowestX = decimal.MaxValue;
                 decimal lowestY = decimal.MaxValue;
+                decimal highestX = decimal.MinValue;
+                decimal highestY = decimal.MinValue;
 
                 topCopperObjects.All(delegate (PlotEntry entry)
                 {
+                    entry.X = Utility.ConvertThouToMm(entry.X.ToString()) / 10.0m; // ARes gives 0.1mm accuracy thou numbers
+                    entry.Y = Utility.ConvertThouToMm(entry.Y.ToString()) / 10.0m;
+
                     if (entry.X < lowestX)
                         lowestX = entry.X;
 
@@ -50,14 +55,19 @@ namespace Smdpp.Logic
                     else
                         entry.Y -= Math.Abs(lowestY);
 
+                    if (entry.X > highestX)
+                        highestX = entry.X;
 
-                    entry.X = Utility.ConvertThouToMm(entry.X.ToString()) / 10.0m; // ARes gives 0.1mm accuracy thou numbers
-                    entry.Y = Utility.ConvertThouToMm(entry.Y.ToString()) / 10.0m;
+                    if (entry.Y > highestY)
+                        highestY = entry.Y;
 
                     return true;
                 });
 
-                var gerberTask = new GerberTask() { Tools = toolSet, Entries = topCopperObjects };
+                var gerberTask = new GerberTask()
+                { Tools = toolSet, Entries = topCopperObjects,
+                    Width = highestX,
+                    Height = highestY };
                 
 
                 EventSink.InvokeGerberParsed(gerberTask);

@@ -184,7 +184,7 @@
       <LastGenOutput>SmdppModel1.cs</LastGenOutput>
     </Content>
     <Content Include="View\css\main.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\gerber-resolved.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

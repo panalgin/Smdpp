@@ -1,6 +1,8 @@
 ﻿var data = "{0}";
 var task = $.parseJSON(unescape(data));
 
+console.log(task);
+
 //1 = diktörgen
 //2 = daire
 //3 = kare
@@ -21,6 +23,9 @@ for(var i = 0; i < totalTools; i++) {{
 	}}
 }}
 
+$("div#editor").css("width", convertMMToPx(task.width));
+$("div#editor").css("height", convertMMToPx(task.height));
+
 function printEntry(entry, tool) {{
 	var top = convertMMToPx(entry.y);
 	var left = convertMMToPx(entry.x);
@@ -28,9 +33,15 @@ function printEntry(entry, tool) {{
 	var svg = null;
 	var draw = null;
 
+	var	right = left;
+	var bottom = top;
+
 	if (tool.toolType == 1) {{
 		var width = convertMMToPx(tool.width);
 		var height = convertMMToPx(tool.height);
+
+		top -= (height / 2);
+		left -= (width / 2);
 
 		draw = SVG('editor').size(width, height);
 		var rect = draw.rect(width, height).fill('#f06');
@@ -60,10 +71,12 @@ function printEntry(entry, tool) {{
 
 //1mm = 3.779527559055px
 function convertMMToPx(millimeters) {{
-	return millimeters * 3.779527559055;
+	return Math.round((millimeters * 3.779527559055) * 100) / 100;
 }}
 
 //1th = 0.0254m
 function convertThToMm(thousands) {{
 	return thousands * 0.0254;
 }}
+
+

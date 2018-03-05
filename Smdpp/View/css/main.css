@@ -97,6 +97,10 @@ div { display: block; }
 	border: 1px solid #dedede;
 	border-top: 2px solid #dedede;
 	padding: 5px;
+
+	padding: 0px;
+	margin: 0px;
+	overflow: auto;
 }
 #tabbed-mdi .active { display: block; }
 
@@ -238,4 +242,22 @@ video {
 
 .pop-menu li:hover {
 	background-color: #c9c9c9;
+}
+
+#editor {
+	background-color: #000;
+	width: auto;
+	
+	position:absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+	margin:auto;
+	
+	max-width:100%;
+	max-height:100%;
+	overflow:auto;
+}
+
+#editor svg rect:hover {
+	fill: #fff;
 }
