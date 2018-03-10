@@ -1,8 +1,6 @@
 ﻿var data = "{0}";
 var task = $.parseJSON(unescape(data));
 
-console.log(task);
-
 //1 = diktörgen
 //2 = daire
 //3 = kare
@@ -64,8 +62,8 @@ function printEntry(entry, tool) {{
 
 		svg = $("svg#" + id);
 		svg.css("position", "absolute");
-		svg.css("top", top);
-		svg.css("left", left);
+		svg.css("top", top + 0.01);
+		svg.css("left", left + 0.01);
 	}}
 }}
 

@@ -258,6 +258,20 @@ video {
 	overflow:auto;
 }
 
+#toolbar {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 25px;
+	background-color: red;
+}
+
+#editor svg rect {
+		vector-effect: non-scaling-stroke;
+	fill-rule: evenodd;
+}
 #editor svg rect:hover {
 	fill: #fff;
+
 }
