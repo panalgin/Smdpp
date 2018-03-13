@@ -275,3 +275,5 @@ video {
 	fill: #fff;
 
 }
+
+.ui-draggable { width: auto; float: left; }

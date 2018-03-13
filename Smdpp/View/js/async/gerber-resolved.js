@@ -42,7 +42,7 @@ function printEntry(entry, tool) {{
 		left -= (width / 2);
 
 		draw = SVG('editor').size(width, height);
-		var rect = draw.rect(width, height).fill('#f06');
+		var rect = draw.rect(width, height).fill('#fff');
 	}}
 	/*else if (tool.toolType == 2) {{
 		var dia = convertMMToPx(tool.diameter);
@@ -64,6 +64,8 @@ function printEntry(entry, tool) {{
 		svg.css("position", "absolute");
 		svg.css("top", top + 0.01);
 		svg.css("left", left + 0.01);
+		svg.css("vector-effect","non-scaling-stroke");
+		//svg.css("fill-rule", "evenodd");
 	}}
 }}
 
