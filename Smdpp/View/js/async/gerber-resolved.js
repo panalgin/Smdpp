@@ -29,6 +29,26 @@ var svg_object = $("div#editor svg");
 $("div#editor").css("width", convertMMToPx(task.width));
 $("div#editor").css("height", convertMMToPx(task.height));
 
+
+        (function() {{
+          var $section = $('#tab-1');
+          var $panzoom = $section.find('#editor').panzoom( {{
+				/*disablePan: true*/
+				minScale: 0.1,
+				maxScale: 10.0
+		  }});
+          $panzoom.parent().on('mousewheel.focal', function( e ) {{
+            e.preventDefault();
+            var delta = e.delta || e.originalEvent.wheelDelta;
+            var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            $panzoom.panzoom('zoom', zoomOut, {{
+              animate: false,
+              focal: e,
+            }});
+          }});
+        }})();
+      
+
 function printEntry(svg, entry, tool) {{
 	var top = convertMMToPx(entry.y);
 	var left = convertMMToPx(entry.x);

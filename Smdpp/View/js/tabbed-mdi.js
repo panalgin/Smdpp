@@ -85,7 +85,7 @@ $(document).ready(function() {
         }
     });
 
-    $(window).bind('mousewheel DOMMouseScroll', function(event) {
+    /*$(window).bind('mousewheel DOMMouseScroll', function(event) {
 		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
 			if ($("div#editor").css("zoom") < 5.0)
 				$("div#editor").css("zoom", "+=0.1");
@@ -94,5 +94,5 @@ $(document).ready(function() {
 			if ($("div#editor").css("zoom") > 0.1)
 				$("div#editor").css("zoom", "-=0.1");
 		}
-    });
+    });*/
 });

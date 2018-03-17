@@ -251,8 +251,7 @@ video {
 	position:absolute;
     left:0; right: 0;
     top: 0px; bottom:0;
-	margin: auto;
-	transform-origin: 0 0;
+	overflow: hidden;
 }
 
 #toolbar {
@@ -262,7 +261,7 @@ video {
 	right: 0px;
 	height: 25px;
 	background-color: red;
-	display: none;
+	display: block;
 }
 
 #editor svg {
@@ -276,4 +275,9 @@ video {
 	fill: #fff;
 }
 
-.ui-draggable { width: auto; float: left; }
+.ui-draggable { 
+	width: auto; 
+	float: left; 
+	cursor: pointer;
+	z-index: 10000;
+}

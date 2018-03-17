@@ -10,16 +10,31 @@
 
 					$("div#editor").append(holder);
 
-					$("div#svg-holder").draggable({ scroll: false,
-							drag: function (event, ui) {
+					var enabled = true;
 
-								var zoom = $("div#editor").css("zoom");
+					$("div#svg-holder").on("mouseover", function() {
+						if (enabled) {
+							$("div#editor").panzoom("disable");
+							$("div#editor").parent().css("overflow", "hidden");
+							
+							enabled = false;
+						}
+					}).on("mouseleave, mousewheel", function() {
+						$("div#editor").panzoom("enable");
+						enabled = true;
+					}).draggable({ snap: false,
+							drag: function (event, ui) {
+								
+								var element = document.getElementById("editor");
+								var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
+
+								var zoom = scaleX; //$("div#editor").css("transform");
 								var factor = ((1 / zoom) -1);
 
 								 ui.position.top += (ui.position.top - ui.originalPosition.top) * factor;
 								 ui.position.left += (ui.position.left- ui.originalPosition.left) * factor;    
 							}
-					}); 
+					});
 				});
 			});
 		});
