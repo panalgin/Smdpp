@@ -207,6 +207,7 @@
     <Content Include="View\svg\SO28W.SVG">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\test.html" />
     <None Include="View\img\wrench-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

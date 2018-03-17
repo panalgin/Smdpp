@@ -249,13 +249,10 @@ video {
 	width: auto;
 	
 	position:absolute;
-    left:0; right:0;
-    top:0; bottom:0;
-	margin:auto;
-	
-	max-width:100%;
-	max-height:100%;
-	overflow:auto;
+    left:0; right: 0;
+    top: 0px; bottom:0;
+	margin: auto;
+	transform-origin: 0 0;
 }
 
 #toolbar {
@@ -265,15 +262,18 @@ video {
 	right: 0px;
 	height: 25px;
 	background-color: red;
+	display: none;
 }
 
+#editor svg {
+	position: absolute;
+}
 #editor svg rect {
-		vector-effect: non-scaling-stroke;
+	vector-effect: non-scaling-stroke;
 	fill-rule: evenodd;
 }
 #editor svg rect:hover {
 	fill: #fff;
-
 }
 
 .ui-draggable { width: auto; float: left; }

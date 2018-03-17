@@ -7,6 +7,7 @@ var task = $.parseJSON(unescape(data));
 
 var totalTools = task["tools"].length;
 var totalEntries = task["entries"].length;
+var svg = SVG('editor').size(convertMMToPx(task.width), convertMMToPx(task.height));
 
 for(var i = 0; i < totalTools; i++) {{
 	for(var j = 0; j < totalEntries; j++) {{
@@ -16,20 +17,21 @@ for(var i = 0; i < totalTools; i++) {{
 		var tool = task["tools"][i];
 
 		if (entry.toolId == tool.id) {{
-			printEntry(entry, tool);
+			printEntry(svg, entry, tool);
 		}}
 	}}
 }}
 
+var svg_object = $("div#editor svg");
+	svg_object.css("vector-effect","non-scaling-stroke");
+	svg_object.css("fill-rule", "evenodd");
+
 $("div#editor").css("width", convertMMToPx(task.width));
 $("div#editor").css("height", convertMMToPx(task.height));
 
-function printEntry(entry, tool) {{
+function printEntry(svg, entry, tool) {{
 	var top = convertMMToPx(entry.y);
 	var left = convertMMToPx(entry.x);
-
-	var svg = null;
-	var draw = null;
 
 	var	right = left;
 	var bottom = top;
@@ -38,34 +40,11 @@ function printEntry(entry, tool) {{
 		var width = convertMMToPx(tool.width);
 		var height = convertMMToPx(tool.height);
 
-		top -= (height / 2);
-		left -= (width / 2);
+		left -= width / 2;
+		top -= height / 2;
 
-		draw = SVG('editor').size(width, height);
-		var rect = draw.rect(width, height).fill('#fff');
-	}}
-	/*else if (tool.toolType == 2) {{
-		var dia = convertMMToPx(tool.diameter);
-
-		draw = SVG('editor').size(dia, dia);
-		var circle = draw.circle(dia).fill('#f06');
-	}}
-	else if (tool.toolType == 3) {{
-		var side = convertMMToPx(tool.side);
-
-		draw = SVG('editor').size(side, side);
-		var square = draw.rect(side, side).fill('#f06');
-	}}*/
-
-	if (draw != null) {{
-		var id = draw.node.id;
-
-		svg = $("svg#" + id);
-		svg.css("position", "absolute");
-		svg.css("top", top + 0.01);
-		svg.css("left", left + 0.01);
-		svg.css("vector-effect","non-scaling-stroke");
-		//svg.css("fill-rule", "evenodd");
+		var rect = svg.rect(width, height).fill('#fff');
+		rect.x(left).y(top);
 	}}
 }}
 
