@@ -43,7 +43,7 @@ function getAvailableId() {
     return index + 1;
 }
 
-function createTab(title, content) {
+function createTab(title, content, setAsActive = true) {
     var header = "";
     var tab = "";
 
@@ -58,10 +58,8 @@ function createTab(title, content) {
     }), $.get("inc/parts/tab-content.tpl", function(data) {
         tab = $(data);
         tab.attr("id", "tab-" + id);
+		tab.append(content);
 
-		tab.html(content.html());
-
-        //console.log(tab);
     })).then(function(resp1, resp2) {
         $("div.headers").append(header);
         $("div#tabbed-mdi").append(tab);
