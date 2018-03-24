@@ -32,7 +32,8 @@ namespace Smdpp
 
         private void EventSink_SvgParsed(SvgTask task)
         {
-            
+            string data = JsonConvert.SerializeObject(task);
+            ScriptRunner.Run(ScriptRunner.ScriptAction.SvgTaskResolved, Utility.HtmlEncode(data));
         }
 
         private void EventSink_ImportSvgRequested()
@@ -139,12 +140,14 @@ namespace Smdpp
 
         private OpenFileDialog SetupOpenFileDialog(string filter)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.CheckFileExists = true;
-            dialog.Filter = filter;
-            dialog.FileName = "";
-            dialog.Multiselect = false;
-            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                Filter = filter,
+                FileName = "",
+                Multiselect = false,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)
+            };
 
             return dialog;
         }

@@ -37,6 +37,11 @@ namespace Smdpp
             EventSink.InvokeOpenGerberRequested();
         }
 
+        public void OpenSvg()
+        {
+            EventSink.InvokeImportGerberRequested();
+        }
+
         public void Close()
         {
             EventSink.InvokeCloseRequested();

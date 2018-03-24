@@ -11,12 +11,14 @@ namespace Smdpp
     {
         public enum ScriptAction
         {
-            GerberTaskResolved
+            GerberTaskResolved,
+            SvgTaskResolved
         }
 
         private static Dictionary<ScriptAction, ScriptInfo> ScriptEntities = new Dictionary<ScriptAction, ScriptInfo>()
         {
             { ScriptAction.GerberTaskResolved, new ScriptInfo("View\\js\\async\\gerber-resolved.js", false) },
+            { ScriptAction.SvgTaskResolved, new ScriptInfo("View\\js\\async\\svg-resolved.js", false ) }
             /*{ ScriptAction.CommandSent, new ScriptInfo("View\\js\\async\\command-sent.js", false) },
             { ScriptAction.CommandFailed, new ScriptInfo("View\\js\\async\\command-failed.js", false) },
             { ScriptAction.CommandReceived, new ScriptInfo("View\\js\\async\\command-received.js", false) },

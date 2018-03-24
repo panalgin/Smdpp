@@ -24,9 +24,11 @@ namespace Smdpp.Logic
             {
                 FileInfo info = new FileInfo(filePath);
 
-                SvgTask task = new SvgTask();
-                task.Name = info.Name;
-                task.Data = data;
+                SvgTask task = new SvgTask
+                {
+                    Name = info.Name,
+                    Data = data
+                };
 
                 EventSink.InvokeSvgParsed(task);
             }
