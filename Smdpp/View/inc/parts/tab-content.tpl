@@ -1,1 +1,1 @@
-﻿<div id="" class="tab">{CONTENT}</div>
+﻿<div id="" class="tab"></div>

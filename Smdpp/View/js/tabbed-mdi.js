@@ -43,7 +43,7 @@ function getAvailableId() {
     return index + 1;
 }
 
-function createTab() {
+function createTab(title, content) {
     var header = "";
     var tab = "";
 
@@ -52,11 +52,14 @@ function createTab() {
     $.when($.get("inc/parts/tab-header.tpl", function(data) {
         header = $(data);
         header.attr("id", "header-" + id);
+		header.prepend(title);
 
         //console.log(header);
     }), $.get("inc/parts/tab-content.tpl", function(data) {
         tab = $(data);
         tab.attr("id", "tab-" + id);
+
+		tab.html(content.html());
 
         //console.log(tab);
     })).then(function(resp1, resp2) {
@@ -66,8 +69,6 @@ function createTab() {
 }
 
 $(document).ready(function() {
-    createTab();
-
     $("body").on("click", "div#tabbed-mdi .headers .tab-header i", function(e) {
         e.preventDefault();
         e.stopPropagation();

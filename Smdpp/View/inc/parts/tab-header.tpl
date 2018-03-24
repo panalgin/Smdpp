@@ -1,1 +1,1 @@
-﻿<div class="tab-header" id="">{HEADER} <i></i></div>
+﻿<div class="tab-header" id=""><i></i></div>
