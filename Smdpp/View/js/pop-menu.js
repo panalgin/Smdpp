@@ -49,6 +49,12 @@
 				break;
 			}
 
+			case "openSvgBtn": {
+				windowsApp.openSvg();
+
+				break;
+			}
+
 			default: break;
 		}
 

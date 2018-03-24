@@ -11,6 +11,10 @@ namespace Smdpp.Logic
 {
     public static class LibraryManager
     {
+        /// <summary>
+        /// Manual parsing has been disabled
+        /// </summary>
+        /// <param name="filePath"></param>
         public static void ParseAresLibrary(string filePath)
         {
             var data = "";
@@ -48,7 +52,7 @@ namespace Smdpp.Logic
 
                     if (line.StartsWith("Object name"))
                         packageInstance.Name = ParseName(dataValue);
-                    else if (line.StartsWith("Last modi"))
+                    /*else if (line.StartsWith("Last modi"))
                         packageInstance.LastModified = ParseLastModified(dataValue);
                     else if (line.StartsWith("File offset"))
                         packageInstance.Offset = ParseOffset(dataValue);
@@ -56,7 +60,7 @@ namespace Smdpp.Logic
                         packageInstance.Checksum = ParseChecksum(dataValue);
                     else if (line.StartsWith("Size"))
                         packageInstance.Size = ParseSize(dataValue);
-
+                    */
 
                     if (IsPackageReady(packageInstance))
                     {
@@ -80,12 +84,12 @@ namespace Smdpp.Logic
 
         private static bool IsPackageReady(Package package)
         {
-            if (!string.IsNullOrEmpty(package.Name) &&
+            /*if (!string.IsNullOrEmpty(package.Name) &&
                 package.LastModified.HasValue &&
                 package.Offset.HasValue &&
                 package.Checksum.HasValue &&
                 package.Size.HasValue)
-                return true;
+                return true;*/
 
             return false;
         }
