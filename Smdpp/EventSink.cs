@@ -10,6 +10,7 @@ namespace Smdpp
         public delegate void OnImportSvgRequested();
         public delegate void OnCloseRequested();
         public delegate void OnGerberParsed(GerberTask task);
+        public delegate void OnSvgParsed(SvgTask task);
 
 
         public static event OnImportSvgRequested ImportSvgRequested;
@@ -17,6 +18,7 @@ namespace Smdpp
         public static event OnOpenGerberRequested OpenGerberReqeusted;
         public static event OnCloseRequested CloseRequested;
         public static event OnGerberParsed GerberParsed;
+        public static event OnSvgParsed SvgParsed;
 
 
         public static void InvokeImportGerberRequested()
@@ -24,6 +26,10 @@ namespace Smdpp
             ImportSvgRequested?.Invoke();
         }
 
+        public static void InvokeSvgParsed(SvgTask task)
+        {
+            SvgParsed?.Invoke(task);
+        }
 
         public static void InvokeGerberParsed(GerberTask task)
         {

@@ -92,12 +92,14 @@
     <Compile Include="JavascriptController.cs" />
     <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
     <Compile Include="Logic\GerberReader.cs" />
+    <Compile Include="Logic\SvgReader.cs" />
     <Compile Include="Logic\GerberTask.cs" />
     <Compile Include="Logic\LibraryManager.cs" />
     <Compile Include="Logic\PlotEntry.cs" />
     <Compile Include="Logic\PlotterTools\BasePlotterTool.cs" />
     <Compile Include="Logic\PlotterTools\SquarePlotterTool.cs" />
     <Compile Include="Logic\PlotterTools\CirclePlotterTool.cs" />
+    <Compile Include="Logic\SvgTask.cs" />
     <Compile Include="Logic\ToolFactory.cs" />
     <Compile Include="Logic\PlotterTools\RectanglePlotterTool.cs" />
     <Compile Include="Logic\Utility.cs" />

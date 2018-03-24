@@ -24,13 +24,35 @@ namespace Smdpp
         {
             EventSink.DevToolsRequested += EventSink_DevToolsRequested;
             EventSink.OpenGerberReqeusted += EventSink_OpenGerberReqeusted;
+            EventSink.ImportSvgRequested += EventSink_ImportSvgRequested;
             EventSink.CloseRequested += EventSink_CloseRequested;
             EventSink.GerberParsed += EventSink_GerberParsed;
+            EventSink.SvgParsed += EventSink_SvgParsed;
+        }
+
+        private void EventSink_SvgParsed(SvgTask task)
+        {
+            
+        }
+
+        private void EventSink_ImportSvgRequested()
+        {
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                var dialog = SetupImportSvgDialog();
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = dialog.FileName;
+
+                    SvgReader reader = new SvgReader(filePath);
+
+                }
+            });
         }
 
         private void EventSink_GerberParsed(GerberTask task)
         {
-
             string data = JsonConvert.SerializeObject(task, Formatting.Indented);
             ScriptRunner.Run(ScriptRunner.ScriptAction.GerberTaskResolved, Utility.HtmlEncode(data));
         }
@@ -107,9 +129,19 @@ namespace Smdpp
 
         private OpenFileDialog SetupGerberDialog()
         {
+            return SetupOpenFileDialog("Gerber Files|*.txt,*.gbr");
+        }
+
+        private OpenFileDialog SetupImportSvgDialog()
+        {
+            return SetupOpenFileDialog("Svg Files|*.svg");
+        }
+
+        private OpenFileDialog SetupOpenFileDialog(string filter)
+        {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.CheckFileExists = true;
-            dialog.Filter = "Gerber Files|*.txt";
+            dialog.Filter = filter;
             dialog.FileName = "";
             dialog.Multiselect = false;
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
