@@ -90,8 +90,11 @@
   <ItemGroup>
     <Compile Include="EventSink.cs" />
     <Compile Include="JavascriptController.cs" />
+    <Compile Include="Logic\Callbacks\BaseScriptCallback.cs" />
+    <Compile Include="Logic\Callbacks\SavePackageCallback.cs" />
     <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
     <Compile Include="Logic\GerberReader.cs" />
+    <Compile Include="Logic\Callbacks\IScriptCallback.cs" />
     <Compile Include="Logic\SvgReader.cs" />
     <Compile Include="Logic\GerberTask.cs" />
     <Compile Include="Logic\LibraryManager.cs" />

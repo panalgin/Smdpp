@@ -16,3 +16,22 @@
 	<div id="current-svg">
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button#save-package-button").on("click", function(e) {
+			var packageName = $("input#package-name").val();
+
+			if (packageName.length < 3) 
+				alert("Kılıf adı 3 karakterden kısa olamaz.");
+			else {
+				var svgData = JSON.stringify($("div#current-svg").html());
+
+				var response = windowsApp.savePackage(packageName, svgData);
+				
+				if (!response.success)
+					alert(response.message);
+			}
+		});
+	});
+</script>
