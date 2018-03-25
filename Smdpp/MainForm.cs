@@ -130,12 +130,12 @@ namespace Smdpp
 
         private OpenFileDialog SetupGerberDialog()
         {
-            return SetupOpenFileDialog("Gerber Files|*.txt,*.gbr");
+            return SetupOpenFileDialog("Gerber Dosyası|*.txt");
         }
 
         private OpenFileDialog SetupImportSvgDialog()
         {
-            return SetupOpenFileDialog("Svg Files|*.svg");
+            return SetupOpenFileDialog("Svg Dosyası|*.svg");
         }
 
         private OpenFileDialog SetupOpenFileDialog(string filter)
