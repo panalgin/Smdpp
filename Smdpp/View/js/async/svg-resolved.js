@@ -7,7 +7,7 @@ $.when($.get("inc/controls/svg-imported.tpl", function(dt) {{
 	var svg = task.data;
 
 	page.find("div#current-svg").html(svg);
-
+	page.find("input#package-name:first").val(task.name.replace(".svg", ""));
 }})).then(function(resp1) {{
     createTab("Svg İçe Aktar", page);
 }});

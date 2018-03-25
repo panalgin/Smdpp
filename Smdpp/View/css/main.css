@@ -29,6 +29,17 @@ body {
 
 img { border: 0; padding: 0; margin: 0; text-decoration: none; }
 input { font-family: "Tahoma" }
+input[type='text'] {
+	margin: 0;
+	padding: 0;
+	height: 23px;
+	line-height: 23px;
+	font-weight: normal;
+	font-size: 11px;
+	outline: 0;
+	border: 1px solid #CCC;
+	text-indent: 3px;
+}
 div { display: block; }
 
 #nav {
@@ -280,4 +291,15 @@ video {
 	float: left; 
 	cursor: pointer;
 	z-index: 10000;
+}
+
+.svg-import-page {
+	padding-top: 20px;
+}
+
+.svg-import-page #current-svg {
+	background-color: #000;
+	margin: 20px 30%;
+	padding: 20px;
+	text-align: center;
 }
