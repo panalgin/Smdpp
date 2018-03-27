@@ -1,13 +1,29 @@
 ﻿var data = "{0}";
 var task = $.parseJSON(unescape(data));
 var page = "";
+var itemTemplate = "";
 
-$.when($.get("inc/controls/package-list.tpl", function(dt) {{
-    page = $(dt);
-	var svg = task.data;
+$.get("inc/parts/package-row.tpl", function(pr) {{
+	itemTemplate = pr;
 
-	page.find("div#current-svg").html(svg);
-	page.find("input#package-name:first").val(task.name.replace(".svg", ""));
-}})).then(function(resp1) {{
-    createTab("Svg İçe Aktar", page);
+	$.when($.get("inc/controls/package-list.tpl", function(dt) {{
+		page = $(dt);
+
+		for (var i = 0; i < task.length; i++) {{
+			var item = task[i];
+
+
+			var id = item.id;
+			var name = item.name;
+			var svg = item.data;
+			var template = $(itemTemplate);
+
+			template.find("div[id^='name-']").prop("id", "name-" + id).html(id);
+			template.find("div[id^='svg-con-']").prop("id", "svg-con-" + id).html(svg);
+
+			page.append(template);
+		}}
+	}})).then(function(resp1) {{
+		createTab("Kılıf Listesi", page);
+	}});
 }});
