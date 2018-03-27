@@ -36,24 +36,10 @@
 		switch(linkId) {
 			case "exitMenuBtn1":
 			case "exitMenuBtn2":
-			case "exitMenuBtn3": {
-				
-				windowsApp.close();
-
-				break;
-			}
-
-			case "openGerberBtn": {
-				windowsApp.openGerber();
-
-				break;
-			}
-
-			case "openSvgBtn": {
-				windowsApp.openSvg();
-
-				break;
-			}
+			case "exitMenuBtn3": { windowsApp.close(); break; }
+			case "openGerberBtn": { windowsApp.openGerber(); break; }
+			case "openSvgBtn": { windowsApp.openSvg(); break; }
+			case "packagesBtn": { windowsApp.listPackages();  break; }
 
 			default: break;
 		}

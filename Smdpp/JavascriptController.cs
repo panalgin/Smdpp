@@ -69,6 +69,11 @@ namespace Smdpp
             }
         }
 
+        public void ListPackages()
+        {
+            EventSink.InvokeListPackagesRequested();
+        }
+
         public void Close()
         {
             EventSink.InvokeCloseRequested();
