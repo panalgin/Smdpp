@@ -88,11 +88,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\PackageContract.cs" />
     <Compile Include="EventSink.cs" />
     <Compile Include="JavascriptController.cs" />
     <Compile Include="Logic\Callbacks\BaseScriptCallback.cs" />
     <Compile Include="Logic\Callbacks\SavePackageCallback.cs" />
     <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
+    <Compile Include="Logic\EventHandlers.cs" />
     <Compile Include="Logic\GerberReader.cs" />
     <Compile Include="Logic\Callbacks\IScriptCallback.cs" />
     <Compile Include="Logic\SvgReader.cs" />
@@ -164,7 +166,9 @@
     <None Include="SmdppModel.edmx.diagram">
       <DependentUpon>SmdppModel.edmx</DependentUpon>
     </None>
-    <None Include="View\inc\controls\package-list.tpl" />
+    <None Include="View\inc\controls\package-list.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="View\inc\controls\svg-editor.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -196,6 +200,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\gerber-resolved.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\js\async\list-packages-replied.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\svg-resolved.js">
@@ -242,9 +249,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

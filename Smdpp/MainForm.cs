@@ -28,12 +28,19 @@ namespace Smdpp
             EventSink.CloseRequested += EventSink_CloseRequested;
             EventSink.GerberParsed += EventSink_GerberParsed;
             EventSink.SvgParsed += EventSink_SvgParsed;
+
+            EventHandlers.Initialize();
+        }
+
+        private void EventSink_ListPackagesRequested()
+        {
+            throw new NotImplementedException();
         }
 
         private void EventSink_SvgParsed(SvgTask task)
         {
             string data = JsonConvert.SerializeObject(task);
-            ScriptRunner.Run(ScriptRunner.ScriptAction.SvgTaskResolved, Utility.HtmlEncode(data));
+            ScriptRunner.Run(ScriptAction.SvgTaskResolved, Utility.HtmlEncode(data));
         }
 
         private void EventSink_ImportSvgRequested()
@@ -55,7 +62,7 @@ namespace Smdpp
         private void EventSink_GerberParsed(GerberTask task)
         {
             string data = JsonConvert.SerializeObject(task, Formatting.Indented);
-            ScriptRunner.Run(ScriptRunner.ScriptAction.GerberTaskResolved, Utility.HtmlEncode(data));
+            ScriptRunner.Run(ScriptAction.GerberTaskResolved, Utility.HtmlEncode(data));
         }
 
         private void EventSink_CloseRequested()

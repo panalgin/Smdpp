@@ -7,18 +7,22 @@ using System.Windows.Forms;
 
 namespace Smdpp
 {
+    public enum ScriptAction
+    {
+        GerberTaskResolved,
+        SvgTaskResolved,
+        ListPackagesReplied,
+    }
+
     public static class ScriptRunner
     {
-        public enum ScriptAction
-        {
-            GerberTaskResolved,
-            SvgTaskResolved
-        }
 
         private static Dictionary<ScriptAction, ScriptInfo> ScriptEntities = new Dictionary<ScriptAction, ScriptInfo>()
         {
             { ScriptAction.GerberTaskResolved, new ScriptInfo("View\\js\\async\\gerber-resolved.js", false) },
-            { ScriptAction.SvgTaskResolved, new ScriptInfo("View\\js\\async\\svg-resolved.js", false ) }
+            { ScriptAction.SvgTaskResolved, new ScriptInfo("View\\js\\async\\svg-resolved.js", false ) },
+            { ScriptAction.ListPackagesReplied, new ScriptInfo("View\\js\\async\\list-packages-replied.js", false ) }
+
             /*{ ScriptAction.CommandSent, new ScriptInfo("View\\js\\async\\command-sent.js", false) },
             { ScriptAction.CommandFailed, new ScriptInfo("View\\js\\async\\command-failed.js", false) },
             { ScriptAction.CommandReceived, new ScriptInfo("View\\js\\async\\command-received.js", false) },
