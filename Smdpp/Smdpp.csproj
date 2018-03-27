@@ -164,6 +164,7 @@
     <None Include="SmdppModel.edmx.diagram">
       <DependentUpon>SmdppModel.edmx</DependentUpon>
     </None>
+    <None Include="View\inc\controls\package-list.tpl" />
     <None Include="View\inc\controls\svg-editor.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -69,6 +69,12 @@ function createTab(title, content, setAsActive = true) {
 	});
 }
 
+function closeCurrentTab() {
+	var currentHeaderId = $("div.headers div.active").prop("id");
+
+	closeTab(currentHeaderId);
+}
+
 $(document).ready(function() {
 	$("body").on("click", "div#tabbed-mdi .headers .tab-header i", function(e) {
 		e.preventDefault();

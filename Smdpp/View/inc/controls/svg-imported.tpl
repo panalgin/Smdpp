@@ -31,6 +31,8 @@
 				
 				if (!response.success)
 					alert(response.message);
+				else
+					closeCurrentTab();
 			}
 		});
 	});
