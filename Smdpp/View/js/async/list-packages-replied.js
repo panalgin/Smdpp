@@ -18,7 +18,7 @@ $.get("inc/parts/package-row.tpl", function(pr) {{
 			var svg = item.data;
 			var template = $(itemTemplate);
 
-			template.find("div[id^='name-']").prop("id", "name-" + id).html(id);
+			template.find("div[id^='name-']").prop("id", "name-" + id).html(name);
 			template.find("div[id^='svg-con-']").prop("id", "svg-con-" + id).html(svg);
 
 			page.append(template);
