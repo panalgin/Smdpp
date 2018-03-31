@@ -39,8 +39,9 @@
 			case "exitMenuBtn3": { windowsApp.close(); break; }
 			case "openGerberBtn": { windowsApp.openGerber(); break; }
 			case "openSvgBtn": { windowsApp.openSvg(); break; }
+			case "openCsvBtn": { windowsApp.openCsv(); break; }
 			case "packagesBtn": { windowsApp.listPackages();  break; }
-
+			
 			default: break;
 		}
 

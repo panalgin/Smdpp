@@ -43,6 +43,11 @@ namespace Smdpp
             EventSink.InvokeImportGerberRequested();
         }
 
+        public void OpenCsv()
+        {
+            EventSink.InvokeImportPnpFileRequested();
+        }
+
         public IScriptCallback SavePackage(string packageName, string svgData)
         {
             var parsedData = JsonConvert.DeserializeObject<string>(svgData);

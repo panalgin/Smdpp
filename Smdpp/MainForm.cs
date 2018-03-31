@@ -25,16 +25,28 @@ namespace Smdpp
             EventSink.DevToolsRequested += EventSink_DevToolsRequested;
             EventSink.OpenGerberReqeusted += EventSink_OpenGerberReqeusted;
             EventSink.ImportSvgRequested += EventSink_ImportSvgRequested;
+            EventSink.ImportPnpFileRequested += EventSink_ImportPnpFileRequested;
             EventSink.CloseRequested += EventSink_CloseRequested;
             EventSink.GerberParsed += EventSink_GerberParsed;
             EventSink.SvgParsed += EventSink_SvgParsed;
 
+
             EventHandlers.Initialize();
         }
 
-        private void EventSink_ListPackagesRequested()
+        private void EventSink_ImportPnpFileRequested()
         {
-            throw new NotImplementedException();
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                var dialog = SetupImportPnpFileDialog();
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var filePath = dialog.FileName;
+
+                    PnpFileReader reader = new PnpFileReader(filePath);
+                }
+            });
         }
 
         private void EventSink_SvgParsed(SvgTask task)
@@ -143,6 +155,11 @@ namespace Smdpp
         private OpenFileDialog SetupImportSvgDialog()
         {
             return SetupOpenFileDialog("Svg Dosyası|*.svg");
+        }
+
+        private OpenFileDialog SetupImportPnpFileDialog()
+        {
+            return SetupOpenFileDialog("Diptrace Csv Dosyası|*.csv");
         }
 
         private OpenFileDialog SetupOpenFileDialog(string filter)
