@@ -22,5 +22,17 @@ namespace Smdpp.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Üst")]
+        public string SmtLayer {
+            get {
+                return ((string)(this["SmtLayer"]));
+            }
+            set {
+                this["SmtLayer"] = value;
+            }
+        }
     }
 }

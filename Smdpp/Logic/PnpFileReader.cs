@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Smdpp.Properties;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -24,11 +25,15 @@ namespace Smdpp.Logic
             {
                 string[] lines = data.Split('\n');
 
-                lines.All(delegate (string line)
+                List<PnpPart> parts = new List<PnpPart>();
+
+                lines.Skip(1).All(delegate (string line)
                 {
+                    line = line.Replace("\r", "").Replace("\n", "");
+
                     string[] parsedLine = line.Split('|');
 
-                    if (parsedLine.Length == 8)
+                    if (parsedLine.Length == 7)
                     {
                         string refId = parsedLine[0];
                         string packageId = parsedLine[1];
@@ -51,12 +56,17 @@ namespace Smdpp.Logic
                             Rotation = rotation,
                             Value = value
                         };
+
+                        parts.Add(part);
                     }
 
                     return true;
                 });
 
-                string[] parsedData = data.Split('|');
+                var smtLayer = Layers.Parse(Settings.Default.SmtLayer);
+
+                var smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
+                var dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
 
                 EventSink.InvokePnpFileParsed();
             }
