@@ -68,7 +68,13 @@ namespace Smdpp.Logic
                 var smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
                 var dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
 
-                EventSink.InvokePnpFileParsed();
+                PnpTask task = new PnpTask()
+                {
+                    SmtParts = smtParts,
+                    DipParts = dipParts,
+                };
+
+                EventSink.InvokePnpFileParsed(task);
             }
         }
     }

@@ -15,7 +15,7 @@ namespace Smdpp
         public delegate void OnSvgParsed(SvgTask task);
         public delegate void OnSavePackageRequested();
         public delegate void OnListPackagesRequested();
-        public delegate void OnPnpFileParsed();
+        public delegate void OnPnpFileParsed(PnpTask task);
 
 
         public static event OnImportPnpFileReqeusted ImportPnpFileRequested;
@@ -74,9 +74,9 @@ namespace Smdpp
             ListPackagesRequested?.Invoke();
         }
 
-        public static void InvokePnpFileParsed()
+        public static void InvokePnpFileParsed(PnpTask task)
         {
-            PnpFileParsed?.Invoke();
+            PnpFileParsed?.Invoke(task);
         }
     }
 }

@@ -27,11 +27,20 @@ namespace Smdpp
             EventSink.ImportSvgRequested += EventSink_ImportSvgRequested;
             EventSink.ImportPnpFileRequested += EventSink_ImportPnpFileRequested;
             EventSink.CloseRequested += EventSink_CloseRequested;
+
+
             EventSink.GerberParsed += EventSink_GerberParsed;
             EventSink.SvgParsed += EventSink_SvgParsed;
+            EventSink.PnpFileParsed += EventSink_PnpFileParsed;
 
 
             EventHandlers.Initialize();
+        }
+
+        private void EventSink_PnpFileParsed(PnpTask task)
+        {
+            string data = JsonConvert.SerializeObject(task);
+            ScriptRunner.Run(ScriptAction.PnpTaskResolved, Utility.HtmlEncode(data));
         }
 
         private void EventSink_ImportPnpFileRequested()

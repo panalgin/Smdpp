@@ -11,7 +11,9 @@ namespace Smdpp
     {
         GerberTaskResolved,
         SvgTaskResolved,
+        PnpTaskResolved,
         ListPackagesReplied,
+
     }
 
     public static class ScriptRunner
@@ -21,7 +23,8 @@ namespace Smdpp
         {
             { ScriptAction.GerberTaskResolved, new ScriptInfo("View\\js\\async\\gerber-resolved.js", false) },
             { ScriptAction.SvgTaskResolved, new ScriptInfo("View\\js\\async\\svg-resolved.js", false ) },
-            { ScriptAction.ListPackagesReplied, new ScriptInfo("View\\js\\async\\list-packages-replied.js", false ) }
+            { ScriptAction.ListPackagesReplied, new ScriptInfo("View\\js\\async\\list-packages-replied.js", false ) },
+            { ScriptAction.PnpTaskResolved, new ScriptInfo("View\\js\\async\\pnp-resolved.js", false) },
 
             /*{ ScriptAction.CommandSent, new ScriptInfo("View\\js\\async\\command-sent.js", false) },
             { ScriptAction.CommandFailed, new ScriptInfo("View\\js\\async\\command-failed.js", false) },

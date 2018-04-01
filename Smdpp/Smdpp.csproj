@@ -101,6 +101,7 @@
     <Compile Include="Logic\PnpFileImportResult.cs" />
     <Compile Include="Logic\PnpFileReader.cs" />
     <Compile Include="Logic\PnpPart.cs" />
+    <Compile Include="Logic\PnpTask.cs" />
     <Compile Include="Logic\Position.cs" />
     <Compile Include="Logic\SvgReader.cs" />
     <Compile Include="Logic\GerberTask.cs" />
@@ -211,6 +212,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\list-packages-replied.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\js\async\pnp-resolved.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\svg-resolved.js">
