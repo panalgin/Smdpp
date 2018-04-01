@@ -63,14 +63,15 @@ function printEntry(svg, entry, tool) {{
 		left -= width / 2;
 		top -= height / 2;
 
-		var rect = svg.rect(width, height).fill('#fff');
+		var rect = svg.rect(width, height).fill('#ff0000');
 		rect.x(left).y(top);
 	}}
 }}
 
 //1mm = 3.779527559055px
 function convertMMToPx(millimeters) {{
-	return Math.round((millimeters * 3.779527559055) * 100) / 100;
+	//3.7795275591
+	return Math.round((millimeters * 3.7795275591) * 100) / 100;
 }}
 
 //1th = 0.0254m

@@ -286,6 +286,14 @@ video {
 	fill: #fff;
 }
 
+svg g polygon {
+	fill: blue !important;
+}
+
+svg g polygon:hover {
+	fill: yellow !important;
+}
+
 .ui-draggable { 
 	width: auto; 
 	float: left; 
