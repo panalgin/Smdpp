@@ -14,6 +14,7 @@ namespace Smdpp.Logic
         /// <summary>
         /// Gözardı edilecek parçalar
         /// </summary>
+        [JsonProperty(PropertyName = "dipParts")]
         public List<PnpPart> DipParts { get; set; }
 
         public PnpTask()
