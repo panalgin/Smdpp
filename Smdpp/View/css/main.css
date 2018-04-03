@@ -278,20 +278,12 @@ video {
 #editor svg {
 	position: absolute;
 }
-#editor svg rect {
+svg g rect, svg g polygon {
 	vector-effect: non-scaling-stroke;
 	fill-rule: evenodd;
 }
-#editor svg rect:hover {
-	fill: #fff;
-}
-
-svg g polygon {
-	fill: blue !important;
-}
-
-svg g polygon:hover {
-	fill: yellow !important;
+svg g rect:hover, svg g polygon:hover {
+	fill: #ff0000 !important;
 }
 
 .ui-draggable { 
@@ -325,13 +317,17 @@ svg g polygon:hover {
 #packages .first {
 	width: 15%;
 	float: left;
+	border-left: 0 !important;
 }
 
 #packages .second {
 	width: 55%;
 	float: left;
-	text-align: center;
-	background-color: #000;
+	display: flex;
+	background-color: #222;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #packages .third {
