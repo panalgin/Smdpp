@@ -1,4 +1,5 @@
-﻿using Smdpp.Properties;
+﻿using Smdpp.Contracts;
+using Smdpp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -68,10 +69,25 @@ namespace Smdpp.Logic
                 var smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
                 var dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
 
+                var definitions = new List<ComponentPlacementContract>();
+
+                ComponentPlacementContract contract = new ComponentPlacementContract();
+                
+                var packageNames = smtParts.GroupBy(q => q.)
+                smtParts.All(delegate (PnpPart part)
+                {
+                    
+                    if (definitions.FirstOrDefault(q => q.ReferenceID == part.ReferenceID)
+                    return true;
+                });
+                
+
                 PnpTask task = new PnpTask()
                 {
                     SmtParts = smtParts,
                     DipParts = dipParts,
+                    Definitions = definitions,
+
                 };
 
                 EventSink.InvokePnpFileParsed(task);

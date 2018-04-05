@@ -92,11 +92,12 @@
       <DependentUpon>SmdppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Contracts\ComponentContract.cs" />
+    <Compile Include="Contracts\ComponentPlacementContract.cs" />
     <Compile Include="Contracts\PackageContract.cs" />
+    <Compile Include="Contracts\PositionContract.cs" />
     <Compile Include="EventSink.cs" />
     <Compile Include="JavascriptController.cs" />
     <Compile Include="Logic\Callbacks\BaseScriptCallback.cs" />
-    <Compile Include="Logic\Callbacks\GetPnpPartCallback.cs" />
     <Compile Include="Logic\Callbacks\SavePackageCallback.cs" />
     <Compile Include="Logic\CefSharpContextMenuHandler.cs" />
     <Compile Include="Logic\EventHandlers.cs" />
