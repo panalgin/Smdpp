@@ -48,6 +48,17 @@ namespace Smdpp
             EventSink.InvokeImportPnpFileRequested();
         }
 
+        public IScriptCallback GetPnpPartInfo(string packageId, string componentName)
+        {
+            using(SmdppEntities context = new SmdppEntities())
+            {
+                var component = context.Components.FirstOrDefault(q => q.Name == componentName);
+                var package = context.Packages.FirstOrDefault(q => q.Name == packageId);
+
+                return new GetPnpPartCallback(package, component);
+            }
+        }
+
         public IScriptCallback SavePackage(string packageName, string svgData)
         {
             var parsedData = JsonConvert.DeserializeObject<string>(svgData);

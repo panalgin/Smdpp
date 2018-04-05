@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="abcb97872d7f48fbaad5773757e76ebf" Name="Diagram1" >
         <EntityTypeShape EntityType="SmdppModel.Package" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SmdppModel.Component" Width="1.5" PointX="3.375" PointY="0.75" />
+        <AssociationConnector Association="SmdppModel.ComponentPackage" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

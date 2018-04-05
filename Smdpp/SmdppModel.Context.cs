@@ -26,5 +26,6 @@ namespace Smdpp
         }
     
         public virtual DbSet<Package> Packages { get; set; }
+        public virtual DbSet<Component> Components { get; set; }
     }
 }
