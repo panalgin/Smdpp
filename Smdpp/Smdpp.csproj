@@ -92,7 +92,7 @@
       <DependentUpon>SmdppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Contracts\ComponentContract.cs" />
-    <Compile Include="Contracts\ComponentPlacementContract.cs" />
+    <Compile Include="Logic\PnpTask.cs" />
     <Compile Include="Contracts\PackageContract.cs" />
     <Compile Include="Contracts\PositionContract.cs" />
     <Compile Include="EventSink.cs" />
@@ -104,11 +104,9 @@
     <Compile Include="Logic\GerberReader.cs" />
     <Compile Include="Logic\Callbacks\IScriptCallback.cs" />
     <Compile Include="Logic\Layer.cs" />
-    <Compile Include="Logic\PartAndReferenceRelation.cs" />
     <Compile Include="Logic\PnpFileImportResult.cs" />
     <Compile Include="Logic\PnpFileReader.cs" />
     <Compile Include="Logic\PnpPart.cs" />
-    <Compile Include="Logic\PnpTask.cs" />
     <Compile Include="Logic\Position.cs" />
     <Compile Include="Logic\SvgReader.cs" />
     <Compile Include="Logic\GerberTask.cs" />

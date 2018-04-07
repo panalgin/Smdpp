@@ -1,25 +1,20 @@
 ﻿using Newtonsoft.Json;
+using Smdpp.Contracts;
+using Smdpp.Logic;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Smdpp.Logic
+namespace Smdpp
 {
     public class PnpTask
     {
-        /// <summary>
-        /// Dizilecek parçalar
-        /// </summary>
-        [JsonProperty(PropertyName = "smtParts")]
-        public List<PnpPart> SmtParts { get; set; }
+        [JsonProperty(PropertyName = "availablePackages")]
+        public List<PackageContract> AvailablePackages { get; set; }
 
-        /// <summary>
-        /// Gözardı edilecek parçalar
-        /// </summary>
-        [JsonProperty(PropertyName = "dipParts")]
-        public List<PnpPart> DipParts { get; set; }
-
-        public PnpTask()
-        {
-
-        }
+        [JsonProperty(PropertyName = "components")]
+        public List<ComponentContract> Components { get; set; }
     }
 }

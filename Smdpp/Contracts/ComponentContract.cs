@@ -18,7 +18,7 @@ namespace Smdpp.Contracts
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "packageId")]
-        public int PackageID { get; set; }
+        public int? PackageID { get; set; }
 
         [JsonProperty(PropertyName = "position")]
         public PositionContract Position { get; set; }

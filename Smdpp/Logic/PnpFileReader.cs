@@ -69,16 +69,13 @@ namespace Smdpp.Logic
                 var smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
                 var dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
 
-                var definitions = new List<ComponentPlacementContract>();
-
-                ComponentPlacementContract contract = new ComponentPlacementContract();
+                PnpTask contract = new PnpTask();
 
                 var usedPackages = smtParts.GroupBy(q => q.PackageID).Select(q => q.FirstOrDefault().PackageID).ToList();
                 var availablePackages = new List<PackageContract>();
-                var prpRelations = new List<PartAndReferenceRelation>();
+                var components = new List<ComponentContract>();
 
-
-                using(SmdppEntities context = new SmdppEntities())
+                using (SmdppEntities context = new SmdppEntities())
                 {
                     usedPackages.All(delegate (string packageName)
                     {
@@ -89,30 +86,42 @@ namespace Smdpp.Logic
                             Data = q.Data
                         }).FirstOrDefault();
 
-                        availablePackages.Add(package);
+                        if (package != null)
+                            availablePackages.Add(package);
 
                         return true;
                     });
                 }
 
+                smtParts.All(delegate (PnpPart part)
+                { 
+                    ComponentContract component = new ComponentContract();
+                    component.Layer = part.Layer;
+                    component.Name = part.Value;
 
-                /*smtParts.All(delegate (PnpPart part)
-                {
-                    d<
-                    if (definitions.FirstOrDefault(q => q.ReferenceID == part.ReferenceID)
+                    var usedPackage = availablePackages.FirstOrDefault(q => q.Name == part.PackageID);
+
+                    if (usedPackage != null)
+                        component.PackageID = usedPackage.ID;
+
+                    component.Position = new PositionContract()
+                    {
+                        X = part.Position.X,
+                        Y = part.Position.Y
+                    };
+
+                    component.ReferenceID = part.ReferenceID;
+                    component.Rotation = part.Rotation;
+
+                    components.Add(component);
+
                     return true;
-                });*/
-                
+                });
 
-                PnpTask task = new PnpTask()
-                {
-                    SmtParts = smtParts,
-                    DipParts = dipParts,
-                    //Definitions = definitions,
+                contract.AvailablePackages = availablePackages;
+                contract.Components = components;
 
-                };
-
-                EventSink.InvokePnpFileParsed(task);
+                EventSink.InvokePnpFileParsed(contract);
             }
         }
     }
