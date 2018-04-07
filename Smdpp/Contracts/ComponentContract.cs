@@ -21,7 +21,7 @@ namespace Smdpp.Contracts
         public int? PackageID { get; set; }
 
         [JsonProperty(PropertyName = "position")]
-        public PositionContract Position { get; set; }
+        public Position Position { get; set; }
 
         [JsonProperty(PropertyName = "layer")]
         public Layer Layer { get; set; }

@@ -94,7 +94,7 @@ namespace Smdpp.Logic
                 }
 
                 smtParts.All(delegate (PnpPart part)
-                { 
+                {
                     ComponentContract component = new ComponentContract();
                     component.Layer = part.Layer;
                     component.Name = part.Value;
@@ -104,7 +104,7 @@ namespace Smdpp.Logic
                     if (usedPackage != null)
                         component.PackageID = usedPackage.ID;
 
-                    component.Position = new PositionContract()
+                    component.Position = new Position()
                     {
                         X = part.Position.X,
                         Y = part.Position.Y
@@ -120,9 +120,18 @@ namespace Smdpp.Logic
 
                 contract.AvailablePackages = availablePackages;
                 contract.Components = components;
+                contract.Offset = GetPlacementOffset(components);
 
                 EventSink.InvokePnpFileParsed(contract);
             }
+        }
+
+        private Position GetPlacementOffset(List<ComponentContract> components)
+        {
+            double lowestX = components.Min(q => q.Position.X);
+            double lowestY = components.Min(q => q.Position.Y);
+
+            return new Position() { X = Math.Abs(lowestX), Y = Math.Abs(lowestY) };
         }
     }
 }

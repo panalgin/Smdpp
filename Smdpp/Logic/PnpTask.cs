@@ -16,5 +16,8 @@ namespace Smdpp
 
         [JsonProperty(PropertyName = "components")]
         public List<ComponentContract> Components { get; set; }
+
+        [JsonProperty(PropertyName = "offset")]
+        public Position Offset { get; set; }
     }
 }
