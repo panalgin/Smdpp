@@ -104,6 +104,7 @@
     <Compile Include="Logic\GerberReader.cs" />
     <Compile Include="Logic\Callbacks\IScriptCallback.cs" />
     <Compile Include="Logic\Layer.cs" />
+    <Compile Include="Logic\PartAndReferenceRelation.cs" />
     <Compile Include="Logic\PnpFileImportResult.cs" />
     <Compile Include="Logic\PnpFileReader.cs" />
     <Compile Include="Logic\PnpPart.cs" />

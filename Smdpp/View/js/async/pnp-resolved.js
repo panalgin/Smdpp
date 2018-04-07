@@ -10,9 +10,9 @@ $.when($.get("inc/controls/pnp-task.tpl", function(dt) {{
 		var packageId = task["smtParts"][i].referenceId;
 		var componentName = task["smtParts"][i].value;
 
-		var pnpPartInfo = windowsApp.getPnpPartInfo(packageId, componentName);
+		//var pnpPartInfo = windowsApp.getPnpPartInfo(packageId, componentName);
 
-		console.log(pnpPartInfo);
+		//console.log(pnpPartInfo);
 	}}
 
 

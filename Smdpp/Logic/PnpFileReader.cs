@@ -72,21 +72,43 @@ namespace Smdpp.Logic
                 var definitions = new List<ComponentPlacementContract>();
 
                 ComponentPlacementContract contract = new ComponentPlacementContract();
-                
-                var packageNames = smtParts.GroupBy(q => q.)
-                smtParts.All(delegate (PnpPart part)
+
+                var usedPackages = smtParts.GroupBy(q => q.PackageID).Select(q => q.FirstOrDefault().PackageID).ToList();
+                var availablePackages = new List<PackageContract>();
+                var prpRelations = new List<PartAndReferenceRelation>();
+
+
+                using(SmdppEntities context = new SmdppEntities())
                 {
-                    
+                    usedPackages.All(delegate (string packageName)
+                    {
+                        var package = context.Packages.Where(q => q.Name == packageName).Select(q => new PackageContract()
+                        {
+                            ID = q.ID,
+                            Name = q.Name,
+                            Data = q.Data
+                        }).FirstOrDefault();
+
+                        availablePackages.Add(package);
+
+                        return true;
+                    });
+                }
+
+
+                /*smtParts.All(delegate (PnpPart part)
+                {
+                    d<
                     if (definitions.FirstOrDefault(q => q.ReferenceID == part.ReferenceID)
                     return true;
-                });
+                });*/
                 
 
                 PnpTask task = new PnpTask()
                 {
                     SmtParts = smtParts,
                     DipParts = dipParts,
-                    Definitions = definitions,
+                    //Definitions = definitions,
 
                 };
 
