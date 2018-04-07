@@ -1,3 +1,1 @@
-﻿<div class="pnp-task">
-	Pnp çalışması buraya gelecek.
-</div>
+﻿<div id="pnp-editor" class="pnp-task"></div>

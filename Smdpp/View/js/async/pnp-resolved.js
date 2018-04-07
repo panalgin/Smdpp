@@ -8,14 +8,20 @@ var page = "";
 $.when($.get("inc/controls/pnp-task.tpl", function(dt) {{
     page = $(dt);
 
-	/*for(var i = 0; i < task["smtParts"].length; i++) {{
-		var packageId = task["smtParts"][i].referenceId;
-		var componentName = task["smtParts"][i].value;
+	for(var i = 0; i < task.components.length; i++) {{
+		var component = task.components[i];
 
-		//var pnpPartInfo = windowsApp.getPnpPartInfo(packageId, componentName);
+		if (component.packageId > 0) {{
+			var svgData = findPackageOf(component.packageId);
+		
+			console.log(component);
+			console.log(svgData);
 
-		//console.log(pnpPartInfo);
-	}}*/
+			page.append($(svgData));
+		}}
+
+	}}
+
 
 
 }})).then(function(resp1) {{
@@ -23,3 +29,17 @@ $.when($.get("inc/controls/pnp-task.tpl", function(dt) {{
 }});
 
 
+function findPackageOf(packageId) {{
+	var svgData = "Asd";
+
+	for(var i = 0; i < task.availablePackages.length; i++) {{
+		var currentPackage = task.availablePackages[i];
+
+		if (currentPackage.id == packageId) {{
+			svgData = currentPackage.data;
+			break;
+		}}
+	}}
+
+	return svgData;
+}}
