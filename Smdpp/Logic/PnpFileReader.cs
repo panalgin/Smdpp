@@ -128,10 +128,16 @@ namespace Smdpp.Logic
 
         private Position GetPlacementOffset(List<ComponentContract> components)
         {
-            double lowestX = components.Min(q => q.Position.X);
-            double lowestY = components.Min(q => q.Position.Y);
+            double lowestX = 0; 
+            double lowestY = 0;
 
-            return new Position() { X = Math.Abs(lowestX), Y = Math.Abs(lowestY) };
+            if (components.Count > 0)
+            {
+                lowestX = components.Min(q => q.Position.X);
+                lowestY = components.Min(q => q.Position.Y);
+            }
+
+            return new Position() { X = lowestX, Y = lowestY };
         }
     }
 }

@@ -17,11 +17,20 @@ $.when($.get("inc/controls/pnp-task.tpl", function(dt) {{
 			var svgData = findPackageOf(component.packageId);
 			var svgEntity = $(svgData);
 
-			svgEntity.css("top", (component.position.y + offset.y) + "mm");
-			svgEntity.css("left", (component.position.x + offset.x) + "mm");
+			var rotation = component.rotation;
+			svgEntity.css({{ 'transform': 'rotate(' + rotation + 'deg)' }});
 
 
 			page.append(svgEntity);
+
+			var yPos = (component.position.y - offset.y);// - (svgEntity.outerHeight() / 2);
+			var xPos = (component.position.x - offset.x);// - (svgEntity.outerWidth() / 2);
+
+			svgEntity.css("top", yPos + "mm");
+			svgEntity.css("left", xPos + "mm");
+
+
+
 		}}
 
 	}}
