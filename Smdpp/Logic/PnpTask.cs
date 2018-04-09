@@ -19,5 +19,8 @@ namespace Smdpp
 
         [JsonProperty(PropertyName = "offset")]
         public Position Offset { get; set; }
+
+        [JsonProperty(PropertyName = "boardSize")]
+        public Size BoardSize { get; set; }
     }
 }

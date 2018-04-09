@@ -107,7 +107,7 @@ namespace Smdpp.Logic
                     component.Position = new Position()
                     {
                         X = part.Position.X,
-                        Y = part.Position.Y
+                        Y = part.Position.Y * -1
                     };
 
                     component.ReferenceID = part.ReferenceID;
@@ -121,6 +121,7 @@ namespace Smdpp.Logic
                 contract.AvailablePackages = availablePackages;
                 contract.Components = components;
                 contract.Offset = GetPlacementOffset(components);
+                contract.BoardSize = GetBoardDimensions(components);
 
                 EventSink.InvokePnpFileParsed(contract);
             }
@@ -138,6 +139,24 @@ namespace Smdpp.Logic
             }
 
             return new Position() { X = lowestX, Y = lowestY };
+        }
+
+        private Size GetBoardDimensions(List<ComponentContract> components)
+        {
+            double lowestX = 0;
+            double lowestY = 0;
+            double highestX = 0;
+            double highestY = 0;
+
+            if (components.Count > 0)
+            {
+                lowestX = components.Min(q => q.Position.X);
+                lowestY = components.Min(q => q.Position.Y);
+                highestX = components.Max(q => q.Position.X);
+                highestY = components.Max(q => q.Position.Y);
+            }
+
+            return new Size() { Width = (highestX - lowestX) + 40, Height = (highestY - lowestY) + 40};
         }
     }
 }
