@@ -89,11 +89,89 @@ div { display: block; }
 	height: 325px;
 }
 
+#feeders {
+	background-color: #f1f1f1;
+
+	position: absolute;
+	left: 210px;
+	top: 5px;
+	height: 60px;
+	right: 210px;
+	overflow: hidden;
+}
+
+#feeders .feeder {
+	display: block;
+	height: 40px;
+	float: left;
+}
+#feeders .feeder:last-of-type {
+	border-right: 1px solid #000;
+}
+#feeders .mm8 { width: 30px; background-color: #888; }
+#feeders .mm8:hover { background-color: #AAA; }
+
+#feeders .mm12 { width: 45px; background-color: #444; }
+#feeders .mm12:hover { background-color: #666; }
+#feeders .mm16 {  width: 60px; background-color: #111; }
+#feeders .mm16:hover { background-color: #333; }
+
+.feeder .status {
+	width: 100%;
+	height: 20px;
+	display: block;
+	background-color: green;
+	box-sizing: border-box;
+	border: 1px solid #000;
+	border-right: 0;
+
+}
+
+.feeder .value {
+	width: 100%;
+	background-color: #fff;
+	display: block;
+	width: 100%;
+	height: 20px;
+
+	color: #000;
+	line-height: 20px;
+	font-size: 8px;
+	font-weight: bold;
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+	text-align: center;
+}
+
+.feeder .referenceId {
+	height: 20px;
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-size: 10px;
+	box-sizing: border-box;
+	border: 1px solid #000;
+	border-right: 0;
+	border-bottom: 0;
+	line-height: 20px;
+	color: #fff;
+}
+.feeder .referenceId:last-of-type { border-right: 1px solid #000;}
+.feeder .packageId {
+	writing-mode: tb-rl;
+    white-space:nowrap;
+    display:block;
+    bottom:0;
+    width:20px;
+    height:30px;
+
+	font-size: 9px;
+}
 #tabbed-mdi {
 	position: absolute;
 	left: 210px;
 	right: 210px; 
-	top: 5px;
+	top: 70px;
 	bottom: 5px;
 }
 

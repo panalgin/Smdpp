@@ -1,107 +1,206 @@
 <html>
-	<head>
-		<title>Smdpp - Index</title>
-		<link href="css/main.css" rel="stylesheet" />
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-		<script type="text/javascript" src="js/svg.js"></script>
-		<script type="text/javascript" src="js/jquery.panzoom.min.js"></script>
-	</head>
-	<body>
-		<div class="wrapper">
-			<ul id="nav">
-				<li id="file-menu">Dosya</li>
-				<li id="settings-menu">Ayarlar</li>
-				<li id="help-menu">Yardım</li>
-			</ul>
-			<div id="app-zone">
-				<div id="connection">
-					<div class="header">Bağlantı</div>
-					<div class="con">
-						<div class="row">
-							<div class="cell left">
-								<label>Com Port:</label>
-							</div>
-							<div class="cell right">
-								<select id="com-ports-select">
-								</select>
-							</div>
-						</div>
-						<div class="row">
-							<div class="cell left">
-								<label>Baud Rate:</label>
-							</div>
-							<div class="cell right">
-								<select id="baud-rates-select">
-								</select>
-							</div>
-						</div>
-						<div class="space-vertical"></div>
-						<div class="row">
-							<div class="cell right">
-								<button type="button">Bağlan</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="camera">
-					<div class="header">Kamera</div>
-					<div class="con">
-						<video id="video" muted autoplay></video>
-						<video id="video2" muted autoplay></video>
-					</div>
-				</div>
-				<div id="tabbed-mdi">
-					<div class="headers">
-						<div class="tab-header active" id="header-1">Çalışma #1 <i></i></div>
-						<div class="tab-header" id="header-2">Çalışma #2 <i></i></div>
-						<div class="tab-header" id="header-3">Ayarlar <i></i></div>
-					</div>
-					<div id="tab-1" class="tab active">
-						<script type="text/javascript">
-							$(document).ready(function(e) {
-								var editor = null;
-
-								$.when($.get("inc/controls/svg-editor.tpl", function(data) {
-									editor = $(data);
-								})).then(function(resp1) {
-									$("div#tab-1").append(editor);
-								});		
-							}); 
-						</script>
-					</div>
-					<div id="tab-2" class="tab">
-						Motor ayarlaarı ile alakalı içerik sayfası
-					</div>
-					<div id="tab-3" class="tab">
-						Kılıf
-					</div>
-				</div>
-				<div id="jog-panel">
-					<div class="header">Kontrol</div>
-					<div class="con"></div>
-				</div>
-			</div>
-			<img id="wrench" src="img/wrench-icon.png" />
-		</div>
-
-		<ul id="file-pop" class="pop-menu">
-			<li id="open">Aç</li>
-			<li id="openSvgBtn">Kılıf Ekle</li>
-			<li id="openGerberBtn">Import Gerber</li>
-			<li id="openCsvBtn">Csv İthal Et</li>
-			<li id="exitMenuBtn1">Çıkış</li>
-		</ul>
-		<ul id="settings-pop" class="pop-menu">
-			<li id="packagesBtn">Kılıflar</li>
-			<li id="exitMenuBtn2">Çıkış</li>
-		</ul>
-		<ul id="help-pop" class="pop-menu">
-			<li id="exitMenuBtn3">Çıkış</li>
-		</ul>
-
-		<script type="text/javascript" src="js/tabbed-mdi.js"></script>
-		<script type="text/javascript" src="js/camera.js"></script>
-		<script type="text/javascript" src="js/pop-menu.js"></script>
-	</body>
+   <head>
+      <title>Smdpp - Index</title>
+      <link href="css/main.css" rel="stylesheet" />
+      <script type="text/javascript" src="js/jquery.js"></script>
+      <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="js/svg.js"></script>
+      <script type="text/javascript" src="js/jquery.panzoom.min.js"></script>
+   </head>
+   <body>
+      <div class="wrapper">
+         <ul id="nav">
+            <li id="file-menu">Dosya</li>
+            <li id="settings-menu">Ayarlar</li>
+            <li id="help-menu">Yardım</li>
+         </ul>
+         <div id="app-zone">
+            <div id="connection">
+               <div class="header">Bağlantı</div>
+               <div class="con">
+                  <div class="row">
+                     <div class="cell left">
+                        <label>Com Port:</label>
+                     </div>
+                     <div class="cell right">
+                        <select id="com-ports-select">
+                        </select>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="cell left">
+                        <label>Baud Rate:</label>
+                     </div>
+                     <div class="cell right">
+                        <select id="baud-rates-select">
+                        </select>
+                     </div>
+                  </div>
+                  <div class="space-vertical"></div>
+                  <div class="row">
+                     <div class="cell right">
+                        <button type="button">Bağlan</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="camera">
+               <div class="header">Kamera</div>
+               <div class="con">
+                  <video id="video" muted autoplay></video>
+                  <video id="video2" muted autoplay></video>
+               </div>
+            </div>
+            <div id="feeders">
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$("div#feeder-1 .status").css("background-color", "red");
+					});
+				</script>
+               <div id="feeder-1" class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm8">
+                  <span class="referenceId">R1</span>
+				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm12">
+                  <span class="referenceId">R1</span>
+				  				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm12">
+                  <span class="referenceId">R1</span>
+				  				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm12">
+                  <span class="referenceId">R1</span>
+				  				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm12">
+                  <span class="referenceId">R1</span>
+				  				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm16">
+                  <span class="referenceId">R1</span>
+				  				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm16">
+                  <span class="referenceId">R1</span>
+				  				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+			   <div class="feeder mm16">
+                  <span class="referenceId">R1</span>
+				  				  <span class="value">220R</span>
+                  <span class="status"></span>
+               </div>
+            </div>
+            <div id="tabbed-mdi">
+               <div class="headers">
+                  <div class="tab-header active" id="header-1">Çalışma #1 <i></i></div>
+                  <div class="tab-header" id="header-2">Çalışma #2 <i></i></div>
+                  <div class="tab-header" id="header-3">Ayarlar <i></i></div>
+               </div>
+               <div id="tab-1" class="tab active">
+               </div>
+               <div id="tab-2" class="tab">
+                  Motor ayarlaarı ile alakalı içerik sayfası
+               </div>
+               <div id="tab-3" class="tab">
+                  Kılıf
+               </div>
+            </div>
+            <div id="jog-panel">
+               <div class="header">Kontrol</div>
+               <div class="con"></div>
+            </div>
+         </div>
+         <img id="wrench" src="img/wrench-icon.png" />
+      </div>
+      <ul id="file-pop" class="pop-menu">
+         <li id="open">Aç</li>
+         <li id="openSvgBtn">Kılıf Ekle</li>
+         <li id="openGerberBtn">Import Gerber</li>
+         <li id="openCsvBtn">Csv İthal Et</li>
+         <li id="exitMenuBtn1">Çıkış</li>
+      </ul>
+      <ul id="settings-pop" class="pop-menu">
+         <li id="packagesBtn">Kılıflar</li>
+         <li id="exitMenuBtn2">Çıkış</li>
+      </ul>
+      <ul id="help-pop" class="pop-menu">
+         <li id="exitMenuBtn3">Çıkış</li>
+      </ul>
+      <script type="text/javascript" src="js/tabbed-mdi.js"></script>
+      <script type="text/javascript" src="js/camera.js"></script>
+      <script type="text/javascript" src="js/pop-menu.js"></script>
+   </body>
 </html>

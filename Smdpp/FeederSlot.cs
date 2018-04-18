@@ -12,18 +12,12 @@ namespace Smdpp
     using System;
     using System.Collections.Generic;
     
-    public partial class Package
+    public partial class FeederSlot
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Data { get; set; }
-        public Nullable<decimal> Height { get; set; }
-        public Nullable<decimal> PickupZ { get; set; }
-        public Nullable<decimal> Pitch { get; set; }
-        public Nullable<int> ReelWidth { get; set; }
-        public Nullable<int> NozzleID { get; set; }
-        public Nullable<bool> NeedsCamera { get; set; }
-        public Nullable<bool> HasPolarity { get; set; }
-        public Nullable<int> Angle { get; set; }
+        public int Width { get; set; }
+        public decimal PickupX { get; set; }
+        public Nullable<decimal> Depth { get; set; }
+        public Nullable<decimal> PickupY { get; set; }
     }
 }

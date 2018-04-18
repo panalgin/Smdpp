@@ -27,5 +27,7 @@ namespace Smdpp
     
         public virtual DbSet<Package> Packages { get; set; }
         public virtual DbSet<Component> Components { get; set; }
+        public virtual DbSet<FeederSlot> FeederSlots { get; set; }
+        public virtual DbSet<Nozzle> Nozzles { get; set; }
     }
 }
