@@ -387,9 +387,6 @@ svg g rect:hover, svg g polygon:hover {
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .pnp-task #board {

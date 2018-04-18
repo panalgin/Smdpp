@@ -13,6 +13,27 @@
           <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="PackageID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="FeederSlots">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Width" Type="int" Nullable="false" />
+          <Property Name="PickupX" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Depth" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PickupY" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="Nozzles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="PositionX" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PositionY" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PositionZ" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
         <EntityType Name="Packages">
           <Key>
             <PropertyRef Name="ID" />
@@ -20,9 +41,19 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Height" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PickupZ" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="Pitch" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ReelWidth" Type="int" />
+          <Property Name="NozzleID" Type="int" />
+          <Property Name="NeedsCamera" Type="bit" />
+          <Property Name="HasPolarity" Type="bit" />
+          <Property Name="Angle" Type="int" />
         </EntityType>
         <EntityContainer Name="SmdppModelStoreContainer">
           <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeederSlots" EntityType="Self.FeederSlots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nozzles" EntityType="Self.Nozzles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -36,6 +67,8 @@
             <End Role="Component" EntitySet="Components" />
             <End Role="Package" EntitySet="Packages" />
           </AssociationSet>
+          <EntitySet Name="FeederSlots" EntityType="SmdppModel.FeederSlot" />
+          <EntitySet Name="Nozzles" EntityType="SmdppModel.Nozzle" />
         </EntityContainer>
         <EntityType Name="Package">
           <Key>
@@ -44,6 +77,14 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Height" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PickupZ" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Pitch" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ReelWidth" Type="Int32" />
+          <Property Name="NozzleID" Type="Int32" />
+          <Property Name="NeedsCamera" Type="Boolean" />
+          <Property Name="HasPolarity" Type="Boolean" />
+          <Property Name="Angle" Type="Int32" />
         </EntityType>
         <EntityType Name="Component">
           <Key>
@@ -66,6 +107,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FeederSlot">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Width" Type="Int32" Nullable="false" />
+          <Property Name="PickupX" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Depth" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PickupY" Type="Decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="Nozzle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PositionX" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PositionY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PositionZ" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -75,6 +137,14 @@
           <EntitySetMapping Name="Packages">
             <EntityTypeMapping TypeName="SmdppModel.Package">
               <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="Angle" ColumnName="Angle" />
+                <ScalarProperty Name="HasPolarity" ColumnName="HasPolarity" />
+                <ScalarProperty Name="NeedsCamera" ColumnName="NeedsCamera" />
+                <ScalarProperty Name="NozzleID" ColumnName="NozzleID" />
+                <ScalarProperty Name="ReelWidth" ColumnName="ReelWidth" />
+                <ScalarProperty Name="Pitch" ColumnName="Pitch" />
+                <ScalarProperty Name="PickupZ" ColumnName="PickupZ" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -85,6 +155,29 @@
             <EntityTypeMapping TypeName="SmdppModel.Component">
               <MappingFragment StoreEntitySet="Components">
                 <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeederSlots">
+            <EntityTypeMapping TypeName="SmdppModel.FeederSlot">
+              <MappingFragment StoreEntitySet="FeederSlots">
+                <ScalarProperty Name="PickupY" ColumnName="PickupY" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="PickupX" ColumnName="PickupX" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nozzles">
+            <EntityTypeMapping TypeName="SmdppModel.Nozzle">
+              <MappingFragment StoreEntitySet="Nozzles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PositionZ" ColumnName="PositionZ" />
+                <ScalarProperty Name="PositionY" ColumnName="PositionY" />
+                <ScalarProperty Name="PositionX" ColumnName="PositionX" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
