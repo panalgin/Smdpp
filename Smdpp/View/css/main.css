@@ -102,7 +102,7 @@ div { display: block; }
 
 #feeders .feeder {
 	display: block;
-	height: 40px;
+	height: 60px;
 	float: left;
 }
 #feeders .feeder:last-of-type {
@@ -141,6 +141,7 @@ div { display: block; }
 	border-top: 1px solid #000;
 	border-left: 1px solid #000;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 .feeder .referenceId {
@@ -475,4 +476,10 @@ svg g rect:hover, svg g polygon:hover {
 .pnp-task svg {
 	position: absolute;
 	transform-origin: center center;
+	box-sizing: border-box;
+	border: 1px solid transparent;
+}
+
+.pnp-task svg:hover {
+	border: 1px solid red;
 }
