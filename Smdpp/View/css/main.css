@@ -95,14 +95,14 @@ div { display: block; }
 	position: absolute;
 	left: 210px;
 	top: 5px;
-	height: 60px;
+	height: 48px;
 	right: 210px;
 	overflow: hidden;
 }
 
 #feeders .feeder {
 	display: block;
-	height: 60px;
+	height: 48px;
 	float: left;
 }
 #feeders .feeder:last-of-type {
@@ -118,13 +118,19 @@ div { display: block; }
 
 .feeder .status {
 	width: 100%;
-	height: 20px;
+	height: 8px;
 	display: block;
-	background-color: green;
+	background-color: #00ff11;
 	box-sizing: border-box;
 	border: 1px solid #000;
 	border-right: 0;
+	animation: colorchange 2s infinite;
+}
 
+@keyframes colorchange {
+	0% { background: red; }
+	50% { background: green; }
+	100% { background: red; }
 }
 
 .feeder .value {
@@ -172,7 +178,7 @@ div { display: block; }
 	position: absolute;
 	left: 210px;
 	right: 210px; 
-	top: 70px;
+	top: 58px;
 	bottom: 5px;
 }
 
