@@ -183,6 +183,9 @@
     <None Include="SmdppModel.edmx.diagram">
       <DependentUpon>SmdppModel.edmx</DependentUpon>
     </None>
+    <None Include="View\inc\controls\feeder-selector.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="View\inc\controls\package-list.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -238,6 +241,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\jquery-ui.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\js\jquery.context-menu.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\jquery.panzoom.min.js">
