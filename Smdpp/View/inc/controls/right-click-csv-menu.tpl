@@ -7,9 +7,9 @@
 		<div class="left">Slot:</div>
 		<div class="right">
 			<select>
-				<option>14 [TSOP16 - 12f84]</option>
-				<option>15 [SSOP18 - 16f84]</option>
-				<option>16 [SOP28 - 16f88]</option>
+				<option>14 - [TSOP16 - 12f84]</option>
+				<option>15 - [SSOP18 - 16f84]</option>
+				<option>16 - [SOP28 - 16f88]</option>
 			</select>
 		</div>
 	</div>

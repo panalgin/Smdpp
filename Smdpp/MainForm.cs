@@ -47,7 +47,7 @@ namespace Smdpp
         {
             this.BeginInvoke((MethodInvoker)delegate ()
             {
-                var dialog = SetupImportPnpFileDialog();
+                var dialog = SetupImportPnpFileDialog;
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -68,7 +68,7 @@ namespace Smdpp
         {
             this.BeginInvoke((MethodInvoker)delegate ()
             {
-                var dialog = SetupImportSvgDialog();
+                var dialog = SetupImportSvgDialog;
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -95,7 +95,7 @@ namespace Smdpp
         {
             this.BeginInvoke((MethodInvoker)delegate ()
             {
-                var dialog = SetupGerberDialog();
+                var dialog = SetupGerberDialog;
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -156,20 +156,9 @@ namespace Smdpp
             });
         }
 
-        private OpenFileDialog SetupGerberDialog()
-        {
-            return SetupOpenFileDialog("Gerber Dosyası|*.txt");
-        }
-
-        private OpenFileDialog SetupImportSvgDialog()
-        {
-            return SetupOpenFileDialog("Svg Dosyası|*.svg");
-        }
-
-        private OpenFileDialog SetupImportPnpFileDialog()
-        {
-            return SetupOpenFileDialog("Diptrace Csv Dosyası|*.csv");
-        }
+        private OpenFileDialog SetupGerberDialog => SetupOpenFileDialog("Gerber Dosyası|*.txt");
+        private OpenFileDialog SetupImportSvgDialog => SetupOpenFileDialog("Svg Dosyası|*.svg");
+        private OpenFileDialog SetupImportPnpFileDialog => SetupOpenFileDialog("Diptrace Csv Dosyası|*.csv");
 
         private OpenFileDialog SetupOpenFileDialog(string filter)
         {
@@ -179,7 +168,6 @@ namespace Smdpp
                 Filter = filter,
                 FileName = "",
                 Multiselect = false,
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)
             };
 
             return dialog;
