@@ -6,8 +6,17 @@
 		$().ready(function() {
 			$("body").on("contextmenu", ".pnp-task svg", function(e) {
 				var svg = $(this);
+
+				var element = document.getElementById('board');
+				var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
+
+				var xOffset = e.pageX - $("#board").offset().left;
+				var yOffset = e.pageY - $("#board").offset().top;
+
+				xOffset /= scaleX;
+				yOffset /= scaleX;
 				
-				showContextMenuForItem(svg);
+				showContextMenuForItem(svg, xOffset, yOffset);
 			});
 		});
 	</script>

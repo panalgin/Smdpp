@@ -20,11 +20,14 @@
 	$(document).on("click", "body", function(e) {
 		if (isAnyPopOpen()) {
 			closeAllPops();
-		}
-	});
+        }
+
+        /*if (isAnyContextMenuOpen()) {
+            closeAllContextMenus();
+        }*/
+    });
 
 	$("body").on("click", "ul.pop-menu", function(e) {
-	
 		e.stopPropagation(); 
 	});
 
@@ -50,13 +53,24 @@
 });
 
 function isAnyPopOpen() {
-	var pop = $("ul.pop-menu").filter(":visible");
+    var pop = $("ul.pop-menu").filter(":visible");
+
 	return pop.length > 0;
+}
+
+function isAnyContextMenuOpen() {
+    var menu = $(".context-menu").filter(":visible");
+
+    return menu.length > 0;
 }
 
 function closeAllPops() {
 	$("ul#nav .active").removeClass("active");
 	var pop = $("ul.pop-menu").filter(":visible").hide();
+}
+
+function closeAllContextMenus() {
+    $(".context-menu").remove();
 }
 
 function showMenu(menuId) {

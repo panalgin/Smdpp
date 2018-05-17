@@ -9,21 +9,14 @@ $().ready(function () {
     });
 });
 
-function showContextMenuForItem(svg) {
+function showContextMenuForItem(svg, xOff, yOff) {
     var object = $(CSV_RIGHT_CLICK_TEMPLATE);
 
-    var x = svg.offset().left;
-    var y = svg.offset().top;
+    var x = svg.css("left");
+    var y = svg.css("top");
 
+    $("#board").append(object);
 
-    var offset = svg.offset();
-    var pos = svg.position();
-
-    console.log(offset);
-    console.log(pos);
-    console.log(svg);
-
-    $("#pnp-editor").append(object);
-    object.css("left", x + "px");
-    object.css("top", y + "px");
+    object.css("top", yOff);
+    object.css("left", xOff);
 }
