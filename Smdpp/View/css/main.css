@@ -472,6 +472,7 @@ svg g rect:hover, svg g polygon:hover {
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
+    overflow: hidden;
 }
 
 .pnp-task #board {
@@ -510,6 +511,9 @@ svg g rect:hover, svg g polygon:hover {
     font-size: 11px;
     margin: 0px;
     padding: 0px;
+
+    width: 150px;
+    overflow: hidden;
 }
 
 .context-item .left {

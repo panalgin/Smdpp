@@ -22,9 +22,15 @@
 			closeAllPops();
         }
 
-        /*if (isAnyContextMenuOpen()) {
+        if (isAnyContextMenuOpen()) {
             closeAllContextMenus();
-        }*/
+        }
+
+        $("#board").panzoom("enable");
+    });
+
+    $("body").on("click", ".context-menu", function (e) {
+        e.stopPropagation();
     });
 
 	$("body").on("click", "ul.pop-menu", function(e) {

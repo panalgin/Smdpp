@@ -16,6 +16,7 @@
 				xOffset /= scaleX;
 				yOffset /= scaleX;
 				
+				$("#board").panzoom("disable");
 				showContextMenuForItem(svg, xOffset, yOffset);
 			});
 		});
