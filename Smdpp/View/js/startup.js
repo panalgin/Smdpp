@@ -10,6 +10,8 @@ $().ready(function () {
 });
 
 function showContextMenuForItem(svg, xOff, yOff) {
+    closeAllContextMenus();
+
     var object = $(CSV_RIGHT_CLICK_TEMPLATE);
 
     var x = svg.css("left");
@@ -19,4 +21,9 @@ function showContextMenuForItem(svg, xOff, yOff) {
 
     object.css("top", yOff);
     object.css("left", xOff);
+
+    $(document).one("mousewheel", function (e) {
+        closeAllContextMenus();
+        $("#board").panzoom("enable");
+    });
 }
