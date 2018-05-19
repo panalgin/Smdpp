@@ -523,3 +523,14 @@ svg g rect:hover, svg g polygon:hover {
 .context-item .right {
     width: calc(80% - 5px);
 }
+
+#jog-panel .row {
+    line-height: 20px;
+    height: 20px;
+}
+
+#jog-panel .row .right input[type='text'] {
+    height: 18px;
+    box-sizing: border-box;
+    margin-top: 1px;
+}

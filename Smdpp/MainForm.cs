@@ -35,6 +35,8 @@ namespace Smdpp
 
 
             EventHandlers.Initialize();
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void EventSink_PnpFileParsed(PnpTask task)

@@ -1,6 +1,8 @@
 ﻿var data = "{0}";
 var task = $.parseJSON(unescape(data));
 
+window.currentTask = task;
+
 var page = "";
 var board = "";
 var offset = 0.0;
@@ -18,19 +20,16 @@ $.when($.get("inc/controls/pnp-task.tpl", function(dt) {{
 
 	for(var i = 0; i < task.components.length; i++) {{
 		var component = task.components[i];
-		
 
 		if (component.packageId > 0) {{
 			var svgData = findPackageOf(component.packageId);
-			var svgEntity = $(svgData);
+            var svgEntity = $(svgData);
+            svgEntity.data("component", component);
 
 			var rotation = -component.rotation;
 			svgEntity.css({{ 'transform': 'rotate(' + rotation + 'deg)' }});
 
-
 			board.append(svgEntity);
-
-						
 
 			var yPos = 20 + (component.position.y - offset.y);// - (svgEntity.outerHeight() / 2);
 			var xPos = 20 + (component.position.x - offset.x);// - (svgEntity.outerWidth() / 2);
