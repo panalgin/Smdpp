@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Smdpp.Logic.Commands;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -11,10 +12,14 @@ namespace Smdpp.Logic.Hardware
     {
         private SerialPort serialPort = new SerialPort();
 
-
         public BaseControlBoard()
         {
+            EventSink.JogPrecisionChangeRequested += EventSink_JogPrecisionChangeRequested;
+        }
 
+        private void EventSink_JogPrecisionChangeRequested(int value)
+        {
+            this.Send(new SetJogPrecisionCommand(value));
         }
 
         public virtual void Connect(string portName, int baudRate)
@@ -34,6 +39,11 @@ namespace Smdpp.Logic.Hardware
             {
                 EventSink.InvokeError(ex);
             }
+        }
+
+        public virtual bool Send(BaseCommand command)
+        {
+            return false;
         }
     }
 }
