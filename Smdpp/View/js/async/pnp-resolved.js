@@ -87,19 +87,3 @@ $.when($.get("inc/controls/pnp-task.tpl", function(dt) {{
 
 	
 }});
-
-
-function findPackageOf(packageId) {{
-	var svgData = "";
-
-	for(var i = 0; i < task.availablePackages.length; i++) {{
-		var currentPackage = task.availablePackages[i];
-
-		if (currentPackage.id == packageId) {{
-			svgData = currentPackage.data;
-			break;
-		}}
-	}}
-
-	return svgData;
-}}

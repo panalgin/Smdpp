@@ -112,6 +112,7 @@ namespace Smdpp.Logic
 
                     component.ReferenceID = part.ReferenceID;
                     component.Rotation = part.Rotation;
+                    component.Value = part.Value;
 
                     components.Add(component);
 

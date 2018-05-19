@@ -512,16 +512,16 @@ svg g rect:hover, svg g polygon:hover {
     margin: 0px;
     padding: 0px;
 
-    width: 150px;
+    width: calc(100% - 5px);
     overflow: hidden;
 }
 
 .context-item .left {
-    width: 20%;
+    width: 30%;
 }
 
 .context-item .right {
-    width: calc(80% - 5px);
+    width: calc(70% - 5px);
 }
 
 #jog-panel .row {

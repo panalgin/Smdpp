@@ -17,6 +17,16 @@ function showContextMenuForItem(svg, xOff, yOff) {
     var x = svg.css("left");
     var y = svg.css("top");
 
+    var componentInfo = svg.data("component");
+    var packageInfo = findPackageDetailsOf(componentInfo.packageId);
+
+    console.log(window.currentTask);
+
+    object.find("#referenceName").html(componentInfo.referenceId);
+    object.find("#packageName").html(packageInfo.name);
+    object.find("#value").html(componentInfo.value);
+
+
     $("#board").append(object);
 
     object.css("top", yOff);
@@ -26,4 +36,35 @@ function showContextMenuForItem(svg, xOff, yOff) {
         closeAllContextMenus();
         $("#board").panzoom("enable");
     });
+}
+
+function findPackageDetailsOf(packageId) {
+    var componentInfo = "";
+
+    for (var i = 0; i < window.currentTask.availablePackages.length; i++) {
+        var currentPackage = window.currentTask.availablePackages[i];
+
+        if (currentPackage.id == packageId) {
+            componentInfo = currentPackage;
+
+            break;
+        }
+    }
+
+    return componentInfo;
+}
+
+function findPackageOf(packageId) {
+    var svgData = "";
+
+    for (var i = 0; i < window.currentTask.availablePackages.length; i++) {
+        var currentPackage = window.currentTask.availablePackages[i];
+
+        if (currentPackage.id == packageId) {
+            svgData = currentPackage.data;
+            break;
+        }
+    }
+
+    return svgData;
 }

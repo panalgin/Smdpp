@@ -29,6 +29,9 @@ namespace Smdpp.Contracts
         [JsonProperty(PropertyName = "rotation")]
         public double Rotation { get; set; }
 
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
+
         public ComponentContract()
         {
 
