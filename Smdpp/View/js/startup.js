@@ -44,7 +44,7 @@ function findPackageDetailsOf(packageId) {
     for (var i = 0; i < window.currentTask.availablePackages.length; i++) {
         var currentPackage = window.currentTask.availablePackages[i];
 
-        if (currentPackage.id == packageId) {
+        if (currentPackage.id === packageId) {
             componentInfo = currentPackage;
 
             break;
@@ -60,7 +60,7 @@ function findPackageOf(packageId) {
     for (var i = 0; i < window.currentTask.availablePackages.length; i++) {
         var currentPackage = window.currentTask.availablePackages[i];
 
-        if (currentPackage.id == packageId) {
+        if (currentPackage.id === packageId) {
             svgData = currentPackage.data;
             break;
         }

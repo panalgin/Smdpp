@@ -48,6 +48,17 @@ namespace Smdpp
             EventSink.InvokeImportPnpFileRequested();
         }
 
+        public IScriptCallback SetJogPrecision(int value)
+        {
+            EventSink.InvokeJogPrecisionChangeRequested(value);
+
+            return new SetPrecisionCallback()
+            {
+                Success = true,
+                Message = "Başarılı."
+            };
+        }
+
         public IScriptCallback SavePackage(string packageName, string svgData)
         {
             var parsedData = JsonConvert.DeserializeObject<string>(svgData);

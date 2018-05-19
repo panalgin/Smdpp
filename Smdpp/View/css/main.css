@@ -1,4 +1,4 @@
-html { margin: 0px; padding: 0px; display: block; width: 100%; position: relative; top: 0px; left: 0px; right: 0px; bottom: 0px; }
+html { margin: 0; padding: 0; display: block; width: 100%; position: relative; top: 0; left: 0; right: 0; bottom: 0; }
 body {
 	margin: 0;
 	padding: 0;
@@ -18,12 +18,12 @@ body {
 
 .wrapper {
 	position: relative;
-	top: 0px;
-	left: 0px;
-	right: 0px;
+	top: 0;
+	left: 0;
+	right: 0;
 	width: 100%;
 	height: 100%;
-	bottom: 0px;
+	bottom: 0;
 	background-color: #fff;
 }
 
@@ -55,7 +55,7 @@ div { display: block; }
 	background-color: #f1f1f1;
 }
 
-#nav li { float: left; display: block; height: 26px; line-height: 26px; text-align: center; padding: 0px 30px; }
+#nav li { float: left; display: block; height: 26px; line-height: 26px; text-align: center; padding: 0 30px; }
 #nav li:hover { background-color: #dedede; cursor: pointer; }
 
 #nav li:active, #nav .active {
@@ -65,9 +65,9 @@ div { display: block; }
 #app-zone {
 	position: relative;
 	top: 25px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	
 	width: 100%;
 	height: calc(100% - 25px);
@@ -75,7 +75,7 @@ div { display: block; }
 
 #connection {
 	position: absolute; 
-	left: 5;
+	left: 5px;
 	top: 5px;
 	width: 200px;	
 	height: 150px; 
@@ -184,9 +184,9 @@ div { display: block; }
 
 #tabbed-mdi .tab { display: none; 
 	position: absolute;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	top: 25px;
 	background-color: #f1f1f1;
 	box-sizing: border-box;
@@ -194,17 +194,17 @@ div { display: block; }
 	border-top: 2px solid #dedede;
 	padding: 5px;
 
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	overflow: auto;
 }
 #tabbed-mdi .active { display: block; }
 
 #tabbed-mdi .headers { 
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: 25px;
 }
 #tabbed-mdi .tab-header {
@@ -261,7 +261,7 @@ div { display: block; }
 	line-height: 25px;
 	height: 25px;
 	
-	border-radius: 3px 3px 0px 0px;
+	border-radius: 3px 3px 0px 0;
 	box-sizing: border-box;
 }
 
@@ -275,12 +275,16 @@ div { display: block; }
 	box-sizing: border-box;
 }
 
+#jog-panel .con {
+    padding-top: 5px;
+}
+
 select {
 	margin: 0;
 	padding: 0;
 	height: 21px;
 	line-height: 21px;
-	margin: 2px 0px;
+	margin: 2px 0;
 	outline: 0;
 }
 
@@ -318,12 +322,12 @@ video {
 
 .pop-menu {
 	position: absolute;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	list-style: none;
 	min-width: 200px;
 	z-index: 9999;
-	background-color: d1d1d1;
+	background-color: #d1d1d1;
 	box-sizing: border-box;
 	border: 1px solid #dedede;
 	display: none;
@@ -346,15 +350,15 @@ video {
 	
 	position:absolute;
     left:0; right: 0;
-    top: 0px; bottom:0;
+    top: 0; bottom:0;
 	overflow: hidden;
 }
 
 #toolbar {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: 25px;
 	background-color: red;
 	display: block;
@@ -468,10 +472,10 @@ svg g rect:hover, svg g polygon:hover {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
     overflow: hidden;
 }
 
@@ -509,8 +513,8 @@ svg g rect:hover, svg g polygon:hover {
 .context-menu select {
     font-family: Tahoma;
     font-size: 11px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 
     width: calc(100% - 5px);
     overflow: hidden;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Smdpp.Logic.Hardware;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -25,5 +26,6 @@ namespace Smdpp
         };
 
         public static List<Image> CameraImages = new List<Image>();
+        public static BaseControlBoard ControlBoard { get; set; }
     }
 }

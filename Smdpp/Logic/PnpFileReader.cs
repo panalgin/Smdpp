@@ -95,9 +95,11 @@ namespace Smdpp.Logic
 
                 smtParts.All(delegate (PnpPart part)
                 {
-                    ComponentContract component = new ComponentContract();
-                    component.Layer = part.Layer;
-                    component.Name = part.Value;
+                    ComponentContract component = new ComponentContract
+                    {
+                        Layer = part.Layer,
+                        Name = part.Value
+                    };
 
                     var usedPackage = availablePackages.FirstOrDefault(q => q.Name == part.PackageID);
 

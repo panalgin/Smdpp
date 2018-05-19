@@ -192,7 +192,11 @@
                         <script type="text/javascript">
                             $().ready(function () {
                                 $("#precision-value").change(function (e) {
-                                    alert($(this).val());
+                                    var value = parseInt($(this).val());
+
+                                    if (value > 0) {
+                                        windowsApp.setJogPrecision(value);
+                                    }
                                 });
                             });
                         </script>

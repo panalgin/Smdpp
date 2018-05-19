@@ -1,4 +1,5 @@
 ﻿using Smdpp.Logic;
+using System;
 using System.Collections.Generic;
 
 namespace Smdpp
@@ -9,6 +10,7 @@ namespace Smdpp
         public delegate void OnOpenGerberRequested();
         public delegate void OnImportSvgRequested();
         public delegate void OnImportPnpFileReqeusted();
+        public delegate void OnError(Exception ex);
 
         public delegate void OnCloseRequested();
         public delegate void OnGerberParsed(GerberTask task);
@@ -16,7 +18,7 @@ namespace Smdpp
         public delegate void OnSavePackageRequested();
         public delegate void OnListPackagesRequested();
         public delegate void OnPnpFileParsed(PnpTask task);
-
+        public delegate void OnJogPrecisionChangeRequested(int value);
 
         public static event OnImportPnpFileReqeusted ImportPnpFileRequested;
         public static event OnImportSvgRequested ImportSvgRequested;
@@ -28,55 +30,20 @@ namespace Smdpp
         public static event OnPnpFileParsed PnpFileParsed;
         public static event OnSavePackageRequested SavePackageRequested;
         public static event OnListPackagesRequested ListPackagesRequested;
+        public static event OnJogPrecisionChangeRequested JogPrecisionChangeRequested;
+        public static event OnError Error;
 
-        public static void InvokeImportPnpFileRequested()
-        {
-            ImportPnpFileRequested?.Invoke();
-        }
-
-        public static void InvokeImportGerberRequested()
-        {
-            ImportSvgRequested?.Invoke();
-        }
-
-        public static void InvokeSvgParsed(SvgTask task)
-        {
-            SvgParsed?.Invoke(task);
-        }
-
-        public static void InvokeGerberParsed(GerberTask task)
-        {
-            GerberParsed?.Invoke(task);
-        }
-
-        public static void InvokeDevToolsRequested()
-        {
-            DevToolsRequested?.Invoke();
-        }
-
-        public static void InvokeOpenGerberRequested()
-        {
-            OpenGerberReqeusted?.Invoke();
-        }
-
-        public static void InvokeCloseRequested()
-        {
-            CloseRequested?.Invoke();
-        }
-
-        public static void InvokeSavePackageRequested()
-        {
-            SavePackageRequested?.Invoke();
-        }
-
-        public static void InvokeListPackagesRequested()
-        {
-            ListPackagesRequested?.Invoke();
-        }
-
-        public static void InvokePnpFileParsed(PnpTask task)
-        {
-            PnpFileParsed?.Invoke(task);
-        }
+        public static void InvokeImportPnpFileRequested() => ImportPnpFileRequested?.Invoke();
+        public static void InvokeImportGerberRequested() => ImportSvgRequested?.Invoke();
+        public static void InvokeSvgParsed(SvgTask task) => SvgParsed?.Invoke(task);
+        public static void InvokeGerberParsed(GerberTask task) => GerberParsed?.Invoke(task);
+        public static void InvokeDevToolsRequested() => DevToolsRequested?.Invoke();
+        public static void InvokeOpenGerberRequested() => OpenGerberReqeusted?.Invoke();
+        public static void InvokeCloseRequested() => CloseRequested?.Invoke();
+        public static void InvokeSavePackageRequested() => SavePackageRequested?.Invoke();
+        public static void InvokeListPackagesRequested() => ListPackagesRequested?.Invoke();
+        public static void InvokePnpFileParsed(PnpTask task) => PnpFileParsed?.Invoke(task);
+        public static void InvokeJogPrecisionChangeRequested(int value) => JogPrecisionChangeRequested?.Invoke(value);
+        public static void InvokeError(Exception ex) => Error?.Invoke(ex);
     }
 }
