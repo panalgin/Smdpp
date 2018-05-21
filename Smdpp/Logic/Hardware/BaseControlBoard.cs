@@ -16,7 +16,6 @@ namespace Smdpp.Logic.Hardware
         {
             EventSink.ConnectRequested += OnConnectRequested;
             EventSink.JogPrecisionChangeRequested += EventSink_JogPrecisionChangeRequested;
-
         }
 
         public virtual bool OnConnectRequested(string comPort, int baudRate)
@@ -54,7 +53,20 @@ namespace Smdpp.Logic.Hardware
 
         public virtual bool Send(BaseCommand command)
         {
-            return false;
+            if (IsConnected())
+            {
+                var cmd = command.ToString();
+                serialPort.WriteLine(cmd);
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool IsConnected()
+        {
+            return this.serialPort != null && this.serialPort.IsOpen;
         }
     }
 }

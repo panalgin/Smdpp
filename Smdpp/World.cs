@@ -22,7 +22,6 @@ namespace Smdpp
             "38400",
             "57600",
             "115200",
-            "256000",
         };
 
         public static List<Image> CameraImages = new List<Image>();

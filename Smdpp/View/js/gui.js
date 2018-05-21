@@ -9,6 +9,7 @@
 
         if (result.success) {
             alert("Bağlantı başarılı.");
+            //$("div#connection").remove();
         }
     });
 

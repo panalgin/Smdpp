@@ -11,7 +11,6 @@ namespace Smdpp.Logic.Commands
         public SetJogPrecisionCommand(int value) 
             : base(Opcode.SetJogPrecision, value.ToString())
         {
-
         }
     }
 }

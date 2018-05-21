@@ -22,9 +22,9 @@ namespace Smdpp.Logic.Commands
             this.Value = value;
         }
 
-        public virtual string ToString()
+        public override string ToString()
         {
-            return null;
+            return string.Format("0x{0:X2},{1}", (int)this.Opcode, this.Value);
         }
     }
 }

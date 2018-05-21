@@ -98,7 +98,7 @@
     <Compile Include="Logic\Callbacks\ConnectRequestedCallback.cs" />
     <Compile Include="Logic\Callbacks\SetPrecisionCallback.cs" />
     <Compile Include="Logic\Commands\BaseCommand.cs" />
-    <Compile Include="Logic\Commands\Opcodes.cs" />
+    <Compile Include="Logic\Commands\OpCodes.cs" />
     <Compile Include="Logic\Commands\SetJogPrecisionCommand.cs" />
     <Compile Include="Logic\Hardware\BaseControlBoard.cs" />
     <Compile Include="Logic\Hardware\ChipKit-Max32.cs" />

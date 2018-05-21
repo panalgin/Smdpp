@@ -12,10 +12,5 @@ namespace Smdpp.Logic.Hardware
         {
 
         }
-
-        private void EventSink_ConnectRequested(string comPort, int baudRate)
-        {
-            
-        }
     }
 }

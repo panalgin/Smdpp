@@ -8,8 +8,8 @@ namespace Smdpp.Logic.Commands
 {
     public enum Opcode
     {
-        None,
-        Hello,
-        SetJogPrecision,
+        None = 0x00,
+        Hello = 0x01,
+        SetJogPrecision = 0x02,
     }
 }

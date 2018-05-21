@@ -15,7 +15,7 @@ $(document).ready(function(e) {
 		var item = baudRates[i];
 		var optionField = $("<option value='" + item + "'>" + item + "</option>");
 
-		if (item === "256000")
+		if (item === "115200")
 			optionField.attr("selected", "selected");
 		
 		$("select#baud-rates-select").append(optionField);
