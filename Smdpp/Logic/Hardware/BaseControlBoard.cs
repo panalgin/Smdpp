@@ -14,7 +14,14 @@ namespace Smdpp.Logic.Hardware
 
         public BaseControlBoard()
         {
+            EventSink.ConnectRequested += OnConnectRequested;
             EventSink.JogPrecisionChangeRequested += EventSink_JogPrecisionChangeRequested;
+
+        }
+
+        public virtual bool OnConnectRequested(string comPort, int baudRate)
+        {
+            return Connect(comPort, baudRate);
         }
 
         private void EventSink_JogPrecisionChangeRequested(int value)
@@ -22,7 +29,7 @@ namespace Smdpp.Logic.Hardware
             this.Send(new SetJogPrecisionCommand(value));
         }
 
-        public virtual void Connect(string portName, int baudRate)
+        public virtual bool Connect(string portName, int baudRate)
         {
             try
             {
@@ -34,10 +41,14 @@ namespace Smdpp.Logic.Hardware
 
                 if (!serialPort.IsOpen)
                     serialPort.Open();
+
+                return true;
             }
             catch(Exception ex)
             {
                 EventSink.InvokeError(ex);
+
+                return false;
             }
         }
 
