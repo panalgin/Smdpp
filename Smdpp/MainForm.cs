@@ -28,15 +28,15 @@ namespace Smdpp
             EventSink.ImportPnpFileRequested += EventSink_ImportPnpFileRequested;
             EventSink.CloseRequested += EventSink_CloseRequested;
 
-
             EventSink.GerberParsed += EventSink_GerberParsed;
             EventSink.SvgParsed += EventSink_SvgParsed;
             EventSink.PnpFileParsed += EventSink_PnpFileParsed;
 
-
             EventHandlers.Initialize();
 
             this.WindowState = FormWindowState.Maximized;
+
+            World.Initialize();
         }
 
         private void EventSink_PnpFileParsed(PnpTask task)
@@ -77,7 +77,6 @@ namespace Smdpp
                     var filePath = dialog.FileName;
 
                     SvgReader reader = new SvgReader(filePath);
-
                 }
             });
         }

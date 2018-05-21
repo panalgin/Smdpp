@@ -11,7 +11,7 @@
 			var menuId = $(this).attr("id");
 			var popId = $("ul.pop-menu").filter(":visible").attr("id");
 
-			if (menuId.replace("id", "") != popId.replace("id", "")) {
+			if (menuId.replace("id", "") !== popId.replace("id", "")) {
 				showMenu(menuId);
 			}
 		}

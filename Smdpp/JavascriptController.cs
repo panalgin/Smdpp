@@ -48,6 +48,17 @@ namespace Smdpp
             EventSink.InvokeImportPnpFileRequested();
         }
 
+        public IScriptCallback Connect(string comPort, int baudRate)
+        {
+            EventSink.InvokeConnectRequested(comPort, baudRate);
+
+            return new ConnectRequestedCallback()
+            {
+                Success = true,
+                Message = "Başarılı"
+            };
+        }
+
         public IScriptCallback SetJogPrecision(int value)
         {
             EventSink.InvokeJogPrecisionChangeRequested(value);
