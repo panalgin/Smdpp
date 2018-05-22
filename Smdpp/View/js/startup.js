@@ -20,12 +20,9 @@ function showContextMenuForItem(svg, xOff, yOff) {
     var componentInfo = svg.data("component");
     var packageInfo = findPackageDetailsOf(componentInfo.packageId);
 
-    console.log(window.currentTask);
-
     object.find("#referenceName").html(componentInfo.referenceId);
     object.find("#packageName").html(packageInfo.name);
     object.find("#value").html(componentInfo.value);
-
 
     $("#board").append(object);
 
