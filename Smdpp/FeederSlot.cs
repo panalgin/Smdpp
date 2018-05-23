@@ -17,7 +17,7 @@ namespace Smdpp
         public int ID { get; set; }
         public int Width { get; set; }
         public decimal PickupX { get; set; }
-        public Nullable<decimal> Depth { get; set; }
+        public decimal Depth { get; set; }
         public Nullable<decimal> PickupY { get; set; }
     }
 }

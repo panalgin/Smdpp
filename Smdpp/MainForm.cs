@@ -31,7 +31,6 @@ namespace Smdpp
             EventSink.GerberParsed += EventSink_GerberParsed;
             EventSink.SvgParsed += EventSink_SvgParsed;
             EventSink.PnpFileParsed += EventSink_PnpFileParsed;
-
             EventHandlers.Initialize();
 
             this.WindowState = FormWindowState.Maximized;

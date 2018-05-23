@@ -92,6 +92,7 @@
       <DependentUpon>SmdppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Contracts\ComponentContract.cs" />
+    <Compile Include="Contracts\FeederSlotContract.cs" />
     <Compile Include="FeederSlot.cs">
       <DependentUpon>SmdppModel.tt</DependentUpon>
     </Compile>
@@ -238,7 +239,10 @@
     <Content Include="View\js\async\gerber-resolved.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\js\async\list-packages-replied.js">
+    <Content Include="View\js\async\list-feeders-reply.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\js\async\list-packages-reply.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\pnp-resolved.js">
