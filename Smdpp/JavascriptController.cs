@@ -48,6 +48,11 @@ namespace Smdpp
             EventSink.InvokeImportPnpFileRequested();
         }
 
+        public void GetFeederSlots()
+        {
+            EventSink.InvokeFeedersRequested();
+        }
+
         public IScriptCallback Connect(string comPort, int baudRate)
         {
             EventSink.InvokeConnectRequested(comPort, baudRate);
