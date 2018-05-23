@@ -117,7 +117,10 @@ void setup() {
     }
   }
   
-   
+  xMotor = &controller.Motors[0];
+  yMotor = &controller.Motors[1];
+  zMotor = &controller.Motors[2];
+  aMotor = &controller.Motors[3];
   
   yMotor->SetDwellSpeed(100);
   xMotor->SetDwellSpeed(100);

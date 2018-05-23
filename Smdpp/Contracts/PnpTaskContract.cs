@@ -4,12 +4,14 @@ using Smdpp.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Smdpp
 {
-    public class PnpTask
+    [DataContract]
+    public class PnpTaskContract
     {
         [JsonProperty(PropertyName = "availablePackages")]
         public List<PackageContract> AvailablePackages { get; set; }

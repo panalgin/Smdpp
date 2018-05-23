@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace Smdpp.Logic
 {
-    public class PnpPart
+    [DataContract]
+    public class PnpPartContract
     {
         /// <summary>
         /// Referans numarası, U1, U2 gibi
@@ -40,7 +42,7 @@ namespace Smdpp.Logic
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
 
-        public PnpPart()
+        public PnpPartContract()
         {
 
         }

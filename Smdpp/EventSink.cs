@@ -17,10 +17,11 @@ namespace Smdpp
         public delegate void OnSvgParsed(SvgTask task);
         public delegate void OnSavePackageRequested();
         public delegate void OnListPackagesRequested();
-        public delegate void OnPnpFileParsed(PnpTask task);
+        public delegate void OnPnpFileParsed(PnpTaskContract task);
         public delegate void OnJogPrecisionChangeRequested(int value);
         public delegate bool OnConnectRequested(string comPort, int baudRate);
         public delegate void OnFeedersRequested();
+        public delegate void OnSuggestSlotsRequested();
 
         public static event OnImportPnpFileReqeusted ImportPnpFileRequested;
         public static event OnImportSvgRequested ImportSvgRequested;
@@ -36,6 +37,7 @@ namespace Smdpp
         public static event OnError Error;
         public static event OnConnectRequested ConnectRequested;
         public static event OnFeedersRequested FeedersRequested;
+        public static event OnSuggestSlotsRequested SuggestSlotsRequested;
 
         public static void InvokeImportPnpFileRequested() => ImportPnpFileRequested?.Invoke();
         public static void InvokeImportGerberRequested() => ImportSvgRequested?.Invoke();
@@ -46,10 +48,11 @@ namespace Smdpp
         public static void InvokeCloseRequested() => CloseRequested?.Invoke();
         public static void InvokeSavePackageRequested() => SavePackageRequested?.Invoke();
         public static void InvokeListPackagesRequested() => ListPackagesRequested?.Invoke();
-        public static void InvokePnpFileParsed(PnpTask task) => PnpFileParsed?.Invoke(task);
+        public static void InvokePnpFileParsed(PnpTaskContract task) => PnpFileParsed?.Invoke(task);
         public static void InvokeJogPrecisionChangeRequested(int value) => JogPrecisionChangeRequested?.Invoke(value);
         public static void InvokeError(Exception ex) => Error?.Invoke(ex);
         public static void InvokeFeedersRequested() => FeedersRequested?.Invoke();
+        public static void InvokeSuggestSlotsRequested() => SuggestSlotsRequested?.Invoke();
         public static bool InvokeConnectRequested(string comPort, int baudRate)
         {
             if (ConnectRequested != null)

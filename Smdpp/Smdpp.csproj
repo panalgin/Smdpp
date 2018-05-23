@@ -103,7 +103,7 @@
     <Compile Include="Logic\Commands\SetJogPrecisionCommand.cs" />
     <Compile Include="Logic\Hardware\BaseControlBoard.cs" />
     <Compile Include="Logic\Hardware\ChipKit-Max32.cs" />
-    <Compile Include="Logic\PnpTask.cs" />
+    <Compile Include="Contracts\PnpTaskContract.cs" />
     <Compile Include="Contracts\PackageContract.cs" />
     <Compile Include="EventSink.cs" />
     <Compile Include="JavascriptController.cs" />
@@ -116,7 +116,7 @@
     <Compile Include="Logic\Layer.cs" />
     <Compile Include="Logic\PnpFileImportResult.cs" />
     <Compile Include="Logic\PnpFileReader.cs" />
-    <Compile Include="Logic\PnpPart.cs" />
+    <Compile Include="Contracts\PnpPartContract.cs" />
     <Compile Include="Logic\Position.cs" />
     <Compile Include="Logic\Size.cs" />
     <Compile Include="Logic\SvgReader.cs" />

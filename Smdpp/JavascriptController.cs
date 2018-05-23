@@ -53,6 +53,11 @@ namespace Smdpp
             EventSink.InvokeFeedersRequested();
         }
 
+        public void GetSuggestedFeederValues()
+        {
+            EventSink.InvokeSuggestSlotsRequested();
+        }
+
         public IScriptCallback Connect(string comPort, int baudRate)
         {
             EventSink.InvokeConnectRequested(comPort, baudRate);

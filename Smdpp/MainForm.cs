@@ -38,7 +38,7 @@ namespace Smdpp
             World.Initialize();
         }
 
-        private void EventSink_PnpFileParsed(PnpTask task)
+        private void EventSink_PnpFileParsed(PnpTaskContract task)
         {
             string data = JsonConvert.SerializeObject(task);
             ScriptRunner.Run(ScriptAction.PnpTaskResolved, Utility.HtmlEncode(data));

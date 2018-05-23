@@ -26,7 +26,7 @@ namespace Smdpp.Logic
             {
                 string[] lines = data.Split('\n');
 
-                List<PnpPart> parts = new List<PnpPart>();
+                List<PnpPartContract> parts = new List<PnpPartContract>();
 
                 lines.Skip(1).All(delegate (string line)
                 {
@@ -44,7 +44,7 @@ namespace Smdpp.Logic
                         double rotation = double.Parse(parsedLine[5]);
                         string value = parsedLine[6];
 
-                        PnpPart part = new PnpPart()
+                        PnpPartContract part = new PnpPartContract()
                         {
                             ReferenceID = refId,
                             PackageID = packageId,
@@ -69,7 +69,7 @@ namespace Smdpp.Logic
                 var smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
                 var dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
 
-                PnpTask contract = new PnpTask();
+                PnpTaskContract contract = new PnpTaskContract();
 
                 var usedPackages = smtParts.GroupBy(q => q.PackageID).Select(q => q.FirstOrDefault().PackageID).ToList();
                 var availablePackages = new List<PackageContract>();
@@ -93,7 +93,7 @@ namespace Smdpp.Logic
                     });
                 }
 
-                smtParts.All(delegate (PnpPart part)
+                smtParts.All(delegate (PnpPartContract part)
                 {
                     ComponentContract component = new ComponentContract
                     {
