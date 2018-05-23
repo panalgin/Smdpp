@@ -22,6 +22,11 @@ Motor y_Motor(37, 23, 'Y');
 Motor z_Motor(33, 25, 'Z');
 Motor a_Motor(31, 39, 'A');
 
+Motor* xMotor;
+Motor* yMotor;
+Motor* zMotor;
+Motor* aMotor;
+
 void setup() {
   Serial.begin(115200);
   delay(20);
@@ -112,18 +117,20 @@ void setup() {
     }
   }
   
-  y_Motor.SetDwellSpeed(100);
-  x_Motor.SetDwellSpeed(100);
-  z_Motor.SetDwellSpeed(100);
+   
   
-  x_Motor.SetMaxSpeed(700);
-  x_Motor.SetSpeed(700);
-  y_Motor.SetMaxSpeed(600);
-  y_Motor.SetSpeed(600);
-  z_Motor.SetMaxSpeed(200);
-  z_Motor.SetSpeed(200);
-  a_Motor.SetMaxSpeed(200);
-  a_Motor.SetSpeed(200);
+  yMotor->SetDwellSpeed(100);
+  xMotor->SetDwellSpeed(100);
+  zMotor->SetDwellSpeed(100);
+  
+  xMotor->SetMaxSpeed(700);
+  xMotor->SetSpeed(700);
+  yMotor->SetMaxSpeed(600);
+  yMotor->SetSpeed(600);
+  zMotor->SetMaxSpeed(200);
+  zMotor->SetSpeed(200);
+  aMotor->SetMaxSpeed(200);
+  aMotor->SetSpeed(200);
 }
 
 String incomingData = "";
@@ -154,22 +161,22 @@ void loop() {
      uint8_t jogRightState = digitalRead(JOG_RIGHT_PIN);
      
      if (jogDownState == LOW) {
-        if (y_Motor.GetCurrentPosition() >= 0) {
-           y_Motor.Jog(1); 
+        if (yMotor->GetCurrentPosition() >= 0) {
+           yMotor->Jog(1); 
         }
      }
      else if (jogUpState == LOW) {
-        if (y_Motor.GetCurrentPosition() > 0) {
-          y_Motor.Jog(-1); 
+        if (yMotor->GetCurrentPosition() > 0) {
+          yMotor->Jog(-1); 
         }
      }
      else if (jogLeftState == LOW) {
-        if (x_Motor.GetCurrentPosition() > 0) {
-           x_Motor.Jog(-1); 
+        if (xMotor->GetCurrentPosition() > 0) {
+           xMotor->Jog(-1); 
         }
      }
      else if (jogRightState == LOW) {
-        x_Motor.Jog(1);
+        xMotor->Jog(1);
      }
   }
   

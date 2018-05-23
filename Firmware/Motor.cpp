@@ -38,7 +38,7 @@ void Motor::Initialize() {
   this->StepsTaken = 0;
   this->LastSteppedAt = micros() - (this->StepInterval * 2); // make it ready to step instantly on first loop cycle
   this->UseRamping = true;
-
+  this->JogSpeed = 30;
   pinMode(this->StepPin, OUTPUT);
   pinMode(this->DirPin, OUTPUT);
 
