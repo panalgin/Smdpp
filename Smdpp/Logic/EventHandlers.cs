@@ -35,15 +35,13 @@ namespace Smdpp.Logic
                     var json = JsonConvert.SerializeObject(slots);
 
                     ScriptRunner.Run(ScriptAction.ListFeedersReply, Utility.HtmlEncode(json));
-
-
                 }
             });
         }
 
         private static void EventSink_ListPackagesRequested()
         {
-            var task = Task.Run(() =>
+            var task = Task.Run(async () =>
             {
                 using (SmdppEntities context = new SmdppEntities())
                 {
