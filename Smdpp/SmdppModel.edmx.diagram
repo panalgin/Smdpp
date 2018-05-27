@@ -10,6 +10,8 @@
         <AssociationConnector Association="SmdppModel.ComponentPackage" />
         <EntityTypeShape EntityType="SmdppModel.FeederSlot" Width="1.5" PointX="5.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmdppModel.Nozzle" Width="1.5" PointX="7.875" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SmdppModel.FeederSlotComponent" />
+        <AssociationConnector Association="SmdppModel.FeederSlotComponent1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

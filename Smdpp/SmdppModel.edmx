@@ -17,11 +17,13 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Width" Type="int" Nullable="false" />
           <Property Name="PickupX" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Depth" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="PickupY" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="PickupY" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CurrentPartID" Type="int" />
+          <Property Name="SuggestedPartID" Type="int" />
         </EntityType>
         <EntityType Name="Nozzles">
           <Key>
@@ -69,6 +71,14 @@
           </AssociationSet>
           <EntitySet Name="FeederSlots" EntityType="SmdppModel.FeederSlot" />
           <EntitySet Name="Nozzles" EntityType="SmdppModel.Nozzle" />
+          <AssociationSet Name="FeederSlotComponent" Association="SmdppModel.FeederSlotComponent">
+            <End Role="FeederSlot" EntitySet="FeederSlots" />
+            <End Role="Component" EntitySet="Components" />
+          </AssociationSet>
+          <AssociationSet Name="FeederSlotComponent1" Association="SmdppModel.FeederSlotComponent1">
+            <End Role="FeederSlot" EntitySet="FeederSlots" />
+            <End Role="Component" EntitySet="Components" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Package">
           <Key>
@@ -114,8 +124,12 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Width" Type="Int32" Nullable="false" />
           <Property Name="PickupX" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="Depth" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="PickupY" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Depth" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PickupY" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CurrentPartID" Type="Int32" />
+          <Property Name="SuggestedPartID" Type="Int32" />
+          <NavigationProperty Name="ConnectedPart" Relationship="SmdppModel.FeederSlotComponent" FromRole="FeederSlot" ToRole="Component" />
+          <NavigationProperty Name="SuggestedPart" Relationship="SmdppModel.FeederSlotComponent1" FromRole="FeederSlot" ToRole="Component" />
         </EntityType>
         <EntityType Name="Nozzle">
           <Key>
@@ -128,6 +142,30 @@
           <Property Name="PositionZ" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FeederSlotComponent">
+          <End Type="SmdppModel.FeederSlot" Role="FeederSlot" Multiplicity="*" />
+          <End Type="SmdppModel.Component" Role="Component" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FeederSlot">
+              <PropertyRef Name="CurrentPartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FeederSlotComponent1">
+          <End Type="SmdppModel.FeederSlot" Role="FeederSlot" Multiplicity="*" />
+          <End Type="SmdppModel.Component" Role="Component" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FeederSlot">
+              <PropertyRef Name="SuggestedPartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -163,6 +201,8 @@
           <EntitySetMapping Name="FeederSlots">
             <EntityTypeMapping TypeName="SmdppModel.FeederSlot">
               <MappingFragment StoreEntitySet="FeederSlots">
+                <ScalarProperty Name="SuggestedPartID" ColumnName="SuggestedPartID" />
+                <ScalarProperty Name="CurrentPartID" ColumnName="CurrentPartID" />
                 <ScalarProperty Name="PickupY" ColumnName="PickupY" />
                 <ScalarProperty Name="Depth" ColumnName="Depth" />
                 <ScalarProperty Name="PickupX" ColumnName="PickupX" />

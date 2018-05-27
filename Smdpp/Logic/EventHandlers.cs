@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Smdpp.Contracts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Smdpp.Logic
@@ -41,7 +38,7 @@ namespace Smdpp.Logic
 
         private static void EventSink_ListPackagesRequested()
         {
-            var task = Task.Run(async () =>
+            var task = Task.Run(() =>
             {
                 using (SmdppEntities context = new SmdppEntities())
                 {

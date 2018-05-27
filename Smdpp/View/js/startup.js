@@ -14,9 +14,6 @@ function showContextMenuForItem(svg, xOff, yOff) {
 
     var object = $(CSV_RIGHT_CLICK_TEMPLATE);
 
-    var x = svg.css("left");
-    var y = svg.css("top");
-
     var componentInfo = svg.data("component");
     var packageInfo = findPackageDetailsOf(componentInfo.packageId);
 
@@ -24,7 +21,7 @@ function showContextMenuForItem(svg, xOff, yOff) {
     object.find("#packageName").html(packageInfo.name);
     object.find("#value").html(componentInfo.value);
 
-    $("#board").append(object);
+    $("#pnp-editor").append(object);
 
     object.css("top", yOff);
     object.css("left", xOff);

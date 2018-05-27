@@ -10,11 +10,11 @@
 				var element = document.getElementById('board');
 				var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
 
-				var xOffset = e.pageX - $("#board").offset().left;
-				var yOffset = e.pageY - $("#board").offset().top;
+				var xOffset = e.pageX - $("#pnp-editor").offset().left;
+				var yOffset = e.pageY - $("#pnp-editor").offset().top;
 
-				xOffset /= scaleX;
-				yOffset /= scaleX;
+				/*xOffset /= scaleX;
+				yOffset /= scaleX;*/
 				
 				$("#board").panzoom("disable");
 
