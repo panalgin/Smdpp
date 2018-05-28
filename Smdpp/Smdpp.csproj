@@ -116,6 +116,7 @@
     <Compile Include="Logic\GerberReader.cs" />
     <Compile Include="Logic\Callbacks\IScriptCallback.cs" />
     <Compile Include="Logic\Layer.cs" />
+    <Compile Include="Logic\Logger.cs" />
     <Compile Include="Logic\PnpFileImportResult.cs" />
     <Compile Include="Logic\PnpFileReader.cs" />
     <Compile Include="Contracts\PnpPartContract.cs" />
@@ -242,6 +243,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\gerber-resolved.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\js\async\list-feeder-states-reply.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="View\js\async\list-feeders-reply.js">

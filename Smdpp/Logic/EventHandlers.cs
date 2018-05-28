@@ -11,6 +11,19 @@ namespace Smdpp.Logic
         {
             EventSink.ListPackagesRequested += EventSink_ListPackagesRequested;
             EventSink.FeedersRequested += EventSink_FeedersRequested;
+            EventSink.FeederStatesRequested += EventSink_FeederStatesRequested;
+        }
+
+        private static void EventSink_FeederStatesRequested()
+        {
+            var task = Task.Run(async () =>
+            {
+                var result = await FeederManager.GetCurrentFeederSlots();
+
+                var json = JsonConvert.SerializeObject(result);
+
+                ScriptRunner.Run(ScriptAction.ListFeederStatesReply, Utility.HtmlEncode(json));
+            });
         }
 
         private static void EventSink_FeedersRequested()

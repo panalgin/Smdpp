@@ -20,4 +20,6 @@ $.get("inc/parts/feeder-slot.tpl", function (data) {{
 
         $("div#feeders").append(item);
     }}
+
+    windowsApp.getFeederStates();
 }});

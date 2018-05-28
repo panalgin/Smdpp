@@ -1,6 +1,7 @@
-﻿using Smdpp.Contracts;
+﻿using Newtonsoft.Json;
+using Smdpp.Contracts;
 
-namespace Smdpp.Contract
+namespace Smdpp.Contracts
 {
     public class FeederStateContract
     {
@@ -9,8 +10,13 @@ namespace Smdpp.Contract
 
         }
 
+        [JsonProperty(PropertyName = "slot")]
         public FeederSlotContract Slot { get; set; }
-        public object CurrentPart { get; set; }
+
+        [JsonProperty(PropertyName = "currentPart")]
+        public ComponentContract CurrentPart { get; set; }
+
+        [JsonProperty(PropertyName = "suggestedPart")]
         public ComponentContract SuggestedPart { get; set; }
     }
 }
