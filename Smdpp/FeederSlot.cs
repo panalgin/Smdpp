@@ -17,7 +17,12 @@ namespace Smdpp
         public int ID { get; set; }
         public int Width { get; set; }
         public decimal PickupX { get; set; }
-        public decimal Depth { get; set; }
-        public Nullable<decimal> PickupY { get; set; }
+        public Nullable<decimal> Depth { get; set; }
+        public decimal PickupY { get; set; }
+        public Nullable<int> CurrentPartID { get; set; }
+        public Nullable<int> SuggestedPartID { get; set; }
+    
+        public virtual Component ConnectedPart { get; set; }
+        public virtual Component SuggestedPart { get; set; }
     }
 }

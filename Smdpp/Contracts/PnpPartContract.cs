@@ -16,7 +16,7 @@ namespace Smdpp.Logic
         /// Kılıf numarası, QFP28 gibi
         /// </summary>
         [JsonProperty(PropertyName = "packageId")]
-        public string PackageID { get; set; }
+        public int PackageID { get; set; }
 
         /// <summary>
         /// Pozisyon bilgisi
@@ -41,6 +41,9 @@ namespace Smdpp.Logic
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
+
+        [JsonProperty(PropertyName = "packageName")]
+        public string PackageName { get; internal set; }
 
         public PnpPartContract()
         {

@@ -25,11 +25,5 @@ namespace Smdpp.Contracts
 
         [JsonProperty(PropertyName = "depth")]
         public decimal? Depth { get; set; }
-
-        [JsonProperty(PropertyName = "connectedPart", NullValueHandling = NullValueHandling.Ignore)]
-        public ComponentContract ConnectedPart { get; set; }
-
-        [JsonProperty(PropertyName = "suggestedPart", NullValueHandling = NullValueHandling.Ignore)]
-        public ComponentContract SuggestedPart { get; set; }
     }
 }

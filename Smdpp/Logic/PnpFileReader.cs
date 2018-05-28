@@ -37,7 +37,7 @@ namespace Smdpp.Logic
                     if (parsedLine.Length == 7)
                     {
                         string refId = parsedLine[0];
-                        string packageId = parsedLine[1];
+                        string packageName = parsedLine[1];
                         double xPosition = double.Parse(parsedLine[2]);
                         double yPosition = double.Parse(parsedLine[3]);
                         string layer = parsedLine[4];
@@ -47,7 +47,7 @@ namespace Smdpp.Logic
                         PnpPartContract part = new PnpPartContract()
                         {
                             ReferenceID = refId,
-                            PackageID = packageId,
+                            PackageName = packageName,
                             Position = new Position()
                             {
                                 X = xPosition,
@@ -71,9 +71,9 @@ namespace Smdpp.Logic
 
                 PnpTaskContract contract = new PnpTaskContract();
 
-                var usedPackages = smtParts.GroupBy(q => q.PackageID).Select(q => q.FirstOrDefault().PackageID).ToList();
+                var usedPackages = smtParts.GroupBy(q => q.PackageName).Select(q => q.FirstOrDefault().PackageName).ToList();
                 var availablePackages = new List<PackageContract>();
-                var components = new List<ComponentContract>();
+                //var components = new List<ComponentContract>();
 
                 using (SmdppEntities context = new SmdppEntities())
                 {
@@ -95,44 +95,51 @@ namespace Smdpp.Logic
 
                 smtParts.All(delegate (PnpPartContract part)
                 {
-                    ComponentContract component = new ComponentContract
+
+                    /*ComponentContract component = new ComponentContract
                     {
                         Layer = part.Layer,
                         Name = part.Value
-                    };
+                    };*/
 
-                    var usedPackage = availablePackages.FirstOrDefault(q => q.Name == part.PackageID);
+                    var usedPackage = availablePackages.FirstOrDefault(q => q.Name == part.PackageName);
 
                     if (usedPackage != null)
-                        component.PackageID = usedPackage.ID;
+                    {
+                        //component.PackageID = usedPackage.ID;
+                        part.PackageID = usedPackage.ID;
+                    }
 
-                    component.Position = new Position()
+                    /*component.Position = new Position()
                     {
                         X = part.Position.X,
                         Y = part.Position.Y * -1
-                    };
+                    };*/
 
-                    component.ReferenceID = part.ReferenceID;
+                    part.Position.Y *= -1;
+                    part.Value = part.Value.ToUpper();
+
+                    /*component.ReferenceID = part.ReferenceID;
                     component.Rotation = part.Rotation;
                     component.Value = part.Value.ToUpper();
 
-                    components.Add(component);
+                    components.Add(component);*/
 
                     return true;
                 });
 
                 contract.AvailablePackages = availablePackages;
-                contract.Components = components;
-                contract.Offset = GetPlacementOffset(components);
-                contract.BoardSize = GetBoardDimensions(components);
+                contract.Parts = smtParts;
+                contract.Offset = GetPlacementOffset(smtParts);
+                contract.BoardSize = GetBoardDimensions(smtParts);
 
                 EventSink.InvokePnpFileParsed(contract);
             }
         }
 
-        private Position GetPlacementOffset(List<ComponentContract> components)
+        private Position GetPlacementOffset(List<PnpPartContract> components)
         {
-            double lowestX = 0; 
+            double lowestX = 0;
             double lowestY = 0;
 
             if (components.Count > 0)
@@ -144,7 +151,7 @@ namespace Smdpp.Logic
             return new Position() { X = lowestX, Y = lowestY };
         }
 
-        private Size GetBoardDimensions(List<ComponentContract> components)
+        private Size GetBoardDimensions(List<PnpPartContract> components)
         {
             double lowestX = 0;
             double lowestY = 0;
@@ -159,7 +166,7 @@ namespace Smdpp.Logic
                 highestY = components.Max(q => q.Position.Y);
             }
 
-            return new Size() { Width = (highestX - lowestX) + 40, Height = (highestY - lowestY) + 40};
+            return new Size() { Width = (highestX - lowestX) + 40, Height = (highestY - lowestY) + 40 };
         }
     }
 }

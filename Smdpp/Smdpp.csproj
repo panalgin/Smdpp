@@ -102,6 +102,7 @@
     <Compile Include="Logic\Commands\OpCodes.cs" />
     <Compile Include="Logic\Commands\SetJogPrecisionCommand.cs" />
     <Compile Include="Logic\FeederManager.cs" />
+    <Compile Include="Contracts\FeederStateContract.cs" />
     <Compile Include="Logic\Hardware\BaseControlBoard.cs" />
     <Compile Include="Logic\Hardware\ChipKit-Max32.cs" />
     <Compile Include="Contracts\PnpTaskContract.cs" />

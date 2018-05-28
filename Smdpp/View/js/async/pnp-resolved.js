@@ -3,6 +3,8 @@ var task = $.parseJSON(unescape(data));
 
 window.currentTask = task;
 
+console.log(currentTask);
+
 var page = "";
 var board = "";
 var offset = 0.0;
@@ -18,21 +20,21 @@ $.when($.get("inc/controls/pnp-task.tpl", function(dt) {{
 	board.width(size.width + "mm");
 	board.height(size.height + "mm");
 
-	for(var i = 0; i < task.components.length; i++) {{
-		var component = task.components[i];
+	for(var i = 0; i < task.parts.length; i++) {{
+		var part = task.parts[i];
 
-		if (component.packageId > 0) {{
-			var svgData = findPackageOf(component.packageId);
+		if (part.packageId > 0) {{
+			var svgData = findPackageOf(part.packageId);
             var svgEntity = $(svgData);
-            svgEntity.data("component", component);
+            svgEntity.data("part", part);
 
-			var rotation = -component.rotation;
+			var rotation = -part.rotation;
 			svgEntity.css({{ 'transform': 'rotate(' + rotation + 'deg)' }});
 
 			board.append(svgEntity);
 
-			var yPos = 20 + (component.position.y - offset.y);// - (svgEntity.outerHeight() / 2);
-			var xPos = 20 + (component.position.x - offset.x);// - (svgEntity.outerWidth() / 2);
+			var yPos = 20 + (part.position.y - offset.y);// - (svgEntity.outerHeight() / 2);
+			var xPos = 20 + (part.position.x - offset.x);// - (svgEntity.outerWidth() / 2);
 
 			var xCenterOff = parseFloat(svgEntity.attr("width").replace(/[^-\d\.]/g, '')) / 3.779528;
 			var yCenterOff = parseFloat(svgEntity.attr("height").replace(/[^-\d\.]/g, '')) / 3.779528;

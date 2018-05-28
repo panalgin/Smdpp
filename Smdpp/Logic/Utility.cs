@@ -10,7 +10,7 @@ namespace Smdpp.Logic
 {
     public static class Utility
     {
-        private static decimal OneThouAsMm = 0.0254m;
+        private static readonly decimal OneThouAsMm = 0.0254m;
 
         public static decimal ConvertThouToMm(string thou)
         {

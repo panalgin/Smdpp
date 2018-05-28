@@ -14,7 +14,7 @@ function showContextMenuForItem(svg, xOff, yOff) {
 
     var object = $(CSV_RIGHT_CLICK_TEMPLATE);
 
-    var componentInfo = svg.data("component");
+    var componentInfo = svg.data("part");
     var packageInfo = findPackageDetailsOf(componentInfo.packageId);
 
     object.find("#referenceName").html(componentInfo.referenceId);
@@ -38,7 +38,7 @@ function findPackageDetailsOf(packageId) {
     for (var i = 0; i < window.currentTask.availablePackages.length; i++) {
         var currentPackage = window.currentTask.availablePackages[i];
 
-        if (currentPackage.id === packageId) {
+        if (currentPackage.id.toString() === packageId) {
             componentInfo = currentPackage;
 
             break;
