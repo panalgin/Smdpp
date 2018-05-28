@@ -13,7 +13,7 @@ namespace Smdpp.Logic
 
         }
 
-        public static Task<List<FeederStateContract>> GetCurrentFeederSlots()
+        public static Task<List<FeederSlots>> GetCurrentFeederSlots()
         {
             using (var context = new SmdppEntities())
             {

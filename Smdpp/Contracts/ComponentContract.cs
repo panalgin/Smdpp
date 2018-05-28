@@ -18,7 +18,7 @@ namespace Smdpp.Contracts
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "package")]
-        public PackageContract Package { get; set; }
+        public Package Package { get; set; }
 
         public ComponentContract()
         {

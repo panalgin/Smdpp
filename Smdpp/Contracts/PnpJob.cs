@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 namespace Smdpp
 {
     [DataContract]
-    public class PnpTaskContract
+    public class PnpJob
     {
         [JsonProperty(PropertyName = "availablePackages")]
-        public List<PackageContract> AvailablePackages { get; set; }
+        public List<Contracts.Package> AvailablePackages { get; set; }
 
         [JsonProperty(PropertyName = "parts")]
-        public List<PnpPartContract> Parts { get; set; }
+        public List<PnpPart> Parts { get; set; }
 
         [JsonProperty(PropertyName = "offset")]
         public Position Offset { get; set; }

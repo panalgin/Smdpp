@@ -26,7 +26,7 @@ namespace Smdpp.Logic
             {
                 string[] lines = data.Split('\n');
 
-                List<PnpPartContract> parts = new List<PnpPartContract>();
+                List<PnpPart> parts = new List<PnpPart>();
 
                 lines.Skip(1).All(delegate (string line)
                 {
@@ -44,7 +44,7 @@ namespace Smdpp.Logic
                         double rotation = double.Parse(parsedLine[5]);
                         string value = parsedLine[6];
 
-                        PnpPartContract part = new PnpPartContract()
+                        PnpPart part = new PnpPart()
                         {
                             ReferenceID = refId,
                             PackageName = packageName,
@@ -69,17 +69,17 @@ namespace Smdpp.Logic
                 var smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
                 var dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
 
-                PnpTaskContract contract = new PnpTaskContract();
+                PnpJob contract = new PnpJob();
 
                 var usedPackages = smtParts.GroupBy(q => q.PackageName).Select(q => q.FirstOrDefault().PackageName).ToList();
-                var availablePackages = new List<PackageContract>();
+                var availablePackages = new List<Contracts.Package>();
                 //var components = new List<ComponentContract>();
 
                 using (SmdppEntities context = new SmdppEntities())
                 {
                     usedPackages.All(delegate (string packageName)
                     {
-                        var package = context.Packages.Where(q => q.Name == packageName).Select(q => new PackageContract()
+                        var package = context.Packages.Where(q => q.Name == packageName).Select(q => new Package()
                         {
                             ID = q.ID,
                             Name = q.Name,
@@ -93,7 +93,7 @@ namespace Smdpp.Logic
                     });
                 }
 
-                smtParts.All(delegate (PnpPartContract part)
+                smtParts.All(delegate (PnpPart part)
                 {
 
                     /*ComponentContract component = new ComponentContract
@@ -137,7 +137,7 @@ namespace Smdpp.Logic
             }
         }
 
-        private Position GetPlacementOffset(List<PnpPartContract> components)
+        private Position GetPlacementOffset(List<PnpPart> components)
         {
             double lowestX = 0;
             double lowestY = 0;
@@ -151,7 +151,7 @@ namespace Smdpp.Logic
             return new Position() { X = lowestX, Y = lowestY };
         }
 
-        private Size GetBoardDimensions(List<PnpPartContract> components)
+        private Size GetBoardDimensions(List<PnpPart> components)
         {
             double lowestX = 0;
             double lowestY = 0;

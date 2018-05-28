@@ -106,6 +106,12 @@ namespace Smdpp
             }
         }
 
+
+        public IScriptCallback GetAppropriateSlotFor(string guid)
+        {
+            PnpPArt
+        }
+
         public void ListPackages()
         {
             EventSink.InvokeListPackagesRequested();

@@ -1,11 +1,18 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Runtime.Serialization;
 
 namespace Smdpp.Logic
 {
     [DataContract]
-    public class PnpPartContract
+    public class PnpPart
     {
+        /// <summary>
+        /// Genel identifier, state machinede tutulacak
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public Guid ID { get; set; }
+
         /// <summary>
         /// Referans numarası, U1, U2 gibi
         /// </summary>
@@ -45,9 +52,9 @@ namespace Smdpp.Logic
         [JsonProperty(PropertyName = "packageName")]
         public string PackageName { get; internal set; }
 
-        public PnpPartContract()
+        public PnpPart()
         {
-
+            this.ID = Guid.NewGuid();
         }
     }
 }

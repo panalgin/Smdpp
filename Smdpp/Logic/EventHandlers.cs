@@ -55,7 +55,7 @@ namespace Smdpp.Logic
             {
                 using (SmdppEntities context = new SmdppEntities())
                 {
-                    var packages = context.Packages.ToList().Select(q => new PackageContract()
+                    var packages = context.Packages.ToList().Select(q => new Package()
                     {
                         ID = q.ID,
                         Name = q.Name,
