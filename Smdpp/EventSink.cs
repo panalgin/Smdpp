@@ -53,6 +53,7 @@ namespace Smdpp
         public static void InvokeError(Exception ex) => Error?.Invoke(ex);
         public static void InvokeFeedersRequested() => FeedersRequested?.Invoke();
         public static void InvokeFeederStatesRequested() => FeederStatesRequested?.Invoke();
+
         public static bool InvokeConnectRequested(string comPort, int baudRate)
         {
             if (ConnectRequested != null)

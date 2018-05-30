@@ -18,8 +18,7 @@ namespace Smdpp.Logic
         {
             var task = Task.Run(async () =>
             {
-                var result = await FeederManager.GetCurrentFeederSlots();
-
+                 var result = await FeederManager.GetFeederStates();
                 var json = JsonConvert.SerializeObject(result);
 
                 ScriptRunner.Run(ScriptAction.ListFeederStatesReply, Utility.HtmlEncode(json));
@@ -28,21 +27,12 @@ namespace Smdpp.Logic
 
         private static void EventSink_FeedersRequested()
         {
-            var task = Task.Run(() =>
+            var task = Task.Run(async () =>
             {
-                using(SmdppEntities context = new SmdppEntities())
+                using (SmdppEntities context = new SmdppEntities())
                 {
-                    var slots = context.FeederSlots.OrderBy(q => q.PickupX)
-                    .Select(q => new FeederSlotContract()
-                    {
-                        ID = q.ID,
-                        Width = q.Width,
-                        Depth = q.Depth,
-                        PickupX = q.PickupX,
-                        PickupY = q.PickupY
-                    }).ToList();
-
-                    var json = JsonConvert.SerializeObject(slots);
+                    var result = await FeederManager.GetFeederSlots();
+                    var json = JsonConvert.SerializeObject(result);
 
                     ScriptRunner.Run(ScriptAction.ListFeedersReply, Utility.HtmlEncode(json));
                 }
