@@ -96,6 +96,7 @@
     <Compile Include="FeederSlot.cs">
       <DependentUpon>SmdppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Callbacks\AppropriateSlotCallback.cs" />
     <Compile Include="Logic\Callbacks\ConnectRequestedCallback.cs" />
     <Compile Include="Logic\Callbacks\SetPrecisionCallback.cs" />
     <Compile Include="Logic\Commands\BaseCommand.cs" />

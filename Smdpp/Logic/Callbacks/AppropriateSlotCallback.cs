@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Smdpp.Logic.Callbacks
 {
-    public class ConnectRequestedCallback : BaseScriptCallback
-    {
-        public ConnectRequestedCallback()
-        {
+    public class AppropriateSlotCallback : BaseScriptCallback
+    { 
 
-        }
     }
 }

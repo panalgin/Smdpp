@@ -11,7 +11,7 @@ namespace Smdpp.Logic
         /// Genel identifier, state machinede tutulacak
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public Guid ID { get; set; }
+        public string ID { get; set; }
 
         /// <summary>
         /// Referans numarası, U1, U2 gibi
@@ -54,7 +54,7 @@ namespace Smdpp.Logic
 
         public PnpPart()
         {
-            this.ID = Guid.NewGuid();
+            this.ID = Guid.NewGuid().ToString();
         }
     }
 }
