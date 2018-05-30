@@ -92,26 +92,23 @@ namespace Smdpp.Logic
         public static Task<FeederSlotContract> GetAppropriateSlotFor(PnpPart part)
         {
             using (var context = new SmdppEntities()) {
-                var package = context.Packages.FirstOrDefault(q => q.ID == part.PackageID);
+                Package package = context.Packages.FirstOrDefault(q => q.ID == part.PackageID);
 
                 if (package != null) {
-                    var slot = context.FeederSlots.Where(q => q.Width == package.ReelWidth
-                    && q.CurrentPartID != null
-                    && q.ConnectedPart.Name == part.Value).Select(q => new FeederSlotContract()
+                    FeederSlotContract slot = context.FeederSlots.Where(q => q.CurrentPartID != null && q.ConnectedPart.Name == part.Value).Select(y => new FeederSlotContract()
                     {
-                        ID = q.ID,
-                        Depth = q.Depth,
-                        PickupX = q.PickupX,
-                        PickupY = q.PickupY,
-                        Width = q.Width
-
+                        ID = y.ID,
+                        Depth = y.Depth,
+                        PickupX = y.PickupX,
+                        PickupY = y.PickupY,
+                        Width = y.Width
                     }).FirstOrDefault();
 
 
                     return Task.FromResult(slot);
                 }
-
-                return null;
+                else
+                    return null;
             }
         }
     }

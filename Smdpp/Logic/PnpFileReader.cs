@@ -13,7 +13,58 @@ namespace Smdpp.Logic
 {
     public class PnpFileReader
     {
+        private List<PnpPart> ExtractParts(string[] lines)
+        {
+            List<PnpPart> result = new List<PnpPart>();
+
+            lines.Skip(1).All(delegate (string line)
+            {
+                line = line.Replace("\r", "").Replace("\n", "");
+
+                string[] parsedLine = line.Split('|');
+
+                if (parsedLine.Length == 7)
+                {
+                    string refId = parsedLine[0];
+                    string packageName = parsedLine[1];
+                    double xPosition = double.Parse(parsedLine[2]);
+                    double yPosition = double.Parse(parsedLine[3]);
+                    string layer = parsedLine[4];
+                    double rotation = double.Parse(parsedLine[5]);
+                    string value = parsedLine[6];
+
+                    PnpPart part = new PnpPart()
+                    {
+                        ReferenceID = refId,
+                        PackageName = packageName,
+                        Position = new Position()
+                        {
+                            X = xPosition,
+                            Y = yPosition
+                        },
+                        Layer = Layers.Parse(layer),
+                        Rotation = rotation,
+                        Value = value
+                    };
+
+                    result.Add(part);
+                }
+
+                return true;
+            });
+
+            return result;
+        }
+
         public PnpFileReader(string filePath)
+        {
+            Task.Run(async () =>
+            {
+                bool result = await this.Parse(filePath);
+            });
+        }
+
+        private Task<bool> Parse(string filePath)
         {
             string data = "";
 
@@ -25,57 +76,20 @@ namespace Smdpp.Logic
             if (!string.IsNullOrEmpty(data))
             {
                 string[] lines = data.Split('\n');
+                List<PnpPart> parts = ExtractParts(lines);
 
-                List<PnpPart> parts = new List<PnpPart>();
+                Layer smtLayer = Layers.Parse(Settings.Default.SmtLayer);
 
-                lines.Skip(1).All(delegate (string line)
-                {
-                    line = line.Replace("\r", "").Replace("\n", "");
-
-                    string[] parsedLine = line.Split('|');
-
-                    if (parsedLine.Length == 7)
-                    {
-                        string refId = parsedLine[0];
-                        string packageName = parsedLine[1];
-                        double xPosition = double.Parse(parsedLine[2]);
-                        double yPosition = double.Parse(parsedLine[3]);
-                        string layer = parsedLine[4];
-                        double rotation = double.Parse(parsedLine[5]);
-                        string value = parsedLine[6];
-
-                        PnpPart part = new PnpPart()
-                        {
-                            ReferenceID = refId,
-                            PackageName = packageName,
-                            Position = new Position()
-                            {
-                                X = xPosition,
-                                Y = yPosition
-                            },
-                            Layer = Layers.Parse(layer),
-                            Rotation = rotation,
-                            Value = value
-                        };
-
-                        parts.Add(part);
-                    }
-
-                    return true;
-                });
-
-                var smtLayer = Layers.Parse(Settings.Default.SmtLayer);
-
-                var smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
-                var dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
+                List<PnpPart> smtParts = parts.Where(q => q.Layer == smtLayer).ToList();
+                List<PnpPart> dipParts = parts.Where(q => q.Layer != smtLayer).ToList();
 
                 PnpJob contract = new PnpJob();
-
-                var usedPackages = smtParts.GroupBy(q => q.PackageName).Select(q => q.FirstOrDefault().PackageName).ToList();
-                var availablePackages = new List<Contracts.Package>();
+                List<Contracts.Package> availablePackages = new List<Contracts.Package>();
 
                 using (SmdppEntities context = new SmdppEntities())
                 {
+                    List<string> usedPackages = smtParts.GroupBy(q => q.PackageName).Select(q => q.FirstOrDefault().PackageName).ToList();
+
                     usedPackages.All(delegate (string packageName)
                     {
                         var package = context.Packages.Where(q => q.Name == packageName).Select(q => new Contracts.Package()
@@ -94,7 +108,7 @@ namespace Smdpp.Logic
 
                 smtParts.All(delegate (PnpPart part)
                 {
-                    var usedPackage = availablePackages.FirstOrDefault(q => q.Name == part.PackageName);
+                    Contracts.Package usedPackage = availablePackages.FirstOrDefault(q => q.Name == part.PackageName);
 
                     if (usedPackage != null)
                     {
@@ -113,7 +127,11 @@ namespace Smdpp.Logic
                 contract.BoardSize = GetBoardDimensions(smtParts);
 
                 EventSink.InvokePnpFileParsed(contract);
+
+                return Task.FromResult(true);
             }
+            else
+                return Task.FromResult(false);
         }
 
         private Position GetPlacementOffset(List<PnpPart> components)
