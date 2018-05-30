@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Smdpp.Logic.Callbacks
 {
     public class AppropriateSlotCallback : BaseScriptCallback
-    { 
+    {
 
     }
 }

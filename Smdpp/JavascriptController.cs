@@ -110,16 +110,22 @@ namespace Smdpp
         public IScriptCallback GetAppropriateSlotFor(string guid)
         {
             PnpPart part = World.GetCurrentJob().Parts.Where(q => q.ID == guid).FirstOrDefault();
-            var result = FeederManager.GetAppropriareSlotFor(part);
+            var result = FeederManager.GetAppropriateSlotFor(part);
 
-            if (result != false)
+            if (result != null)
             {
                 return new AppropriateSlotCallback()
                 {
-                    Suc
+                    Success = true,
+                    Message = "Başarılı"
                 };
             }
-
+            else
+                return new AppropriateSlotCallback()
+                {
+                    Success = false,
+                    Message = "Başarısız"
+                };
         }
 
         public void ListPackages()

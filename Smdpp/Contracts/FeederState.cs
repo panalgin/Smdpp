@@ -3,9 +3,9 @@ using Smdpp.Contracts;
 
 namespace Smdpp.Contracts
 {
-    public class FeederStateContract
+    public class FeederState
     {
-        public FeederStateContract()
+        public FeederState()
         {
 
         }

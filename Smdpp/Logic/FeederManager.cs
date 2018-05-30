@@ -13,7 +13,7 @@ namespace Smdpp.Logic
 
         }
 
-        public static Task<List<FeederSlots>> GetCurrentFeederSlots()
+        public static Task<List<FeederState>> GetCurrentFeederSlots()
         {
             using (var context = new SmdppEntities())
             {
@@ -26,7 +26,7 @@ namespace Smdpp.Logic
                                   join s in context.Components on f.SuggestedPartID equals s.ID into sParts
                                   from s1 in sParts.DefaultIfEmpty()
                                   //join p2 in context.Packages on s1.PackageID equals p2.ID
-                                  select new FeederStateContract()
+                                  select new FeederState()
                                   {
                                       Slot = new FeederSlotContract()
                                       {
@@ -62,7 +62,7 @@ namespace Smdpp.Logic
 
                                   }).ToList();
 
-                    result.All(delegate (FeederStateContract contract)
+                    result.All(delegate (FeederState contract)
                     {
 
                         return true;
@@ -77,6 +77,11 @@ namespace Smdpp.Logic
                     return null;
                 }
             }
+        }
+
+        internal static object GetAppropriateSlotFor(PnpPart part)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -73,13 +73,12 @@ namespace Smdpp.Logic
 
                 var usedPackages = smtParts.GroupBy(q => q.PackageName).Select(q => q.FirstOrDefault().PackageName).ToList();
                 var availablePackages = new List<Contracts.Package>();
-                //var components = new List<ComponentContract>();
 
                 using (SmdppEntities context = new SmdppEntities())
                 {
                     usedPackages.All(delegate (string packageName)
                     {
-                        var package = context.Packages.Where(q => q.Name == packageName).Select(q => new Package()
+                        var package = context.Packages.Where(q => q.Name == packageName).Select(q => new Contracts.Package()
                         {
                             ID = q.ID,
                             Name = q.Name,
@@ -95,35 +94,15 @@ namespace Smdpp.Logic
 
                 smtParts.All(delegate (PnpPart part)
                 {
-
-                    /*ComponentContract component = new ComponentContract
-                    {
-                        Layer = part.Layer,
-                        Name = part.Value
-                    };*/
-
                     var usedPackage = availablePackages.FirstOrDefault(q => q.Name == part.PackageName);
 
                     if (usedPackage != null)
                     {
-                        //component.PackageID = usedPackage.ID;
                         part.PackageID = usedPackage.ID;
                     }
 
-                    /*component.Position = new Position()
-                    {
-                        X = part.Position.X,
-                        Y = part.Position.Y * -1
-                    };*/
-
                     part.Position.Y *= -1;
                     part.Value = part.Value.ToUpper();
-
-                    /*component.ReferenceID = part.ReferenceID;
-                    component.Rotation = part.Rotation;
-                    component.Value = part.Value.ToUpper();
-
-                    components.Add(component);*/
 
                     return true;
                 });
