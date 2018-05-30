@@ -3,7 +3,7 @@ var task = $.parseJSON(unescape(data));
 
 window.currentTask = task;
 
-console.log(currentTask);
+console.log("Csv Resolved: ", currentTask);
 
 var page = "";
 var board = "";

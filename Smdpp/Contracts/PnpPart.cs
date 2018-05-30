@@ -20,10 +20,16 @@ namespace Smdpp.Logic
         public string ReferenceID { get; set; }
 
         /// <summary>
-        /// Kılıf numarası, QFP28 gibi
+        /// Kılıf numarası, veritabanından gelir
         /// </summary>
         [JsonProperty(PropertyName = "packageId")]
         public int PackageID { get; set; }
+
+        /// <summary>
+        /// Kullanılan kılıfın adı.
+        /// </summary>
+        [JsonProperty(PropertyName = "packageName")]
+        public string PackageName { get; set; }
 
         /// <summary>
         /// Pozisyon bilgisi
@@ -44,13 +50,10 @@ namespace Smdpp.Logic
         public double Rotation { get; set; }
 
         /// <summary>
-        /// Parçaya ait değer, 10uF, spin-fv1 gibi.
+        /// Parçaya ait değer, 10uF, spin-fv1, component-name
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }
-
-        [JsonProperty(PropertyName = "packageName")]
-        public string PackageName { get; internal set; }
 
         public PnpPart()
         {

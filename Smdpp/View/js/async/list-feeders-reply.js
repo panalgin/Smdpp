@@ -1,6 +1,8 @@
 ﻿var data = "{0}";
 var task = $.parseJSON(unescape(data));
 
+console.log("Feeder Slots: ", task);
+
 var template = "";
 
 $.get("inc/parts/feeder-slot.tpl", function (data) {{

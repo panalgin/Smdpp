@@ -82,9 +82,37 @@ namespace Smdpp.Logic
             }
         }
 
-        internal static object GetAppropriateSlotFor(PnpPart part)
+        /// <summary>
+        /// Selects the best appropriate slot for the given pnp part. Currently
+        /// it only looks for on which slot the same component is attached. Later this can
+        /// suggest empty slots
+        /// </summary>
+        /// <param name="part">Pick and place part details which to look for its best place</param>
+        /// <returns></returns>
+        public static Task<FeederSlotContract> GetAppropriateSlotFor(PnpPart part)
         {
-            throw new NotImplementedException();
+            using (var context = new SmdppEntities()) {
+                var package = context.Packages.FirstOrDefault(q => q.ID == part.PackageID);
+
+                if (package != null) {
+                    var slot = context.FeederSlots.Where(q => q.Width == package.ReelWidth
+                    && q.CurrentPartID != null
+                    && q.ConnectedPart.Name == part.Value).Select(q => new FeederSlotContract()
+                    {
+                        ID = q.ID,
+                        Depth = q.Depth,
+                        PickupX = q.PickupX,
+                        PickupY = q.PickupY,
+                        Width = q.Width
+
+                    }).FirstOrDefault();
+
+
+                    return Task.FromResult(slot);
+                }
+
+                return null;
+            }
         }
     }
 }
