@@ -1,7 +1,34 @@
-﻿
-var CSV_RIGHT_CLICK_TEMPLATE = "";
+﻿var CSV_RIGHT_CLICK_TEMPLATE = "";
 
 $().ready(function () {
+    var comPorts = windowsApp.getPortNames();
+
+    for (var i = 0; i < comPorts.length; i++) {
+        var item = comPorts[i];
+        var optionField = $("<option value='" + item + "'>" + item + "</option>");
+        $("select#com-ports-select").append(optionField);
+    }
+
+    var result = windowsApp.getBaudRates();
+
+    if (result.success) {
+        var baudRates = result.baudRates;
+
+        for (var i = 0; i < baudRates.length; i++) {
+            var item = baudRates[i];
+            var optionField = $("<option value='" + item + "'>" + item + "</option>");
+
+            if (item === "115200")
+                optionField.attr("selected", "selected");
+
+            $("select#baud-rates-select").append(optionField);
+        }
+    }
+
+    $("body").on("click", "img#wrench", function (e) {
+        windowsApp.showDevTools();
+    });
+
     $.get("inc/controls/right-click-csv-menu.tpl", function (data) {
         if (data) {
             CSV_RIGHT_CLICK_TEMPLATE = data;
@@ -30,9 +57,6 @@ function showContextMenuForItem(svg, xOff, yOff) {
         closeAllContextMenus();
         $("#board").panzoom("enable");
     });
-
-    console.log(componentInfo);
-    console.log(packageInfo);
 
     var slots = getAvailableSlotsFor(componentInfo.id);
 }
@@ -72,7 +96,9 @@ function findPackageOf(packageId) {
 //Returns the available slots that may contain this component
 function getAvailableSlotsFor(componentId) {
     return new Promise(resolve => {
-        var result = windowsApp.getAppropriateSlotFor(componentId);
-        resolve(result);
+        setTimeout(function () {
+            var result = windowsApp.getAppropriateSlotFor(componentId);
+            resolve(result);
+        }, 5000);
     });
 }

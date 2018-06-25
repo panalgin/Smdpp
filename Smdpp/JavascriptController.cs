@@ -23,7 +23,12 @@ namespace Smdpp
             return SerialPort.GetPortNames();
         }
 
-        public string[] BaudRates => World.BaudRates.ToArray();
+        /// <summary>
+        /// Gets all available baud rates for the data transmission.
+        /// </summary>
+        /// <returns>Returns the baud rate speeds, such as 9600 etc.</returns>
+        public IScriptCallback GetBaudRates() => new GetBaudRatesCallback();
+
         public void ShowDevTools() => EventSink.InvokeDevToolsRequested();
         public void OpenGerber() => EventSink.InvokeOpenGerberRequested();
         public void OpenSvg() => EventSink.InvokeImportGerberRequested();

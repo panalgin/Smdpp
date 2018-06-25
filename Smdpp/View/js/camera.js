@@ -1,31 +1,5 @@
 ﻿'use strict';
 
-$(document).ready(function(e) {
-	var comPorts = windowsApp.getPortNames();
-
-	for(var i = 0; i < comPorts.length; i++) {
-		var item = comPorts[i];
-		var optionField = $("<option value='" + item + "'>" + item + "</option>");
-		$("select#com-ports-select").append(optionField);
-	}
-
-	var baudRates = windowsApp.getBaudRates();
-
-	for(var i = 0; i < baudRates.length; i++) {
-		var item = baudRates[i];
-		var optionField = $("<option value='" + item + "'>" + item + "</option>");
-
-		if (item === "115200")
-			optionField.attr("selected", "selected");
-		
-		$("select#baud-rates-select").append(optionField);
-	}
-
-	$("body").on("click", "img#wrench", function(e) {
-		windowsApp.showDevTools();
-	});
-});
-
 var videoElement = document.getElementById("video");
 var videoElement2 = document.getElementById("video2");
 
