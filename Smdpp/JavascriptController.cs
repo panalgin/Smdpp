@@ -23,41 +23,20 @@ namespace Smdpp
             return SerialPort.GetPortNames();
         }
 
-        public string[] GetBaudRates()
-        {
-            return World.BaudRates.ToArray();
-        }
-
-        public void ShowDevTools()
-        {
-            EventSink.InvokeDevToolsRequested();
-        }
-
-        public void OpenGerber()
-        {
-            EventSink.InvokeOpenGerberRequested();
-        }
-
-        public void OpenSvg()
-        {
-            EventSink.InvokeImportGerberRequested();
-        }
-
-        public void OpenCsv()
-        {
-            EventSink.InvokeImportPnpFileRequested();
-        }
-
-        public void GetFeederSlots()
-        {
-            EventSink.InvokeFeedersRequested();
-        }
-
-        public void GetFeederStates()
-        {
-            EventSink.InvokeFeederStatesRequested();
-        }
-
+        public string[] BaudRates => World.BaudRates.ToArray();
+        public void ShowDevTools() => EventSink.InvokeDevToolsRequested();
+        public void OpenGerber() => EventSink.InvokeOpenGerberRequested();
+        public void OpenSvg() => EventSink.InvokeImportGerberRequested();
+        public void OpenCsv() => EventSink.InvokeImportPnpFileRequested();
+        public void GetFeederSlots() => EventSink.InvokeFeedersRequested();
+        public void GetFeederStates() => EventSink.InvokeFeederStatesRequested();
+   
+        /// <summary>
+        /// Asyncronously crafts a connection request to controller board with given parameters.
+        /// </summary>
+        /// <param name="comPort">Desired port name of the serial port.</param>
+        /// <param name="baudRate">Desired port baud rate for the data transmission.</param>
+        /// <returns></returns>
         public IScriptCallback Connect(string comPort, int baudRate)
         {
             EventSink.InvokeConnectRequested(comPort, baudRate);
@@ -109,23 +88,36 @@ namespace Smdpp
 
         public IScriptCallback GetAppropriateSlotFor(string guid)
         {
-            PnpPart part = World.GetCurrentJob().Parts.Where(q => q.ID == guid).FirstOrDefault();
-            var result = FeederManager.GetAppropriateSlotFor(part);
+            PnpJob job = World.GetCurrentJob();
 
-            if (result != null)
+            if (job != null)
+            {
+                PnpPart part = job.Parts.Where(q => q.ID == guid).FirstOrDefault();
+                var result = FeederManager.GetAppropriateSlotFor(part);
+
+                if (result != null)
+                {
+                    return new AppropriateSlotCallback()
+                    {
+                        Success = true,
+                        Message = "Başarılı"
+                    };
+                }
+                else
+                    return new AppropriateSlotCallback()
+                    {
+                        Success = false,
+                        Message = "Başarısız"
+                    };
+            }
+            else
             {
                 return new AppropriateSlotCallback()
                 {
-                    Success = true,
-                    Message = "Başarılı"
+                    Success = false,
+                    Message = "Başarısız, henüz bir iş emri yok."
                 };
             }
-            else
-                return new AppropriateSlotCallback()
-                {
-                    Success = false,
-                    Message = "Başarısız"
-                };
         }
 
         public void ListPackages()

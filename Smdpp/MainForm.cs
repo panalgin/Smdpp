@@ -22,6 +22,9 @@ namespace Smdpp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            EventHandlers.Initialize();
+            World.Initialize();
+
             EventSink.DevToolsRequested += EventSink_DevToolsRequested;
             EventSink.OpenGerberReqeusted += EventSink_OpenGerberReqeusted;
             EventSink.ImportSvgRequested += EventSink_ImportSvgRequested;
@@ -31,11 +34,9 @@ namespace Smdpp
             EventSink.GerberParsed += EventSink_GerberParsed;
             EventSink.SvgParsed += EventSink_SvgParsed;
             EventSink.PnpFileParsed += EventSink_PnpFileParsed;
-            EventHandlers.Initialize();
+            
 
             this.WindowState = FormWindowState.Maximized;
-
-            World.Initialize();
         }
 
         private void EventSink_PnpFileParsed(PnpJob task)

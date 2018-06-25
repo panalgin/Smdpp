@@ -30,6 +30,11 @@ function showContextMenuForItem(svg, xOff, yOff) {
         closeAllContextMenus();
         $("#board").panzoom("enable");
     });
+
+    console.log(componentInfo);
+    console.log(packageInfo);
+
+    var slots = getAvailableSlotsFor(componentInfo.id);
 }
 
 function findPackageDetailsOf(packageId) {
@@ -38,7 +43,7 @@ function findPackageDetailsOf(packageId) {
     for (var i = 0; i < window.currentTask.availablePackages.length; i++) {
         var currentPackage = window.currentTask.availablePackages[i];
 
-        if (currentPackage.id.toString() === packageId) {
+        if (currentPackage.id === packageId) {
             componentInfo = currentPackage;
 
             break;
@@ -48,6 +53,7 @@ function findPackageDetailsOf(packageId) {
     return componentInfo;
 }
 
+//Get extensive details about the package-specific data including the svg information.
 function findPackageOf(packageId) {
     var svgData = "";
 
@@ -61,4 +67,12 @@ function findPackageOf(packageId) {
     }
 
     return svgData;
+}
+
+//Returns the available slots that may contain this component
+function getAvailableSlotsFor(componentId) {
+    return new Promise(resolve => {
+        var result = windowsApp.getAppropriateSlotFor(componentId);
+        resolve(result);
+    });
 }

@@ -31,6 +31,14 @@ namespace Smdpp
         public static void Initialize()
         {
             ControlBoard = new ChipKit_Max32();
+            Jobs = new List<PnpJob>();
+            EventSink.PnpFileParsed += EventSink_PnpFileParsed;
+        }
+
+        private static void EventSink_PnpFileParsed(PnpJob task)
+        {
+            Jobs.Clear();
+            Jobs.Add(task);
         }
 
         public static PnpJob GetCurrentJob() => Jobs.FirstOrDefault();
