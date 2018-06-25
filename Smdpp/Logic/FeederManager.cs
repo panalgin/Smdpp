@@ -13,12 +13,12 @@ namespace Smdpp.Logic
 
         }
 
-        public static Task<List<FeederSlotContract>> GetFeederSlots()
+        public static Task<List<Contracts.FeederSlot>> GetFeederSlots()
         {
             using (var context = new SmdppEntities())
             {
                 var result = context.FeederSlots.OrderBy(q => q.PickupX)
-                        .Select(q => new FeederSlotContract()
+                        .Select(q => new Contracts.FeederSlot()
                         {
                             ID = q.ID,
                             Width = q.Width,
@@ -44,7 +44,7 @@ namespace Smdpp.Logic
                                   from s1 in sParts.DefaultIfEmpty()
                                   select new FeederState()
                                   {
-                                      Slot = new FeederSlotContract()
+                                      Slot = new Contracts.FeederSlot()
                                       {
                                           ID = f.ID,
                                           Depth = f.Depth,
@@ -52,12 +52,12 @@ namespace Smdpp.Logic
                                           PickupY = f.PickupY,
                                           Width = f.Width,
                                       },
-                                      CurrentPart = c1 == null ? null : new ComponentContract()
+                                      CurrentPart = c1 == null ? null : new Contracts.Component()
                                       {
                                           ID = c1.ID,
                                           Name = c1.Name,
                                       },
-                                      SuggestedPart = s1 == null ? null : new ComponentContract()
+                                      SuggestedPart = s1 == null ? null : new Contracts.Component()
                                       {
                                           ID = s1.ID,
                                           Name = s1.Name,
@@ -89,13 +89,13 @@ namespace Smdpp.Logic
         /// </summary>
         /// <param name="part">Pick and place part details which to look for its best place</param>
         /// <returns></returns>
-        public static Task<FeederSlotContract> GetAppropriateSlotFor(PnpPart part)
+        public static Task<Contracts.FeederSlot> GetAppropriateSlotFor(PnpPart part)
         {
             using (var context = new SmdppEntities()) {
                 Package package = context.Packages.FirstOrDefault(q => q.ID == part.PackageID);
 
                 if (package != null) {
-                    FeederSlotContract slot = context.FeederSlots.Where(q => q.CurrentPartID != null && q.ConnectedPart.Name == part.Value).Select(y => new FeederSlotContract()
+                    Contracts.FeederSlot slot = context.FeederSlots.Where(q => q.CurrentPartID != null && q.ConnectedPart.Name == part.Value).Select(y => new Contracts.FeederSlot()
                     {
                         ID = y.ID,
                         Depth = y.Depth,
@@ -103,7 +103,6 @@ namespace Smdpp.Logic
                         PickupY = y.PickupY,
                         Width = y.Width
                     }).FirstOrDefault();
-
 
                     return Task.FromResult(slot);
                 }

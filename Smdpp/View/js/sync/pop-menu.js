@@ -49,7 +49,8 @@
 			case "openGerberBtn": { windowsApp.openGerber(); break; }
 			case "openSvgBtn": { windowsApp.openSvg(); break; }
 			case "openCsvBtn": { windowsApp.openCsv(); break; }
-			case "packagesBtn": { windowsApp.listPackages();  break; }
+            case "packagesBtn": { windowsApp.listPackages(); break; }
+            case "componentsBtn": { windowsApp.listComponents(); break; }
 			
 			default: break;
 		}

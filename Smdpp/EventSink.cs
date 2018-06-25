@@ -17,6 +17,7 @@ namespace Smdpp
         public delegate void OnSvgParsed(SvgTask task);
         public delegate void OnSavePackageRequested();
         public delegate void OnListPackagesRequested();
+        public delegate void OnListComponentsRequested();
         public delegate void OnPnpFileParsed(PnpJob task);
         public delegate void OnJogPrecisionChangeRequested(int value);
         public delegate bool OnConnectRequested(string comPort, int baudRate);
@@ -33,6 +34,7 @@ namespace Smdpp
         public static event OnPnpFileParsed PnpFileParsed;
         public static event OnSavePackageRequested SavePackageRequested;
         public static event OnListPackagesRequested ListPackagesRequested;
+        public static event OnListComponentsRequested ListComponentsRequested;
         public static event OnJogPrecisionChangeRequested JogPrecisionChangeRequested;
         public static event OnError Error;
         public static event OnConnectRequested ConnectRequested;
@@ -48,6 +50,7 @@ namespace Smdpp
         public static void InvokeCloseRequested() => CloseRequested?.Invoke();
         public static void InvokeSavePackageRequested() => SavePackageRequested?.Invoke();
         public static void InvokeListPackagesRequested() => ListPackagesRequested?.Invoke();
+        public static void InvokeListComponentsRequested() => ListComponentsRequested?.Invoke();
         public static void InvokePnpFileParsed(PnpJob task) => PnpFileParsed?.Invoke(task);
         public static void InvokeJogPrecisionChangeRequested(int value) => JogPrecisionChangeRequested?.Invoke(value);
         public static void InvokeError(Exception ex) => Error?.Invoke(ex);

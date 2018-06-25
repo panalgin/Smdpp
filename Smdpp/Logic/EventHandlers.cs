@@ -10,6 +10,7 @@ namespace Smdpp.Logic
         public static void Initialize()
         {
             EventSink.ListPackagesRequested += EventSink_ListPackagesRequested;
+            EventSink.ListComponentsRequested += EventSink_ListComponentsRequested;
             EventSink.FeedersRequested += EventSink_FeedersRequested;
             EventSink.FeederStatesRequested += EventSink_FeederStatesRequested;
         }
@@ -45,7 +46,7 @@ namespace Smdpp.Logic
             {
                 using (SmdppEntities context = new SmdppEntities())
                 {
-                    var packages = context.Packages.ToList().Select(q => new Package()
+                    var packages = context.Packages.ToList().Select(q => new Contracts.Package()
                     {
                         ID = q.ID,
                         Name = q.Name,
@@ -55,6 +56,23 @@ namespace Smdpp.Logic
                     var json = JsonConvert.SerializeObject(packages);
 
                     ScriptRunner.Run(ScriptAction.ListPackagesReply, Utility.HtmlEncode(json));
+                }
+            });
+        }
+
+        private static void EventSink_ListComponentsRequested()
+        {
+            var task = Task.Run(() =>
+            {
+                using (SmdppEntities context = new SmdppEntities())
+                {
+                    var components = context.Components.Select(q => new Contracts.Component()
+                    {
+
+                    }).ToList();
+
+                    var json = JsonConvert.SerializeObject(components);
+                    ScriptRunner.Run(ScriptAction.ListComponentsReply, Utility.HtmlEncode(json));
                 }
             });
         }

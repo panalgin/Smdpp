@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Smdpp.Contracts
 {
 
-    public class ComponentContract
+    public class Component
     {
         [JsonProperty(PropertyName = "id")]
         public int ID { get; set; }
@@ -20,7 +20,7 @@ namespace Smdpp.Contracts
         [JsonProperty(PropertyName = "package")]
         public Package Package { get; set; }
 
-        public ComponentContract()
+        public Component()
         {
 
         }

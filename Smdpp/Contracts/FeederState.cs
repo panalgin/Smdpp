@@ -11,12 +11,12 @@ namespace Smdpp.Contracts
         }
 
         [JsonProperty(PropertyName = "slot")]
-        public FeederSlotContract Slot { get; set; }
+        public FeederSlot Slot { get; set; }
 
         [JsonProperty(PropertyName = "currentPart")]
-        public ComponentContract CurrentPart { get; set; }
+        public Component CurrentPart { get; set; }
 
         [JsonProperty(PropertyName = "suggestedPart")]
-        public ComponentContract SuggestedPart { get; set; }
+        public Component SuggestedPart { get; set; }
     }
 }

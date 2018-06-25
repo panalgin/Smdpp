@@ -13,6 +13,7 @@ namespace Smdpp
         SvgTaskResolved,
         PnpTaskResolved,
         ListPackagesReply,
+        ListComponentsReply,
         ListFeedersReply,
         ListFeederStatesReply
     }
@@ -25,27 +26,21 @@ namespace Smdpp
             { ScriptAction.GerberTaskResolved, new ScriptInfo("View\\js\\async\\gerber-resolved.js", false) },
             { ScriptAction.SvgTaskResolved, new ScriptInfo("View\\js\\async\\svg-resolved.js", false ) },
             { ScriptAction.ListPackagesReply, new ScriptInfo("View\\js\\async\\list-packages-reply.js", false ) },
+            { ScriptAction.ListComponentsReply, new ScriptInfo("View\\js\\async\\list-components-reply.js", false) },
             { ScriptAction.PnpTaskResolved, new ScriptInfo("View\\js\\async\\pnp-resolved.js", false) },
             { ScriptAction.ListFeedersReply, new ScriptInfo("View\\js\\async\\list-feeders-reply.js", false) },
             { ScriptAction.ListFeederStatesReply, new ScriptInfo("View\\js\\async\\list-feeder-states-reply.js", false) },
-
-            /*{ ScriptAction.CommandSent, new ScriptInfo("View\\js\\async\\command-sent.js", false) },
-            { ScriptAction.CommandFailed, new ScriptInfo("View\\js\\async\\command-failed.js", false) },
-            { ScriptAction.CommandReceived, new ScriptInfo("View\\js\\async\\command-received.js", false) },
-            { ScriptAction.Connected, new ScriptInfo("View\\js\\async\\connected.js", false) },
-            { ScriptAction.Disconnected, new ScriptInfo("View\\js\\async\\disconnected.js", false) },
-            { ScriptAction.PositionChanged, new ScriptInfo("View\\js\\cached\\position-changed.js", false) }*/
         };
 
         public static void Run(ScriptAction action, params object[] parameters)
         {
             var entity = ScriptEntities[action];
 
-            MainForm m_Form = Application.OpenForms[0] as MainForm;
+            MainForm form = Application.OpenForms[0] as MainForm;
 
-            m_Form.Invoke(new Action(() =>
+            form.Invoke(new Action(() =>
             {
-                string m_Script = string.Empty;
+                string script = string.Empty;
 
                 if (entity.Exists)
                 {
@@ -53,15 +48,15 @@ namespace Smdpp
                     {
                         using (StreamReader reader = new StreamReader(entity.FileLocation))
                         {
-                            m_Script = reader.ReadToEnd();
+                            script = reader.ReadToEnd();
                         }
                     }
                     else
-                        m_Script = entity.CachedData;
+                        script = entity.CachedData;
 
-                    var formattedScript = string.Format(m_Script, parameters);
+                    var formattedScript = string.Format(script, parameters);
 
-                    m_Form.Browser.ExecuteScriptAsync(formattedScript);
+                    form.Browser.ExecuteScriptAsync(formattedScript);
                 }
                 else
                 {

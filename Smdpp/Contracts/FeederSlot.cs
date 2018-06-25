@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Smdpp.Contracts
 {
     [DataContract]
-    public class FeederSlotContract
+    public class FeederSlot
     {
         [JsonProperty(PropertyName = "id")]
         public int ID { get; set; }

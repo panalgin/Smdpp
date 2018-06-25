@@ -125,10 +125,8 @@ namespace Smdpp
             }
         }
 
-        public void ListPackages()
-        {
-            EventSink.InvokeListPackagesRequested();
-        }
+        public void ListPackages() => EventSink.InvokeListPackagesRequested();
+        public void ListComponents() => EventSink.InvokeListComponentsRequested();
 
         public void Close()
         {
