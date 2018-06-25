@@ -59,6 +59,12 @@ function showContextMenuForItem(svg, xOff, yOff) {
     });
 
     var slots = getAvailableSlotsFor(componentInfo.id);
+
+    slots.then(function (result) {
+        var availableSlots = result;
+        var combo = object.find(".context-item select");
+        fillComboWithSlots(combo, availableSlots);
+    });
 }
 
 function findPackageDetailsOf(packageId) {
@@ -96,9 +102,15 @@ function findPackageOf(packageId) {
 //Returns the available slots that may contain this component
 function getAvailableSlotsFor(componentId) {
     return new Promise(resolve => {
-        setTimeout(function () {
-            var result = windowsApp.getAppropriateSlotFor(componentId);
-            resolve(result);
-        }, 5000);
+        var result = windowsApp.getAppropriateSlotFor(componentId);
+        resolve(result);
     });
+}
+
+function fillComboWithSlots(combo, availableSlots) {
+    combo.html("");
+
+    for (var i = 0; i < availableSlots.length; i++) {
+        var template = "<option id='%s'"
+    }
 }
