@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="Logic\Callbacks\AppropriateSlotCallback.cs" />
     <Compile Include="Logic\Callbacks\ConnectRequestedCallback.cs" />
+    <Compile Include="Logic\Callbacks\GetAvailablePackageNamesCallback.cs" />
     <Compile Include="Logic\Callbacks\GetBaudRatesCallback.cs" />
     <Compile Include="Logic\Callbacks\SetPrecisionCallback.cs" />
     <Compile Include="Logic\Commands\BaseCommand.cs" />
@@ -196,6 +197,9 @@
     </EntityDeploy>
     <None Include="SmdppModel.edmx.diagram">
       <DependentUpon>SmdppModel.edmx</DependentUpon>
+    </None>
+    <None Include="View\inc\controls\component-add.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="View\inc\controls\feeder-selector.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

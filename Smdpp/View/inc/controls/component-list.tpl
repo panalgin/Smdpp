@@ -10,9 +10,18 @@
 <script type="text/javascript">
 	$().ready(function() {
 		$("body").on("click", "#components #add-new-btn", function(e) {
-			vex.open({
-				content: "hgegeg",
-				className: 'vex-theme-default'
+			var text = "";
+			
+			$.get("inc/controls/component-add.tpl").done(function(data) {
+				var result = windowsApp.getAvailablePackageNames();
+				console.log(result);
+
+				vex.open({
+					unsafeContent: "",
+					className: 'vex-theme-default'
+				});
+
+				$("div.vex-content").append(data);
 			});
 		});
 	});

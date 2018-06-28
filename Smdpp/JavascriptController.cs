@@ -125,6 +125,8 @@ namespace Smdpp
             }
         }
 
+        public IScriptCallback GetAvailablePackageNames() => new GetAvailablePackageNamesCallback();
+
         public void ListPackages() => EventSink.InvokeListPackagesRequested();
         public void ListComponents() => EventSink.InvokeListComponentsRequested();
 

@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(965, 522);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Smdpp - v: 0.1.3";
+            this.Text = "Smdpp - v: 0.1.4";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
