@@ -1,278 +1,350 @@
-html { margin: 0; padding: 0; display: block; width: 100%; position: relative; top: 0; left: 0; right: 0; bottom: 0; }
+html {
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 body {
-	margin: 0;
-	padding: 0;
-	font-family: "Tahoma";
-	font-size: 11px;
-	width: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	user-select: none;
-	outline: 0;
-	display: block;
-	overflow-y: hidden;
-	cursor: default;
+    margin: 0;
+    padding: 0;
+    font-family: "Tahoma";
+    font-size: 11px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    user-select: none;
+    outline: 0;
+    display: block;
+    overflow-y: hidden;
+    cursor: default;
 }
 
 .wrapper {
-	position: relative;
-	top: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	bottom: 0;
-	background-color: #fff;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background-color: #fff;
 }
 
-img { border: 0; padding: 0; margin: 0; text-decoration: none; }
-input { font-family: "Tahoma" }
-input[type='text'] {
-	margin: 0;
-	padding: 0;
-	height: 23px;
-	line-height: 23px;
-	font-weight: normal;
-	font-size: 11px;
-	outline: 0;
-	border: 1px solid #CCC;
-	text-indent: 3px;
+img {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
 }
-div { display: block; }
+
+input {
+    font-family: "Tahoma"
+}
+
+    input[type='text'] {
+        margin: 0;
+        padding: 0;
+        height: 23px;
+        line-height: 23px;
+        font-weight: normal;
+        font-size: 11px;
+        outline: 0;
+        border: 1px solid #CCC;
+        text-indent: 3px;
+    }
+
+div {
+    display: block;
+}
 
 #nav {
-	list-style: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	display: block;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	background-color: #f1f1f1;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
 }
 
-#nav li { float: left; display: block; height: 26px; line-height: 26px; text-align: center; padding: 0 30px; }
-#nav li:hover { background-color: #dedede; cursor: pointer; }
+    #nav li {
+        float: left;
+        display: block;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        padding: 0 30px;
+    }
 
-#nav li:active, #nav .active {
-	background-color: #d1d1d1 !important;
-}
+        #nav li:hover {
+            background-color: #dedede;
+            cursor: pointer;
+        }
+
+        #nav li:active, #nav .active {
+            background-color: #d1d1d1 !important;
+        }
 
 #app-zone {
-	position: relative;
-	top: 25px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	
-	width: 100%;
-	height: calc(100% - 25px);
+    position: relative;
+    top: 25px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100% - 25px);
 }
 
 #connection {
-	position: absolute; 
-	left: 5px;
-	top: 5px;
-	width: 200px;	
-	height: 150px; 
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 200px;
+    height: 150px;
 }
 
 #camera {
-	position: absolute;
-	left: 5px; top: 160px;
-	
-	width: 200px;
-	height: 325px;
+    position: absolute;
+    left: 5px;
+    top: 160px;
+    width: 200px;
+    height: 325px;
 }
 
 #feeders {
-	background-color: #f1f1f1;
-
-	position: absolute;
-	left: 210px;
-	top: 5px;
-	height: 48px;
-	right: 210px;
-	overflow: hidden;
+    background-color: #f1f1f1;
+    position: absolute;
+    left: 210px;
+    top: 5px;
+    height: 48px;
+    right: 210px;
+    overflow: hidden;
 }
 
-#feeders .feeder {
-	display: block;
-	height: 48px;
-	float: left;
-}
-#feeders .feeder:last-of-type {
-	border-right: 1px solid #000;
-}
-#feeders .mm8 { width: 30px; background-color: #888; }
-#feeders .mm8:hover { background-color: #AAA; }
+    #feeders .feeder {
+        display: block;
+        height: 48px;
+        float: left;
+    }
 
-#feeders .mm12 { width: 45px; background-color: #444; }
-#feeders .mm12:hover { background-color: #666; }
-#feeders .mm16 {  width: 60px; background-color: #111; }
-#feeders .mm16:hover { background-color: #333; }
+        #feeders .feeder:last-of-type {
+            border-right: 1px solid #000;
+        }
+
+    #feeders .mm8 {
+        width: 30px;
+        background-color: #888;
+    }
+
+        #feeders .mm8:hover {
+            background-color: #AAA;
+        }
+
+    #feeders .mm12 {
+        width: 45px;
+        background-color: #444;
+    }
+
+        #feeders .mm12:hover {
+            background-color: #666;
+        }
+
+    #feeders .mm16 {
+        width: 60px;
+        background-color: #111;
+    }
+
+        #feeders .mm16:hover {
+            background-color: #333;
+        }
 
 .feeder .status {
-	width: 100%;
-	height: 8px;
-	display: block;
-	background-color: #00ff11;
-	box-sizing: border-box;
-	border: 1px solid #000;
-	border-right: 0;
-	animation: colorchange 2s infinite;
+    width: 100%;
+    height: 8px;
+    display: block;
+    background-color: #00ff11;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-right: 0;
+    animation: colorchange 2s infinite;
 }
 
 @keyframes colorchange {
-	0% { background: red; }
-	50% { background: green; }
-	100% { background: red; }
+    0% {
+        background: red;
+    }
+
+    50% {
+        background: green;
+    }
+
+    100% {
+        background: red;
+    }
 }
 
 .feeder .value {
-	width: 100%;
-	background-color: #fff;
-	display: block;
-	width: 100%;
-	height: 20px;
-
-	color: #000;
-	line-height: 20px;
-	font-size: 8px;
-	font-weight: bold;
-	border-top: 1px solid #000;
-	border-left: 1px solid #000;
-	text-align: center;
-	box-sizing: border-box;
+    width: 100%;
+    background-color: #fff;
+    display: block;
+    width: 100%;
+    height: 20px;
+    color: #000;
+    line-height: 20px;
+    font-size: 8px;
+    font-weight: bold;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .feeder .referenceId {
-	height: 20px;
-	width: 100%;
-	display: block;
-	text-align: center;
-	font-size: 10px;
-	box-sizing: border-box;
-	border: 1px solid #000;
-	border-right: 0;
-	border-bottom: 0;
-	line-height: 20px;
-	color: #fff;
+    height: 20px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-right: 0;
+    border-bottom: 0;
+    line-height: 20px;
+    color: #fff;
 }
-.feeder .referenceId:last-of-type { border-right: 1px solid #000;}
+
+    .feeder .referenceId:last-of-type {
+        border-right: 1px solid #000;
+    }
+
 .feeder .packageId {
-	writing-mode: tb-rl;
-    white-space:nowrap;
-    display:block;
-    bottom:0;
-    width:20px;
-    height:30px;
-
-	font-size: 9px;
+    writing-mode: tb-rl;
+    white-space: nowrap;
+    display: block;
+    bottom: 0;
+    width: 20px;
+    height: 30px;
+    font-size: 9px;
 }
+
 #tabbed-mdi {
-	position: absolute;
-	left: 210px;
-	right: 210px; 
-	top: 58px;
-	bottom: 5px;
+    position: absolute;
+    left: 210px;
+    right: 210px;
+    top: 58px;
+    bottom: 5px;
 }
 
-#tabbed-mdi .tab { display: none; 
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 25px;
-	background-color: #f1f1f1;
-	box-sizing: border-box;
-	border: 1px solid #dedede;
-	border-top: 2px solid #dedede;
-	padding: 5px;
+    #tabbed-mdi .tab {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 25px;
+        background-color: #f1f1f1;
+        box-sizing: border-box;
+        border: 1px solid #dedede;
+        border-top: 2px solid #dedede;
+        padding: 5px;
+        padding: 0;
+        margin: 0;
+        overflow: auto;
+    }
 
-	padding: 0;
-	margin: 0;
-	overflow: auto;
-}
-#tabbed-mdi .active { display: block; }
+    #tabbed-mdi .active {
+        display: block;
+    }
 
-#tabbed-mdi .headers { 
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 25px;
-}
-#tabbed-mdi .tab-header {
-	float: left;
-	height: 25px;
-	padding: 0px 0px 0px 20px;
-	line-height: 25px;
-	cursor: default;
-}
+    #tabbed-mdi .headers {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 25px;
+    }
 
-#tabbed-mdi .tab-header i {
-	width: 18px;
-	height: 18px; 
-	float: right;
-	margin-top: 3.5px;
-	margin-right: 5px;
-	margin-left: 5px;
-	vertical-align: top;
-	opacity: 0.0;
+    #tabbed-mdi .tab-header {
+        float: left;
+        height: 25px;
+        padding: 0px 0px 0px 20px;
+        line-height: 25px;
+        cursor: default;
+    }
 
-	background-image: url("../img/close.png");
-	background-repeat: no-repeat;
-}
+        #tabbed-mdi .tab-header i {
+            width: 18px;
+            height: 18px;
+            float: right;
+            margin-top: 3.5px;
+            margin-right: 5px;
+            margin-left: 5px;
+            vertical-align: top;
+            opacity: 0.0;
+            background-image: url("../img/close.png");
+            background-repeat: no-repeat;
+        }
 
-#tabbed-mdi .tab-header:hover {
-	background-color: #dedede;
-}
+        #tabbed-mdi .tab-header:hover {
+            background-color: #dedede;
+        }
 
-#tabbed-mdi .headers .active { background-color: #dedede; }
-#tabbed-mdi .headers .active i { opacity: 1.0; }
-#tabbed-mdi .tab-header:hover i { opacity: 1.0; }
+    #tabbed-mdi .headers .active {
+        background-color: #dedede;
+    }
 
-#tabbed-mdi i:hover {
-	background-image: url("../img/close-hover.png");
-}
+        #tabbed-mdi .headers .active i {
+            opacity: 1.0;
+        }
+
+    #tabbed-mdi .tab-header:hover i {
+        opacity: 1.0;
+    }
+
+    #tabbed-mdi i:hover {
+        background-image: url("../img/close-hover.png");
+    }
 
 #jog-panel {
-	position: absolute;
-	right: 5px; top: 5px;
-	
-	width: 200px;
-	height: 200px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 200px;
+    height: 200px;
 }
 
 .header {
-	width: 100%;
-	text-align: center;
-	font-size: 12px;
-	font-weight: bold;
-	color: #666;
-	
-	background-color: #dedede;
-	border: 1px solid #dedede;
-	line-height: 25px;
-	height: 25px;
-	
-	border-radius: 3px 3px 0px 0;
-	box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+    background-color: #dedede;
+    border: 1px solid #dedede;
+    line-height: 25px;
+    height: 25px;
+    border-radius: 3px 3px 0px 0;
+    box-sizing: border-box;
 }
 
 .con {
-	width: 100%;
-	height: calc(100% - 25px);
-	
-	position: relative;
-	background-color: #f1f1f1;
-	border: 1px solid #dedede;
-	box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - 25px);
+    position: relative;
+    background-color: #f1f1f1;
+    border: 1px solid #dedede;
+    box-sizing: border-box;
 }
 
 #jog-panel .con {
@@ -280,220 +352,248 @@ div { display: block; }
 }
 
 select {
-	margin: 0;
-	padding: 0;
-	height: 21px;
-	line-height: 21px;
-	margin: 2px 0;
-	outline: 0;
+    margin: 0;
+    padding: 0;
+    height: 21px;
+    line-height: 21px;
+    margin: 2px 0;
+    outline: 0;
 }
 
-button { cursor: pointer; }
+button {
+    cursor: pointer;
+}
 
-.row { clear: both; width: 100%; overflow: hidden; }
-.cell { overflow: hidden; line-height: 25px; height: 25px; }
-.left { width: 35%; float: left; text-align: right; }
-.right { width: calc(65% - 5px); margin-left: 5px; float: right; text-align: left; }
+.row {
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+}
+
+.cell {
+    overflow: hidden;
+    line-height: 25px;
+    height: 25px;
+}
+
+.left {
+    width: 35%;
+    float: left;
+    text-align: right;
+}
+
+.right {
+    width: calc(65% - 5px);
+    margin-left: 5px;
+    float: right;
+    text-align: left;
+}
 
 #connection .con select {
-	width: 75px;
+    width: 75px;
 }
 
 .space-vertical {
-	width: 100%;
-	height: 25px;
-	clear: both;
-	overflow: hidden;
+    width: 100%;
+    height: 25px;
+    clear: both;
+    overflow: hidden;
 }
 
 img#wrench {
-	position: absolute;
-	width: 16px;
-	height: 16px;
-	right: 5px;
-	bottom: 5px;
-	cursor: pointer;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 5px;
+    bottom: 5px;
+    cursor: pointer;
 }
 
 video {
-	width: 198px;
-	object-fit: fill;
+    width: 198px;
+    object-fit: fill;
 }
 
 .pop-menu {
-	position: absolute;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	min-width: 200px;
-	z-index: 9999;
-	background-color: #d1d1d1;
-	box-sizing: border-box;
-	border: 1px solid #dedede;
-	display: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 200px;
+    z-index: 9999;
+    background-color: #d1d1d1;
+    box-sizing: border-box;
+    border: 1px solid #dedede;
+    display: none;
 }
 
-.pop-menu li {
-	line-height: 25px;
-	text-indent: 10px;
-	height: 25px;
-	display: block;
-}
+    .pop-menu li {
+        line-height: 25px;
+        text-indent: 10px;
+        height: 25px;
+        display: block;
+    }
 
-.pop-menu li:hover {
-	background-color: #c9c9c9;
-}
+        .pop-menu li:hover {
+            background-color: #c9c9c9;
+        }
 
 #editor {
-	background-color: #000;
-	width: auto;
-	
-	position:absolute;
-    left:0; right: 0;
-    top: 0; bottom:0;
-	overflow: hidden;
+    background-color: #000;
+    width: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
 }
 
 #toolbar {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 25px;
-	background-color: red;
-	display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background-color: red;
+    display: block;
 }
 
 #editor svg {
-	position: absolute;
-}
-svg g rect, svg g polygon {
-	vector-effect: non-scaling-stroke;
-	fill-rule: evenodd;
-}
-svg g rect:hover, svg g polygon:hover {
-	fill: #ff0000 !important;
+    position: absolute;
 }
 
-.ui-draggable { 
-	width: auto; 
-	float: left; 
-	cursor: pointer;
-	z-index: 10000;
+svg g rect, svg g polygon {
+    vector-effect: non-scaling-stroke;
+    fill-rule: evenodd;
+}
+
+    svg g rect:hover, svg g polygon:hover {
+        fill: #ff0000 !important;
+    }
+
+.ui-draggable {
+    width: auto;
+    float: left;
+    cursor: pointer;
+    z-index: 10000;
 }
 
 .svg-import-page {
-	padding-top: 20px;
+    padding-top: 20px;
 }
 
-.svg-import-page #current-svg {
-	background-color: #000;
-	margin: 20px 30%;
-	padding: 20px;
-	text-align: center;
+    .svg-import-page #current-svg {
+        background-color: #000;
+        margin: 20px 30%;
+        padding: 20px;
+        text-align: center;
+    }
+
+#packages .row .cell, #components .row .cell {
+    border: 1px solid #ccc;
+    border-right: 0;
+    border-top: 0;
+    line-height: 100px;
+    min-height: 100px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-indent: 5px;
 }
 
-#packages  .row  .cell {
-	border: 1px solid #ccc;
-	border-right: 0;
-	border-top: 0;
-	line-height: 100px;
-	min-height: 100px;
-	box-sizing: border-box;
-	vertical-align: middle;
-	text-indent: 5px;
-}
-#packages .first {
-	width: 15%;
-	float: left;
-	border-left: 0 !important;
+#packages .first, #components .first {
+    width: 15%;
+    float: left;
+    border-left: 0 !important;
 }
 
-#packages .second {
-	width: 55%;
-	float: left;
-	display: flex;
-	background-color: #222;
+#packages .second, #components .second {
+    width: 55%;
+    float: left;
+    display: flex;
+    background-color: #222;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-#packages .third {
-	float: right;
-	width: 30%;
+#packages .third, #components .third {
+    float: right;
+    width: 30%;
 }
 
-#packages .headers {
-	background-color: #ccc;
+#packages .headers, #components .headers {
+    background-color: #dedede;
 }
 
-#packages .headers .cell {
-	text-align: center;
-	border: 0;
-	line-height: 25px;
-	height: 25px;
-}
-#packages .headers .second {
-	background-color: #ccc;
-}
+    #packages .headers .cell, #components .headers .cell {
+        text-align: center;
+        border: 0;
+        line-height: 25px;
+        height: 25px;
+        min-height: 25px;
+    }
 
-#packages .row {
-	display: block;
-	clear: both;
-	position: static;
+    #packages .headers .second {
+        background-color: #dedede;
+    }
+
+#packages .row, #components .row {
+    display: block;
+    clear: both;
+    position: static;
 }
 
 #packages button {
-	margin: 0;
-	padding: 0;
-	height: 25px;
-	width: 25px;
-	background-color: #ccc;
-	border: 1px solid #bbb;
-	overflow: hidden;
-	margin-right: 5px;
-	margin-top: 37.5px;
-	outline: 0;
+    margin: 0;
+    padding: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+    border: 1px solid #bbb;
+    overflow: hidden;
+    margin-right: 5px;
+    margin-top: 37.5px;
+    outline: 0;
 }
 
-#packages button:hover {
-	background-color: #ddd;
-	border: 1px solid #ccc;
-}
+    #packages button:hover {
+        background-color: #ddd;
+        border: 1px solid #ccc;
+    }
 
-#packages button:active {
-	background-color: #bbb;
-	border: 1px solid #ccc;
-}
+    #packages button:active {
+        background-color: #bbb;
+        border: 1px solid #ccc;
+    }
 
 .pnp-task {
-	background-color: #333;
-	position: relative;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+    background-color: #333;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: hidden;
 }
 
-.pnp-task #board {
-	position: relative;
-	background-color: #000;
-}
+    .pnp-task #board {
+        position: relative;
+        background-color: #000;
+    }
 
-.pnp-task svg {
-	position: absolute;
-	transform-origin: center center;
-	box-sizing: border-box;
-	border: 1px solid transparent;
-}
+    .pnp-task svg {
+        position: absolute;
+        transform-origin: center center;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+    }
 
-.pnp-task svg:hover {
-	border: 1px solid red;
-}
+        .pnp-task svg:hover {
+            border: 1px solid red;
+        }
 
 
 .context-menu {
@@ -515,7 +615,6 @@ svg g rect:hover, svg g polygon:hover {
     font-size: 11px;
     margin: 0;
     padding: 0;
-
     width: calc(100% - 5px);
     overflow: hidden;
 }
@@ -533,8 +632,45 @@ svg g rect:hover, svg g polygon:hover {
     height: 20px;
 }
 
-#jog-panel .row .right input[type='text'] {
-    height: 18px;
-    box-sizing: border-box;
-    margin-top: 1px;
+    #jog-panel .row .right input[type='text'] {
+        height: 18px;
+        box-sizing: border-box;
+        margin-top: 1px;
+    }
+
+#components #add-new-btn {
+    width: 65px;
+    height: 19px;
+    line-height: 19px;
+    border: 1px solid #0948b7;
+    border-radius: 3px;
+    position: absolute;
+    right: 2px;
+    top: 1px;
+    text-align: center;
+    background-color: #387ef7;
+    color: #fff;
+    cursor: pointer;
+}
+
+    #components #add-new-btn:hover {
+        background-color: #5e99ff;
+    }
+
+#components .row .headers {
+    background-color: #005cfc;
+}
+
+#components .first {
+    width: 30%;
+}
+
+#components .second {
+    width: 40%;
+    background-color: #dedede;
+}
+
+#components .headers .third { text-align: left; }
+#components .third {
+    width: 30%;
 }

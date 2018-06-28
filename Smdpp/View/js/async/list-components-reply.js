@@ -10,7 +10,7 @@ $.get("inc/parts/component-row.tpl", function (pr) {{
     itemTemplate = pr;
 
     $.when($.get("inc/controls/component-list.tpl", function (dt) {{
-
+        page = $(dt);
     }})).then(function (resp1) {{
         createTab("Komponent Listesi", page);
     }});
