@@ -13,3 +13,4 @@ require("js/sync/gui.js");
 require("js/sync/tabbed-mdi.js");
 require("js/sync/camera.js");
 require("js/sync/pop-menu.js");
+require("js/sync/vex.js");

@@ -657,6 +657,10 @@ svg g rect, svg g polygon {
         background-color: #5e99ff;
     }
 
+    #components #add-new-btn:active {
+        background-color: #0948b7;
+    }
+
 #components .row .headers {
     background-color: #005cfc;
 }

@@ -6,3 +6,14 @@
 		<div class="cell third">Araçlar</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$().ready(function() {
+		$("body").on("click", "#components #add-new-btn", function(e) {
+			vex.open({
+				content: "hgegeg",
+				className: 'vex-theme-default'
+			});
+		});
+	});
+</script>
