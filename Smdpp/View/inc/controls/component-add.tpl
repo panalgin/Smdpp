@@ -22,3 +22,9 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$().ready(function() {
+		var result = windowsApp.getAvailablePackageNames();
+		console.log(result);
+	});
+</script>

@@ -13,9 +13,6 @@
 			var text = "";
 			
 			$.get("inc/controls/component-add.tpl").done(function(data) {
-				var result = windowsApp.getAvailablePackageNames();
-				console.log(result);
-
 				vex.open({
 					unsafeContent: "",
 					className: 'vex-theme-default'
