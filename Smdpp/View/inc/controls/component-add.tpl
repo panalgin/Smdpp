@@ -37,8 +37,13 @@
 
 			if (response.success)
 				vex.closeAll();
-			else
-				alert(response.message);
+			else {
+				vex.closeAll();
+				vex.dialog.alert({
+					message: response.message,
+					className: 'vex-theme-default'
+				});
+			}	
 		});
 
 		var result = JSON.parse(windowsApp.getAvailablePackageNames());

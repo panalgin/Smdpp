@@ -13,43 +13,57 @@ namespace Smdpp
             bool result = false;
             string message = "";
 
-            try
-
+            if (Validate(contract))
             {
-                using (SmdppEntities context = new SmdppEntities())
+                try
                 {
-                    var existing = context.Components.FirstOrDefault(q => q.PackageID == contract.PackageID && q.Value == contract.Value);
-
-                    if (existing == null)
+                    using (SmdppEntities context = new SmdppEntities())
                     {
-                        context.Components.Add(new Component()
+                        var existing = context.Components.FirstOrDefault(q => q.PackageID == contract.PackageID && q.Value.ToLower() == contract.Value.ToLower());
+
+                        if (existing == null)
                         {
-                            PackageID = contract.PackageID,
-                            Value = contract.Value
-                        });
+                            context.Components.Add(new Component()
+                            {
+                                PackageID = contract.PackageID,
+                                Value = contract.Value
+                            });
 
-                        context.SaveChanges();
-                        result = true;
-                        message = "Successfully added new component";
-                    }
-                    else
-                    {
-                        result = false;
-                        message = "Benzer bir bileşen zaten girilmiş.";
+                            context.SaveChanges();
+                            result = true;
+                            message = "Successfully added new component";
+                        }
+                        else
+                        {
+                            result = false;
+                            message = "Benzer bir bileşen zaten girilmiş.";
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    message = ex.Message;
+                    Logger.Enqueue(ex);
+                }
             }
-            catch(Exception ex)
-            {
-                message = ex.Message;
-                Logger.Enqueue(ex);
-            }
+            else
+                message = "Girdiğiniz değerler yanlış.";
 
             return new AddComponentCallback()
             {
                 Success = result,
                 Message = message
             };
+        }
+
+        static bool Validate(AddComponentInfo contract)
+        {
+            if (contract.PackageID <= 0)
+                return false;
+            else if (contract.Value.Length < 1)
+                return false;
+            else
+                return true;
         }
     }
 }
