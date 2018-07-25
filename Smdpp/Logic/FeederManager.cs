@@ -55,12 +55,22 @@ namespace Smdpp.Logic
                                       CurrentPart = c1 == null ? null : new Contracts.Component()
                                       {
                                           ID = c1.ID,
-                                          Name = c1.Name,
+                                          Value = c1.Value,
+                                          Package = new Contracts.Package()
+                                          {
+                                              ID = c1.PackageID,
+                                              Name = c1.Package.Name
+                                          }
                                       },
                                       SuggestedPart = s1 == null ? null : new Contracts.Component()
                                       {
                                           ID = s1.ID,
-                                          Name = s1.Name,
+                                          Value = s1.Value,
+                                          Package = new Contracts.Package()
+                                          {
+                                              ID = s1.PackageID,
+                                              Name = s1.Package.Name
+                                          }
                                       }
 
                                   }).ToList();
@@ -95,7 +105,7 @@ namespace Smdpp.Logic
                 Package package = context.Packages.FirstOrDefault(q => q.ID == part.PackageID);
 
                 if (package != null) {
-                    Contracts.FeederSlot slot = context.FeederSlots.Where(q => q.CurrentPartID != null && q.ConnectedPart.Name == part.Value).Select(y => new Contracts.FeederSlot()
+                    Contracts.FeederSlot slot = context.FeederSlots.Where(q => q.CurrentPartID != null && q.ConnectedPart.Value == part.Value).Select(y => new Contracts.FeederSlot()
                     {
                         ID = y.ID,
                         Depth = y.Depth,

@@ -15,8 +15,8 @@ namespace Smdpp
     public partial class Component
     {
         public int ID { get; set; }
-        public string Name { get; set; }
         public int PackageID { get; set; }
+        public string Value { get; set; }
     
         public virtual Package Package { get; set; }
     }

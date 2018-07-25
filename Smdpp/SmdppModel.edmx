@@ -10,7 +10,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="PackageID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FeederSlots">
@@ -101,9 +101,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="PackageID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Package" Relationship="SmdppModel.ComponentPackage" FromRole="Component" ToRole="Package" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="ComponentPackage">
           <End Type="SmdppModel.Component" Role="Component" Multiplicity="*" />
@@ -192,8 +192,8 @@
           <EntitySetMapping Name="Components">
             <EntityTypeMapping TypeName="SmdppModel.Component">
               <MappingFragment StoreEntitySet="Components">
+                <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="PackageID" ColumnName="PackageID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

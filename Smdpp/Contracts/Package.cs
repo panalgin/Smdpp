@@ -17,7 +17,7 @@ namespace Smdpp.Contracts
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonProperty(PropertyName = "data")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "data")]
         public string Data { get; set; }
 
         public Package()
