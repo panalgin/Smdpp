@@ -92,6 +92,8 @@
     <Compile Include="Component.cs">
       <DependentUpon>SmdppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Logic\ComponentManager.cs" />
+    <Compile Include="Contracts\AddComponentInfo.cs" />
     <Compile Include="Contracts\Component.cs" />
     <Compile Include="Contracts\FeederSlot.cs" />
     <Compile Include="FeederSlot.cs">

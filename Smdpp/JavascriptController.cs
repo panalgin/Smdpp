@@ -125,7 +125,18 @@ namespace Smdpp
             }
         }
 
-        public IScriptCallback GetAvailablePackageNames() => new GetAvailablePackageNamesCallback();
+        public string GetAvailablePackageNames()
+        {
+            return JsonConvert.SerializeObject(new GetAvailablePackageNamesCallback());
+        }
+
+        public bool AddComponent(string data)
+        {
+            var contract = JsonConvert.DeserializeObject<Contracts.AddComponentInfo>(data);
+            bool result = ComponentManager.Add(contract);
+
+            return result;
+        }
 
         public void ListPackages() => EventSink.InvokeListPackagesRequested();
         public void ListComponents() => EventSink.InvokeListComponentsRequested();

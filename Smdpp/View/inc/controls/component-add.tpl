@@ -1,11 +1,11 @@
 ﻿<div class="create-component">
 	<div class="row">
 		<div class="cell left">Kılıf:</div>
-		<div class="cell right"><select id="packageName-combo"></select></div>
+		<div class="cell right"><select id="packages-combo"></select></div>
 	</div>
 	<div class="row">
 		<div class="cell left">Değer:</div>
-		<div class="cell right"><input id="partValue-box" type="text" /></div>
+		<div class="cell right"><input id="componentValue-box" type="text" /></div>
 	</div>
 	<div class="row">
 
@@ -20,21 +20,31 @@
 </div>
 <script type="text/javascript">
 	$().ready(function() {
-		var result = windowsApp.getAvailablePackageNames();
+		$("button#cancel-button").on("click", function(e) {
+			vex.closeAll();
+		});
+
+		$("button#save-button").on("click", function(e) {
+			var component = { packageId: 0, value: "" };
+
+			component.value = $("input#componentValue-box").val();
+			component.packageId = $("select#packages-combo").val();
+
+			var data = JSON.stringify(component);
+			windowsApp.addComponent(data);
+		});
+
+		var result = JSON.parse(windowsApp.getAvailablePackageNames());
+
+		console.log(result);
 
 		if (result.success) {
-			var packageNames = result.names;
+			var packages = result.packages;
 
-			console.log(packageNames);
-
-			for(var i = 0; i < packageNames.length; i++) {
-				var packageName = packageNames[i];
-				$("select#packageName-combo").append("<option value=\"" + packageName + "\">" + packageName + "</option>")
+			for(var i = 0; i < packages.length; i++) {
+				var package = packages[i];
+				$("select#packages-combo").append("<option value=\"" + package.id + "\">" + package.name + "</option>")
 			}
-
-			$("button#cancel-button").on("click", function(e) {
-				vex.closeAll();
-			});
 		}
 	});
 </script>
