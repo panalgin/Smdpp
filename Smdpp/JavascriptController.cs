@@ -130,12 +130,12 @@ namespace Smdpp
             return JsonConvert.SerializeObject(new GetAvailablePackageNamesCallback());
         }
 
-        public bool AddComponent(string data)
+        public string AddComponent(string data)
         {
             var contract = JsonConvert.DeserializeObject<Contracts.AddComponentInfo>(data);
-            bool result = ComponentManager.Add(contract);
+            var result = ComponentManager.Add(contract);
 
-            return result;
+            return result.ToJson();
         }
 
         public void ListPackages() => EventSink.InvokeListPackagesRequested();

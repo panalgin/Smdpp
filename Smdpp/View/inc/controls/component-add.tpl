@@ -31,7 +31,14 @@
 			component.packageId = $("select#packages-combo").val();
 
 			var data = JSON.stringify(component);
-			windowsApp.addComponent(data);
+			var response = windowsApp.addComponent(data);
+
+			response = JSON.parse(response);
+
+			if (response.success)
+				vex.closeAll();
+			else
+				alert(response.message);
 		});
 
 		var result = JSON.parse(windowsApp.getAvailablePackageNames());

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Smdpp.Logic.Callbacks
 {
-    public interface IScriptCallback
+    public class AddComponentCallback : BaseScriptCallback
     {
+        public AddComponentCallback()
+        {
 
+        }
     }
 }
