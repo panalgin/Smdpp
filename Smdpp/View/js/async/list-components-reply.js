@@ -1,41 +1,36 @@
-﻿var data = "{0}";
-var task = $.parseJSON(unescape(data));
+﻿var data = "";
+var task = "";
 
-console.log("Bileşenler: ", task);
+data = "{0}";
+task = $.parseJSON(unescape(data));
+
+console.log("Bileşen Listesi: ", task);
 
 var page = "";
 var itemTemplate = "";
+var component = "";
+var components = "";
+var item = "";
+var package = "";
 
-$.get("inc/parts/component-row.tpl", function (pr) {{
-    itemTemplate = pr;
+$.get("inc/parts/component-row.tpl", function (result) {{
+    itemTemplate = result;
+}});
 
-    $.when($.get("inc/controls/component-list.tpl", function (dt) {{
-        page = $(dt); //objectify html respon se
+$.when($.get("inc/controls/component-list.tpl", function (list) {{
+        page = $(list); //objectify html respon se
 
-        var item = $(itemTemplate);
+        for (var i = 0; i < task.length; i++) {{
+            item = $(itemTemplate);
+            component = task[i];
+            package = component.package;
 
-        var components = page;
-        components.append("<h1>hehehe<h1>");
-        console.log(components);
+            item.find("div#component-").prop("id", component.id);
+            item.find("div#value-").prop("id", "value-" + component.id).html(component.value);
+            item.find("div#packageName-").prop("id", "packageName-" + component.id).html(package.name);
 
-        /*for (var i = 0; i < task.length; i++) {{
-            var component = task[i];
-
-            //console.log(component);
-
-            /*var id = item.prop("id");
-            var packageName = item.find("div#packageName-").prop("id");
-            var value = item.find("div#value-").prop("id");
-
-            item.prop("id", id + component.id);
-            item.find("div#packageName-").prop("id", packageName + component.package.name);
-
-
-        }}*/
-
-
-
-    }})).then(function (resp1) {{
+            page.find("div.headers").parent().append(item);
+        }}
+    }})).then(function (result) {{
         createTab("Komponent Listesi", page);
     }});
- }});

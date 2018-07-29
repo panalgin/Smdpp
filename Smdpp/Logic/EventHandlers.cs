@@ -68,7 +68,13 @@ namespace Smdpp.Logic
                 {
                     var components = context.Components.Select(q => new Contracts.Component()
                     {
-
+                        ID = q.ID,
+                        Value = q.Value,
+                        Package = new Contracts.Package()
+                        {
+                            ID = q.PackageID,
+                            Name = q.Package.Name
+                        }
                     }).ToList();
 
                     var json = JsonConvert.SerializeObject(components);
