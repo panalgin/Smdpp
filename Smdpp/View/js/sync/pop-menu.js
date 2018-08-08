@@ -65,19 +65,9 @@ function isAnyPopOpen() {
 	return pop.length > 0;
 }
 
-function isAnyContextMenuOpen() {
-    var menu = $(".context-menu").filter(":visible");
-
-    return menu.length > 0;
-}
-
 function closeAllPops() {
 	$("ul#nav .active").removeClass("active");
 	var pop = $("ul.pop-menu").filter(":visible").hide();
-}
-
-function closeAllContextMenus() {
-    $(".context-menu").remove();
 }
 
 function showMenu(menuId) {

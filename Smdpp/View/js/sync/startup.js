@@ -43,6 +43,23 @@ $().ready(function () {
     });
 });
 
+function showContextMenuForFeederSlot(feederId) {
+    closeAllContextMenus();
+
+    var object = $(FEEDERSLOT_CONTEXT_MENU_TEMPLATE);
+    $("body").append(object);
+
+    var feederSlot = $("div#" + feederId);
+
+    var offset = feederSlot.offset();
+
+    var left = offset.left;
+    var top = offset.top + feederSlot.height();
+
+    object.css("left", left);
+    object.css("top", top);
+}
+
 function showContextMenuForItem(svg, xOff, yOff) {
     closeAllContextMenus();
 
@@ -72,6 +89,16 @@ function showContextMenuForItem(svg, xOff, yOff) {
         var combo = object.find(".context-item select");
         fillComboWithSlots(combo, availableSlots);
     });
+}
+
+function isAnyContextMenuOpen() {
+    var menu = $(".context-menu").filter(":visible");
+
+    return menu.length > 0;
+}
+
+function closeAllContextMenus() {
+    $(".context-menu").remove();
 }
 
 function findPackageDetailsOf(packageId) {
@@ -110,6 +137,7 @@ function findPackageOf(packageId) {
 function getAvailableSlotsFor(componentId) {
     return new Promise(resolve => {
         var result = windowsApp.getAppropriateSlotFor(componentId);
+
         resolve(result);
     });
 }

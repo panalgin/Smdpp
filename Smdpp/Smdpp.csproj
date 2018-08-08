@@ -204,7 +204,9 @@
     <None Include="View\inc\controls\component-add.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="View\inc\controls\contextmenu.feederslot.tpl" />
+    <None Include="View\inc\controls\contextmenu.feederslot.tpl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="View\inc\controls\feeder-selector.tpl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,18 +1,18 @@
 ﻿<div class="context-menu">
 	<div class="context-item">
-		<div class="left">Referans:</div>
-		<div id="referenceName" class="right">U1</div>
+		<div class="left">Önerilen:</div>
+		<div id="referenceName" class="right">---</div>
 	</div>
 	<div class="context-item">
-		<div class="left">Kılıf:</div>
-		<div id="packageName" class="right">SOP28</div>
+		<div class="left">Şuan Bağlı:</div>
+		<div id="packageName" class="right">10K</div>
 	</div>
 		<div class="context-item">
-		<div class="left">Değer:</div>
-		<div id="value" class="right">16f88</div>
+		<div class="left">Kılıf:</div>
+		<div id="value" class="right">RES_1206</div>
 	</div>
 	<div class="context-item">
-		<div class="left">Slot:</div>
+		<div class="left">Değiştir:</div>
 		<div class="right">
 			<select>
 				<option>14 - [TSOP16 - 12f84]</option>

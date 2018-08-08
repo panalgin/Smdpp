@@ -55,16 +55,12 @@
                     $(document).ready(function () {
                         windowsApp.getFeederSlots();
 
-                        $("body").on("mousedown", "#feeders .feeder", function (e) {
+                        $("body").on("contextmenu", "#feeders .feeder", function (e) {
                             var feederId = $(this).prop("id");
 
-                            showFeederMenu(feederId);
+                            showContextMenuForFeederSlot(feederId);
                         });
                     });
-
-                    function showFeederMenu(feederId) {
-
-                    }
                 </script>
             </div>
             <div id="tabbed-mdi">
