@@ -1,4 +1,5 @@
 ﻿var CSV_RIGHT_CLICK_TEMPLATE = "";
+var FEEDERSLOT_CONTEXT_MENU_TEMPLATE = "";
 
 $().ready(function () {
     var comPorts = windowsApp.getPortNames();
@@ -32,6 +33,12 @@ $().ready(function () {
     $.get("inc/controls/right-click-csv-menu.tpl", function (data) {
         if (data) {
             CSV_RIGHT_CLICK_TEMPLATE = data;
+        }
+    });
+
+    $.get("inc/controls/contextmenu.feederslot.tpl", function (data) {
+        if (data) {
+            FEEDERSLOT_CONTEXT_MENU_TEMPLATE = data;
         }
     });
 });

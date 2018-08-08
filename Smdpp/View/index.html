@@ -53,9 +53,18 @@
             <div id="feeders">
                 <script type="text/javascript">
                     $(document).ready(function () {
-                        $("div#feeder-1 .status").css("background-color", "red");
                         windowsApp.getFeederSlots();
+
+                        $("body").on("mousedown", "#feeders .feeder", function (e) {
+                            var feederId = $(this).prop("id");
+
+                            showFeederMenu(feederId);
+                        });
                     });
+
+                    function showFeederMenu(feederId) {
+
+                    }
                 </script>
             </div>
             <div id="tabbed-mdi">

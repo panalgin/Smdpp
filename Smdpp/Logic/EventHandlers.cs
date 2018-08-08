@@ -19,7 +19,7 @@ namespace Smdpp.Logic
         {
             var task = Task.Run(async () =>
             {
-                 var result = await FeederManager.GetFeederStates();
+                var result = await FeederManager.GetFeederStates();
                 var json = JsonConvert.SerializeObject(result);
 
                 ScriptRunner.Run(ScriptAction.ListFeederStatesReply, Utility.HtmlEncode(json));

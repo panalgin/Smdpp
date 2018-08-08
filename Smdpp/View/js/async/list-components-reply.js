@@ -18,7 +18,7 @@ $.get("inc/parts/component-row.tpl", function (result) {{
 }});
 
 $.when($.get("inc/controls/component-list.tpl", function (list) {{
-        page = $(list); //objectify html respon se
+        page = $(list); //objectify html response
 
         for (var i = 0; i < task.length; i++) {{
             item = $(itemTemplate);
